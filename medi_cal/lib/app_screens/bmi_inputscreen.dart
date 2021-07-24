@@ -42,7 +42,7 @@ class BmiInputCore extends StatelessWidget {
             child: Container(
           padding: EdgeInsets.only(top: 0.0),
           alignment: Alignment.center,
-          child: InputFields(),
+             child: InputFields(),
         )));
   }
 }

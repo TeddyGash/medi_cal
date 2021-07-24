@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medi_cal/app_screens/bmi_inputscreen.dart';
+import 'package:medi_cal/app_screens/egfr.dart';
 
 //import 'welcome_screen.dart';
 
@@ -43,13 +44,13 @@ CalcList (context) => GridView.count(
   mainAxisSpacing: 10,
   crossAxisCount: 2,
   children: <Widget>[
-    GestureDetector(
+      GestureDetector(
       onTap: () {
         Navigator.of(context).push(
             MaterialPageRoute(builder: (BuildContext context) =>
                 BmiInputScreen()
         ));},
-      child: (
+        child: (
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
@@ -57,17 +58,23 @@ CalcList (context) => GridView.count(
               borderRadius: const BorderRadius.all(const Radius.circular(8)),),
             child: Image.asset('assets/images/bmi.png'),
           )),),
-    Container( padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        border: Border.all(),
-        borderRadius: const BorderRadius.all(const Radius.circular(8)),),
-      child: Image.asset('assets/images/eGFR.png'),
-      // child: Stack(
-      //   children : [
-      //   Image.asset('assets/images/eGFR.png'),
-      //   Text ("eGFR Calculator"),//const Text('Heed not the rabble'),
-      //color: Colors.teal[200],
-    ),
+      GestureDetector(
+        onTap: () {
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (BuildContext context) => EGFR()
+              ));},
+        child: (
+            Container( padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          border: Border.all(),
+          borderRadius: const BorderRadius.all(const Radius.circular(8)),),
+        child: Image.asset('assets/images/eGFR.png'),
+        // child: Stack(
+        //   children : [
+        //   Image.asset('assets/images/eGFR.png'),
+        //   Text ("eGFR Calculator"),//const Text('Heed not the rabble'),
+        //color: Colors.teal[200],
+      )),),
     Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(

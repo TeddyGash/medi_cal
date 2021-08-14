@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medi_cal/app_screens/bmi_inputscreen.dart';
 import 'package:medi_cal/app_screens/egfr.dart';
+import 'package:medi_cal/app_screens/hasbleed.dart';
 
 //import 'welcome_screen.dart';
 
@@ -69,12 +70,13 @@ CalcList (context) => GridView.count(
           border: Border.all(),
           borderRadius: const BorderRadius.all(const Radius.circular(8)),),
         child: Image.asset('assets/images/eGFR.png'),
-        // child: Stack(
-        //   children : [
-        //   Image.asset('assets/images/eGFR.png'),
-        //   Text ("eGFR Calculator"),//const Text('Heed not the rabble'),
-        //color: Colors.teal[200],
       )),),
+    GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (BuildContext context) => HASBLED()
+            ));},
+      child: (
     Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
@@ -82,7 +84,7 @@ CalcList (context) => GridView.count(
         borderRadius: const BorderRadius.all(const Radius.circular(8)),),
       child: Image.asset('assets/images/hasbled.jpeg'),
       //color: Colors.teal[300],
-    ),
+    )),),
     Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(

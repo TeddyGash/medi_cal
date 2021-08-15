@@ -55,7 +55,7 @@ class WelcomeCore extends StatelessWidget {
                     alignment: Alignment.center,
                     child:
                     Text(
-                      "All your medical calculators in one place.",
+                      "All your medical calculators in one place.", textAlign: TextAlign.center,
                       textDirection: TextDirection.ltr,
                       style: TextStyle(color: Colors.white, fontSize: 24.0),
                     ),margin: EdgeInsets.all(30.0),),

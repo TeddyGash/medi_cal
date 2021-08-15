@@ -43,10 +43,10 @@ class HasbledCore extends StatelessWidget {
         color: Colors.lightBlueAccent,
         child: Center(
             child: Container(
-              padding: EdgeInsets.only(top: 0.0),
-              alignment: Alignment.center,
-              child: InputFields(),
-            )));
+          padding: EdgeInsets.only(top: 0.0),
+          alignment: Alignment.center,
+          child: InputFields(),
+        )));
   }
 }
 
@@ -233,7 +233,8 @@ class _InputFieldsState extends State<InputFields> {
                                 fontSize: 15.0,
                               ),
                             ),
-                            Flexible(child: Row(
+                            Flexible(
+                                child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Radio(
@@ -265,7 +266,6 @@ class _InputFieldsState extends State<InputFields> {
                             Padding(
                               padding: EdgeInsets.all(2.0),
                             ),
-
                             Text(
                               '2. Abnormal Renal Function?',
                               style: TextStyle(
@@ -273,7 +273,8 @@ class _InputFieldsState extends State<InputFields> {
                                 fontSize: 15.0,
                               ),
                             ),
-                            Flexible(child: Row(
+                            Flexible(
+                                child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Radio(
@@ -294,7 +295,6 @@ class _InputFieldsState extends State<InputFields> {
                                   'No',
                                   style: TextStyle(fontSize: 13.0),
                                 ),
-
                               ],
                             )),
                             Divider(
@@ -304,7 +304,6 @@ class _InputFieldsState extends State<InputFields> {
                             Padding(
                               padding: EdgeInsets.all(2.0),
                             ),
-
                             Text(
                               '3. Abnormal Liver Function?',
                               style: TextStyle(
@@ -312,9 +311,10 @@ class _InputFieldsState extends State<InputFields> {
                                 fontSize: 15.0,
                               ),
                             ),
-                            Expanded(child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
+                            Expanded(
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
                                   Radio(
                                     value: 0,
                                     groupValue: _radioValue3,
@@ -334,7 +334,6 @@ class _InputFieldsState extends State<InputFields> {
                                     style: TextStyle(fontSize: 13.0),
                                   ),
                                 ])),
-
                             Divider(
                               height: 5.0,
                               color: Colors.black,
@@ -349,9 +348,9 @@ class _InputFieldsState extends State<InputFields> {
                                 fontSize: 15.0,
                               ),
                             ),
-                            Expanded(child: Row(
-                              mainAxisAlignment:
-                              MainAxisAlignment.center,
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Radio(
                                   value: 0,
@@ -360,8 +359,7 @@ class _InputFieldsState extends State<InputFields> {
                                 ),
                                 Text(
                                   '65yrs or less',
-                                  style:
-                                  TextStyle(fontSize: 13.0),
+                                  style: TextStyle(fontSize: 13.0),
                                 ),
                                 Radio(
                                   value: 1,
@@ -370,8 +368,7 @@ class _InputFieldsState extends State<InputFields> {
                                 ),
                                 Text(
                                   'more than 65yrs',
-                                  style:
-                                  TextStyle(fontSize: 13.0),
+                                  style: TextStyle(fontSize: 13.0),
                                 ),
                               ],
                             )),
@@ -389,31 +386,27 @@ class _InputFieldsState extends State<InputFields> {
                                 fontSize: 15.0,
                               ),
                             ),
-                            Expanded(child: Row(
-                              mainAxisAlignment:
-                              MainAxisAlignment.center,
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Radio(
                                   value: 0,
                                   groupValue: _radioValue5,
-                                  onChanged:
-                                  _handleRadioValueChange5,
+                                  onChanged: _handleRadioValueChange5,
                                 ),
                                 Text(
                                   'Yes',
-                                  style: TextStyle(
-                                      fontSize: 13.0),
+                                  style: TextStyle(fontSize: 13.0),
                                 ),
                                 Radio(
                                   value: 1,
                                   groupValue: _radioValue5,
-                                  onChanged:
-                                  _handleRadioValueChange5,
+                                  onChanged: _handleRadioValueChange5,
                                 ),
                                 Text(
                                   'No',
-                                  style: TextStyle(
-                                      fontSize: 13.0),
+                                  style: TextStyle(fontSize: 13.0),
                                 ),
                               ],
                             )),
@@ -431,32 +424,27 @@ class _InputFieldsState extends State<InputFields> {
                                 fontSize: 15.0,
                               ),
                             ),
-
-                            Expanded(child: Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.center,
-                                children: <Widget>[
+                            Expanded(
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
                                   Radio(
                                     value: 0,
                                     groupValue: _radioValue6,
-                                    onChanged:
-                                    _handleRadioValueChange6,
+                                    onChanged: _handleRadioValueChange6,
                                   ),
                                   Text(
                                     'Yes',
-                                    style: TextStyle(
-                                        fontSize: 13.0),
+                                    style: TextStyle(fontSize: 13.0),
                                   ),
                                   Radio(
                                     value: 1,
                                     groupValue: _radioValue6,
-                                    onChanged:
-                                    _handleRadioValueChange6,
+                                    onChanged: _handleRadioValueChange6,
                                   ),
                                   Text(
                                     'No',
-                                    style: TextStyle(
-                                        fontSize: 13.0),
+                                    style: TextStyle(fontSize: 13.0),
                                   )
                                 ])),
                             Divider(
@@ -473,32 +461,27 @@ class _InputFieldsState extends State<InputFields> {
                                 fontSize: 15.0,
                               ),
                             ),
-
-                            Expanded(child: Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.center,
-                                children: <Widget>[
+                            Expanded(
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
                                   Radio(
                                     value: 0,
                                     groupValue: _radioValue7,
-                                    onChanged:
-                                    _handleRadioValueChange7,
+                                    onChanged: _handleRadioValueChange7,
                                   ),
                                   Text(
                                     'Yes',
-                                    style: TextStyle(
-                                        fontSize: 13.0),
+                                    style: TextStyle(fontSize: 13.0),
                                   ),
                                   Radio(
                                     value: 1,
                                     groupValue: _radioValue7,
-                                    onChanged:
-                                    _handleRadioValueChange7,
+                                    onChanged: _handleRadioValueChange7,
                                   ),
                                   Text(
                                     'No',
-                                    style: TextStyle(
-                                        fontSize: 13.0),
+                                    style: TextStyle(fontSize: 13.0),
                                   )
                                 ])),
                             Divider(
@@ -515,32 +498,27 @@ class _InputFieldsState extends State<InputFields> {
                                 fontSize: 15.0,
                               ),
                             ),
-
-                            Expanded(child: Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.center,
-                                children: <Widget>[
+                            Expanded(
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
                                   Radio(
                                     value: 0,
                                     groupValue: _radioValue8,
-                                    onChanged:
-                                    _handleRadioValueChange8,
+                                    onChanged: _handleRadioValueChange8,
                                   ),
                                   Text(
                                     'Yes',
-                                    style: TextStyle(
-                                        fontSize: 13.0),
+                                    style: TextStyle(fontSize: 13.0),
                                   ),
                                   Radio(
                                     value: 1,
                                     groupValue: _radioValue8,
-                                    onChanged:
-                                    _handleRadioValueChange8,
+                                    onChanged: _handleRadioValueChange8,
                                   ),
                                   Text(
                                     'No',
-                                    style: TextStyle(
-                                        fontSize: 13.0),
+                                    style: TextStyle(fontSize: 13.0),
                                   )
                                 ])),
                             Divider(
@@ -557,32 +535,27 @@ class _InputFieldsState extends State<InputFields> {
                                 fontSize: 15.0,
                               ),
                             ),
-
-                            Expanded(child: Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.center,
-                                children: <Widget>[
+                            Expanded(
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
                                   Radio(
                                     value: 0,
                                     groupValue: _radioValue9,
-                                    onChanged:
-                                    _handleRadioValueChange9,
+                                    onChanged: _handleRadioValueChange9,
                                   ),
                                   Text(
                                     'Yes',
-                                    style: TextStyle(
-                                        fontSize: 13.0),
+                                    style: TextStyle(fontSize: 13.0),
                                   ),
                                   Radio(
                                     value: 1,
                                     groupValue: _radioValue9,
-                                    onChanged:
-                                    _handleRadioValueChange9,
+                                    onChanged: _handleRadioValueChange9,
                                   ),
                                   Text(
                                     'No',
-                                    style: TextStyle(
-                                        fontSize: 13.0),
+                                    style: TextStyle(fontSize: 13.0),
                                   )
                                 ])),
                             Divider(
@@ -615,7 +588,8 @@ class _InputFieldsState extends State<InputFields> {
                                     color: Colors.white),
                               ),
                             )
-                          ],))))));
+                          ],
+                        ))))));
   }
 
   void resetSelection() {
@@ -637,29 +611,29 @@ class _InputFieldsState extends State<InputFields> {
     comment();
   }
 
-  void calculateScore() {
-    if (_radioValue1 != -1 && _radioValue2 != -1 &&
-        _radioValue3 != -1 && _radioValue4 != -1 &&
-        _radioValue5 != -1 && _radioValue6 != -1 &&
-        _radioValue7 != -1 && _radioValue8 != -1 &&
-        _radioValue9 != -1) {
-      totalScore = _radioValue1 + _radioValue2 + _radioValue3 + _radioValue4
-          + _radioValue5 + _radioValue6 + _radioValue7 + _radioValue8
-          + _radioValue9;
-    }
-    else
-      validateAnswers();
+  void sumAnswers() {
+    totalScore = _radioValue1 +
+        _radioValue2 +
+        _radioValue3 +
+        _radioValue4 +
+        _radioValue5 +
+        _radioValue6 +
+        _radioValue7 +
+        _radioValue8 +
+        _radioValue9;
   }
 
+  void calculateScore() {
+    validateAnswers();
+    sumAnswers();
+  }
 
   void comment() {
     if (totalScore == 1) {
       _bleedingRisk = 'Low Risk';
-    }
-    else if (totalScore == 2) {
+    } else if (totalScore == 2) {
       _bleedingRisk = 'Intermediate Risk';
-    }
-    else if (totalScore >= 3) {
+    } else if (totalScore >= 3) {
       _bleedingRisk = 'High Risk';
     }
   }
@@ -694,8 +668,22 @@ class _InputFieldsState extends State<InputFields> {
       builder: (BuildContext context) {
         // return object of type Dialog
         return AlertDialog(
-          title: new Text("HASBLED Score"),
-          content: new Text("$totalScore\n\n Bleeding Risk:\n $_bleedingRisk"),
+          title: Text("HASBLED Score:", textAlign: TextAlign.center,
+            //overflow: TextOverflow.ellipsis,
+            style: TextStyle(fontWeight: FontWeight.bold),),
+          content: Container ( height: 150, width: 200,
+              child: Column(
+                  //mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                Text ("$totalScore\n", textAlign: TextAlign.center,
+                  //overflow: TextOverflow.ellipsis,
+                  style: TextStyle(//fontWeight: FontWeight.bold,
+                      fontSize: 25),),
+                    Text('Bleeding Risk:\n', textAlign: TextAlign.left,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                    Text('$_bleedingRisk', textAlign: TextAlign.center),
+              ])),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
             TextButton(
@@ -717,18 +705,20 @@ class _InputFieldsState extends State<InputFields> {
     );
   }
 
-    void validateAnswers() {
-    if (_radioValue1 == -1 || _radioValue2 == -1 ||
-        _radioValue3 == -1 || _radioValue4 == -1 ||
-        _radioValue5 == -1 || _radioValue6 == -1 ||
-        _radioValue7 == -1 || _radioValue8 == -1 ||
+  void validateAnswers() {
+    if (_radioValue1 == -1 ||
+        _radioValue2 == -1 ||
+        _radioValue3 == -1 ||
+        _radioValue4 == -1 ||
+        _radioValue5 == -1 ||
+        _radioValue6 == -1 ||
+        _radioValue7 == -1 ||
+        _radioValue8 == -1 ||
         _radioValue9 == -1) {
       showErrorDialog();
-    }
-    else {
+    } else {
       showResultDialog();
     }
 /**/
-
   }
 }

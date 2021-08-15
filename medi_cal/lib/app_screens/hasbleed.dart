@@ -238,7 +238,7 @@ class _InputFieldsState extends State<InputFields> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Radio(
-                                  value: 0,
+                                  value: 1,
                                   groupValue: _radioValue1,
                                   onChanged: _handleRadioValueChange1,
                                 ),
@@ -247,7 +247,7 @@ class _InputFieldsState extends State<InputFields> {
                                   style: TextStyle(fontSize: 13.0),
                                 ),
                                 Radio(
-                                  value: 1,
+                                  value: 0,
                                   groupValue: _radioValue1,
                                   onChanged: _handleRadioValueChange1,
                                 ),
@@ -278,7 +278,7 @@ class _InputFieldsState extends State<InputFields> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Radio(
-                                  value: 0,
+                                  value: 1,
                                   groupValue: _radioValue2,
                                   onChanged: _handleRadioValueChange2,
                                 ),
@@ -287,7 +287,7 @@ class _InputFieldsState extends State<InputFields> {
                                   style: TextStyle(fontSize: 13.0),
                                 ),
                                 Radio(
-                                  value: 1,
+                                  value: 0,
                                   groupValue: _radioValue2,
                                   onChanged: _handleRadioValueChange2,
                                 ),
@@ -316,7 +316,7 @@ class _InputFieldsState extends State<InputFields> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                   Radio(
-                                    value: 0,
+                                    value: 1,
                                     groupValue: _radioValue3,
                                     onChanged: _handleRadioValueChange3,
                                   ),
@@ -325,7 +325,7 @@ class _InputFieldsState extends State<InputFields> {
                                     style: TextStyle(fontSize: 13.0),
                                   ),
                                   Radio(
-                                    value: 1,
+                                    value: 0,
                                     groupValue: _radioValue3,
                                     onChanged: _handleRadioValueChange3,
                                   ),
@@ -391,7 +391,7 @@ class _InputFieldsState extends State<InputFields> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Radio(
-                                  value: 0,
+                                  value: 1,
                                   groupValue: _radioValue5,
                                   onChanged: _handleRadioValueChange5,
                                 ),
@@ -400,7 +400,7 @@ class _InputFieldsState extends State<InputFields> {
                                   style: TextStyle(fontSize: 13.0),
                                 ),
                                 Radio(
-                                  value: 1,
+                                  value: 0,
                                   groupValue: _radioValue5,
                                   onChanged: _handleRadioValueChange5,
                                 ),
@@ -429,7 +429,7 @@ class _InputFieldsState extends State<InputFields> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                   Radio(
-                                    value: 0,
+                                    value: 1,
                                     groupValue: _radioValue6,
                                     onChanged: _handleRadioValueChange6,
                                   ),
@@ -438,7 +438,7 @@ class _InputFieldsState extends State<InputFields> {
                                     style: TextStyle(fontSize: 13.0),
                                   ),
                                   Radio(
-                                    value: 1,
+                                    value: 0,
                                     groupValue: _radioValue6,
                                     onChanged: _handleRadioValueChange6,
                                   ),
@@ -466,7 +466,7 @@ class _InputFieldsState extends State<InputFields> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                   Radio(
-                                    value: 0,
+                                    value: 1,
                                     groupValue: _radioValue7,
                                     onChanged: _handleRadioValueChange7,
                                   ),
@@ -475,7 +475,7 @@ class _InputFieldsState extends State<InputFields> {
                                     style: TextStyle(fontSize: 13.0),
                                   ),
                                   Radio(
-                                    value: 1,
+                                    value: 0,
                                     groupValue: _radioValue7,
                                     onChanged: _handleRadioValueChange7,
                                   ),
@@ -503,7 +503,7 @@ class _InputFieldsState extends State<InputFields> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                   Radio(
-                                    value: 0,
+                                    value: 1,
                                     groupValue: _radioValue8,
                                     onChanged: _handleRadioValueChange8,
                                   ),
@@ -512,7 +512,7 @@ class _InputFieldsState extends State<InputFields> {
                                     style: TextStyle(fontSize: 13.0),
                                   ),
                                   Radio(
-                                    value: 1,
+                                    value: 0,
                                     groupValue: _radioValue8,
                                     onChanged: _handleRadioValueChange8,
                                   ),
@@ -540,7 +540,7 @@ class _InputFieldsState extends State<InputFields> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                   Radio(
-                                    value: 0,
+                                    value: 1,
                                     groupValue: _radioValue9,
                                     onChanged: _handleRadioValueChange9,
                                   ),
@@ -549,7 +549,7 @@ class _InputFieldsState extends State<InputFields> {
                                     style: TextStyle(fontSize: 13.0),
                                   ),
                                   Radio(
-                                    value: 1,
+                                    value: 0,
                                     groupValue: _radioValue9,
                                     onChanged: _handleRadioValueChange9,
                                   ),
@@ -629,7 +629,7 @@ class _InputFieldsState extends State<InputFields> {
   }
 
   void comment() {
-    if (totalScore == 1) {
+    if (totalScore == 1|| totalScore == 0) {
       _bleedingRisk = 'Low Risk';
     } else if (totalScore == 2) {
       _bleedingRisk = 'Intermediate Risk';

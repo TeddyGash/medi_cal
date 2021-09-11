@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:medi_cal/app_screens/bmi_inputscreen.dart';
 import 'package:medi_cal/app_screens/egfr.dart';
 import 'package:medi_cal/app_screens/hasbleed.dart';
+import 'package:medi_cal/app_screens/CHA2DS2VASc.dart';
+import 'package:medi_cal/app_screens/wellscore_dvt.dart';
+
 
 //import 'welcome_screen.dart';
 
@@ -85,26 +88,38 @@ CalcList (context) => GridView.count(
       child: Image.asset('assets/images/hasbled.jpeg'),
       //color: Colors.teal[300],
     )),),
+    GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (BuildContext context) => CHA2DS2VASc()
+            ));},
+      child: (
     Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         border: Border.all(),
         borderRadius: const BorderRadius.all(const Radius.circular(8)),),
       child: Image.asset('assets/images/CHADSVASC.jpeg'),
-    ),
+    )),),
+    GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (BuildContext context) => WellsScoreDVT()
+            ));},
+      child: (
     Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         border: Border.all(),
         borderRadius: const BorderRadius.all(const Radius.circular(8)),),
       child: Image.asset('assets/images/dvt.jpeg'),
-    ),
+    )),),
     Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         border: Border.all(),
         borderRadius: const BorderRadius.all(const Radius.circular(8)),),
-      child: Image.asset('assets/images/pe2.webp'),
+      child: Image.asset('assets/images/pe.jpeg'),
     ),
     Container(
       padding: const EdgeInsets.all(8),

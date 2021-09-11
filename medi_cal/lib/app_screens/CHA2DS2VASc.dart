@@ -184,8 +184,12 @@ class _InputFieldsState extends State<InputFields> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
+                        Expanded(
+                        child: ListView(
+                          children: [
                             Text(
                               'Select as appropriate',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.normal),
@@ -199,6 +203,7 @@ class _InputFieldsState extends State<InputFields> {
                             ),
                             Text(
                               '1. Congestive heart failure?',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
@@ -239,6 +244,7 @@ class _InputFieldsState extends State<InputFields> {
                             ),
                             Text(
                               '2. Hypertension (SBP > 160mmHg)?',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
@@ -277,6 +283,7 @@ class _InputFieldsState extends State<InputFields> {
                             ),
                             Text(
                               '3. Age?',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
@@ -323,6 +330,7 @@ class _InputFieldsState extends State<InputFields> {
                             ),
                             Text(
                               '4. Diabetes Mellitus?',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
@@ -360,7 +368,8 @@ class _InputFieldsState extends State<InputFields> {
                               padding: EdgeInsets.all(2.0),
                             ),
                             Text(
-                              '5. Stroke/Transient Ischemic Attack/Thromboembolic event?', textAlign: TextAlign.center, 
+                              '5. Stroke/Transient Ischemic Attack/Thromboembolic event?',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
@@ -398,7 +407,8 @@ class _InputFieldsState extends State<InputFields> {
                               padding: EdgeInsets.all(2.0),
                             ),
                             Text(
-                              '6. Vascular disease (prior MI, PAD, aortic plaque)?', textAlign: TextAlign.center,
+                              '6. Vascular disease (prior MI, PAD, aortic plaque)?',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
@@ -436,6 +446,7 @@ class _InputFieldsState extends State<InputFields> {
                             ),
                             Text(
                               '7. Sex category?',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
@@ -495,7 +506,9 @@ class _InputFieldsState extends State<InputFields> {
                               ),
                             )
                           ],
-                        ))))));
+                        ),
+                        )
+                          ]))))));
   }
 
   void resetSelection() {

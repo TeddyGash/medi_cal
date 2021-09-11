@@ -805,9 +805,9 @@ class _InputFieldsState extends State<InputFields> {
         _radioValue5 == -1 ||
         _radioValue6 == -1 ||
         _radioValue7 == -1 ||
-        _radioValue6 == -1 ||
-        _radioValue6 == -1 ||
-        _radioValue7 == -1) {
+        _radioValue8 == -1 ||
+        _radioValue9 == -1 ||
+        _radioValue10 == -1) {
       showErrorDialog();
     } else {
       showResultDialog();

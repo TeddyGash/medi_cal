@@ -213,8 +213,12 @@ class _InputFieldsState extends State<InputFields> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
+                        Expanded(
+                        child: ListView(
+                          children: [
                             Text(
                               'Select as appropriate',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.normal),
@@ -228,6 +232,7 @@ class _InputFieldsState extends State<InputFields> {
                             ),
                             Text(
                               '1. Hypertension (SBP > 160mmHg)?',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
@@ -268,6 +273,7 @@ class _InputFieldsState extends State<InputFields> {
                             ),
                             Text(
                               '2. Abnormal Renal Function?',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
@@ -306,6 +312,7 @@ class _InputFieldsState extends State<InputFields> {
                             ),
                             Text(
                               '3. Abnormal Liver Function?',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
@@ -343,6 +350,7 @@ class _InputFieldsState extends State<InputFields> {
                             ),
                             Text(
                               '4. Age?',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
@@ -381,6 +389,7 @@ class _InputFieldsState extends State<InputFields> {
                             ),
                             Text(
                               '5. Previous Stroke?',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
@@ -419,6 +428,7 @@ class _InputFieldsState extends State<InputFields> {
                             ),
                             Text(
                               '6. Prior major bleeding/Predisposition?',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
@@ -456,6 +466,7 @@ class _InputFieldsState extends State<InputFields> {
                             ),
                             Text(
                               '7. Taking drugs likely to cause bleeding?',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
@@ -493,6 +504,7 @@ class _InputFieldsState extends State<InputFields> {
                             ),
                             Text(
                               '8. Alcohol use?',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
@@ -530,6 +542,7 @@ class _InputFieldsState extends State<InputFields> {
                             ),
                             Text(
                               '9. Labile INR?',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
@@ -589,7 +602,9 @@ class _InputFieldsState extends State<InputFields> {
                               ),
                             )
                           ],
-                        ))))));
+                        ),
+                        )
+                          ]))))));
   }
 
   void resetSelection() {

@@ -437,6 +437,8 @@ class _InputFieldsState extends State<InputFields> {
                                     ),
                                     ElevatedButton(
                                       onPressed: resetSelection,
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Colors.redAccent,),
                                       child: Text(
                                         'Reset Selection',
                                         style: TextStyle(

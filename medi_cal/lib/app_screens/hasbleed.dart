@@ -43,9 +43,9 @@ class HasbledCore extends StatelessWidget {
         color: Colors.lightBlueAccent,
         child: Center(
             child: Container(
-          padding: EdgeInsets.only(top: 0.0),
-          alignment: Alignment.center,
-          child: InputFields(),
+              padding: EdgeInsets.only(top: 0.0),
+              alignment: Alignment.center,
+               child: InputFields(),
         )));
   }
 }
@@ -593,6 +593,8 @@ class _InputFieldsState extends State<InputFields> {
                             ),
                             ElevatedButton(
                               onPressed: resetSelection,
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.redAccent,),
                               child: Text(
                                 'Reset Selection',
                                 style: TextStyle(

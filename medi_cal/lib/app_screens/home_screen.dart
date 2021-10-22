@@ -6,6 +6,7 @@ import 'package:medi_cal/app_screens/CHA2DS2VASc.dart';
 import 'package:medi_cal/app_screens/wellscore_dvt.dart';
 import 'package:medi_cal/app_screens/wellscore_pe.dart';
 import 'package:medi_cal/app_screens/curb_65.dart';
+import 'package:medi_cal/app_screens/GAcalculator3.dart';
 
 //import 'welcome_screen.dart';
 
@@ -141,13 +142,19 @@ CalcList (context) => GridView.count(
         borderRadius: const BorderRadius.all(const Radius.circular(8)),),
       child: Image.asset('assets/images/curb65.jpeg'),
     )),),
+    GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (BuildContext context) => ChooseMethod()
+            ));},
+      child: (
     Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         border: Border.all(),
         borderRadius: const BorderRadius.all(const Radius.circular(8)),),
       child: Image.asset('assets/images/GAcalculator.jpeg'),
-    ),
+    )),),
     Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(

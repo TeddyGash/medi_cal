@@ -65,7 +65,6 @@ class _InputFieldsState extends State<InputFields> {
   int _radioValue6 = -1;
   int _radioValue7 = -1;
   int _radioValue8 = -1;
-  int _radioValue9 = -1;
   int totalScore = 0;
   var _appendicitisProbability = "";
   String _message = 'Please select as appropriate';
@@ -153,7 +152,7 @@ class _InputFieldsState extends State<InputFields> {
                                     ),
                                     Text(
                                       'SYMPTOMS:',
-                                      textAlign: TextAlign.left,
+                                      textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize: 15.0,
                                           color: Colors.white,
@@ -287,7 +286,7 @@ class _InputFieldsState extends State<InputFields> {
                                     ),
                                     Text(
                                         'SIGNS:',
-                                        textAlign: TextAlign.left,
+                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontSize: 15.0,
                                             color: Colors.white,
@@ -416,7 +415,7 @@ class _InputFieldsState extends State<InputFields> {
                                     ),
                                     Text(
                                       'LABORATORY FINDINGS:',
-                                      textAlign: TextAlign.left,
+                                      textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize: 15.0,
                                           color: Colors.white,

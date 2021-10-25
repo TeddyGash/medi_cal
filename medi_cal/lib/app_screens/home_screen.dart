@@ -8,6 +8,7 @@ import 'package:medi_cal/app_screens/wellscore_pe.dart';
 import 'package:medi_cal/app_screens/curb_65.dart';
 import 'package:medi_cal/app_screens/GAcalculator3.dart';
 import 'package:medi_cal/app_screens/alvarado.dart';
+import 'package:medi_cal/app_screens/bishop.dart';
 
 //import 'welcome_screen.dart';
 
@@ -172,7 +173,7 @@ CalcList (context) => GridView.count(
     GestureDetector(
       onTap: () {
         Navigator.of(context).push(
-            MaterialPageRoute(builder: (BuildContext context) => ChooseMethod()
+            MaterialPageRoute(builder: (BuildContext context) => BISHOP()
             ));},
       child: (
     Container(

@@ -7,6 +7,7 @@ import 'package:medi_cal/app_screens/wellscore_dvt.dart';
 import 'package:medi_cal/app_screens/wellscore_pe.dart';
 import 'package:medi_cal/app_screens/curb_65.dart';
 import 'package:medi_cal/app_screens/GAcalculator3.dart';
+import 'package:medi_cal/app_screens/alvarado.dart';
 
 //import 'welcome_screen.dart';
 
@@ -155,23 +156,39 @@ CalcList (context) => GridView.count(
         borderRadius: const BorderRadius.all(const Radius.circular(8)),),
       child: Image.asset('assets/images/GAcalculator.jpeg'),
     )),),
+    GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (BuildContext context) => ALVARADO()
+            ));},
+      child: (
     Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         border: Border.all(),
         borderRadius: const BorderRadius.all(const Radius.circular(8)),),
-      child: Image.asset('assets/images/electrolyte.jpeg'),
-    ),
+      child: Image.asset('assets/images/alvarado.jpeg'),
+    )),),
+    GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (BuildContext context) => ChooseMethod()
+            ));},
+      child: (
     Container(
       padding: const EdgeInsets.all(8),
-      child: const Text('Sound of screams but the'),
-      color: Colors.teal[300],
-    ),
+      child: Image.asset('assets/images/Bishop_score.jpeg'),
+    )),),
+    GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (BuildContext context) => ChooseMethod()
+            ));},
+      child: (
     Container(
       padding: const EdgeInsets.all(8),
-      child: const Text('Who scream'),
-      color: Colors.teal[400],
-    ),
+      child: Image.asset('assets/images/GCS_score.jpeg'),
+    )),),
     Container(
       padding: const EdgeInsets.all(8),
       child: const Text('Revolution is coming...'),

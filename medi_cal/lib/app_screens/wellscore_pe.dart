@@ -1,52 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:medi_cal/app_screens/home_screen.dart';
+import 'package:medi_cal/widget/customRadio.dart';
+import 'package:medi_cal/widget/customWidgets.dart';
 
 class WellsScorePE extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "WellsScorePE",
-      home: Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Well's Score (PE)"),
-              IconButton(
-                icon: const Icon(Icons.home,
-                    color: Colors.white, size: 24.0, semanticLabel: "Home"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
-                  );
-                },
-              )
-            ],
-          ),
-        ),
-        body: WellsScorePECore(),
-      ),
+    return CustomAppView(
+      pageTitle: 'WellsScore(PE)',
+      appBarTitle: CustomAppBarLabel(label: "WellsScore(PE)",),
+      pageBody: InputFields(),
     );
   }
 }
 
-class WellsScorePECore extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-        color: Colors.lightBlueAccent,
-        child: Center(
-            child: Container(
-              padding: EdgeInsets.only(top: 0.0),
-              alignment: Alignment.center,
-              child: InputFields(),
-            )));
-  }
-}
-
-// Define a custom Form widget.
+/// Input Display that receives user's inputs.
 class InputFields extends StatefulWidget {
   @override
   _InputFieldsState createState() => _InputFieldsState();
@@ -55,440 +22,356 @@ class InputFields extends StatefulWidget {
 // Define a corresponding State class.
 // This class holds data related to the form.
 class _InputFieldsState extends State<InputFields> {
-  double _radioValue1 = -1.0;
-  double _radioValue2 = -1.0;
-  double _radioValue3 = -1.0;
-  double _radioValue4 = -1.0;
-  double _radioValue5 = -1.0;
-  double _radioValue6 = -1.0;
-  double _radioValue7 = -1.0;
+  double _responsePrevVTE = -1.0;
+  double _responseTachycardia = -1.0;
+  double _responseSurgeryImmobilised = -1.0;
+  double _responseDVT = -1.0;
+  double _responseAltDiag = -1.0;
+  double _responseHaemoptysis = -1.0;
+  double _responseCancer = -1.0;
   double totalScore = 0.0;
   var _peRisk = "";
-  //String _message = 'Please select as appropriate';
-
-  void _handleRadioValueChange1(double value) {
-    setState(() {
-       _radioValue1 = value;
-    });
-  }
-
-  void _handleRadioValueChange2(double value) {
-    setState(() {
-      _radioValue2 = value;
-    });
-  }
-
-  void _handleRadioValueChange3(double value) {
-    setState(() {
-      _radioValue3 = value;
-    });
-  }
-
-  void _handleRadioValueChange4(double value) {
-    setState(() {
-      _radioValue4 = value;
-    });
-  }
-
-  void _handleRadioValueChange5(double value) {
-    setState(() {
-      _radioValue5 = value;
-    });
-  }
-
-  void _handleRadioValueChange6(double value) {
-    setState(() {
-      _radioValue6 = value;
-    });
-  }
-
-  void _handleRadioValueChange7(double value) {
-    setState(() {
-      _radioValue7 = value;
-    });
-  }
-
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.lightBlueAccent,
-        body: Center(
-            child: Container(
-                width: 400,
-                child: Card(
-                    color: Colors.white,
-                    elevation: 10,
-                    child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Expanded(
-                                child: ListView(
-                                  children: [
-                                    Text(
-                                      'Select as appropriate',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.normal),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                    ),
-                                    Divider(height: 5.0, color: Colors.black),
-                                    Padding(
-                                      padding: EdgeInsets.all(2.0),
-                                    ),
-                                    Text(
-                                      '1. Previous pulmonary embolism or deep vein thrombosis?',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15.0,
-                                      ),
-                                    ),
-                                    Flexible(
-                                        child: Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Radio(
-                                              value: 1.5,
-                                              groupValue: _radioValue1,
-                                              onChanged: _handleRadioValueChange1,
-                                            ),
-                                            Text(
-                                              'Yes',
-                                              style: TextStyle(fontSize: 13.0),
-                                            ),
-                                            Radio(
-                                              value: 0.0,
-                                              groupValue: _radioValue1,
-                                              onChanged: _handleRadioValueChange1,
-                                            ),
-                                            Text(
-                                              'No',
-                                              style: TextStyle(
-                                                fontSize: 13.0,
-                                              ),
-                                            ),
-                                          ],
-                                        )),
-                                    Divider(
-                                      height: 5.0,
-                                      color: Colors.black,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(2.0),
-                                    ),
-                                    Text(
-                                      '2. Heart rate >100bpm?',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15.0,
-                                      ),
-                                    ),
-                                    Flexible(
-                                        child: Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Radio(
-                                              value: 1.5,
-                                              groupValue: _radioValue2,
-                                              onChanged: _handleRadioValueChange2,
-                                            ),
-                                            Text(
-                                              'Yes',
-                                              style: TextStyle(fontSize: 13.0),
-                                            ),
-                                            Radio(
-                                              value: 0.0,
-                                              groupValue: _radioValue2,
-                                              onChanged: _handleRadioValueChange2,
-                                            ),
-                                            Text(
-                                              'No',
-                                              style: TextStyle(fontSize: 13.0),
-                                            ),
-                                          ],
-                                        )),
-                                    Divider(
-                                      height: 5.0,
-                                      color: Colors.black,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(2.0),
-                                    ),
-                                    Text(
-                                      '3. Recent surgery or immobilization (within the last 30 days)?',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15.0,
-                                      ),
-                                    ),
-                                    Expanded(
-                                        child: Row(
-                                            mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                            children: [
-                                              Radio(
-                                                value: 1.5,
-                                                groupValue: _radioValue3,
-                                                onChanged: _handleRadioValueChange3,
-                                              ),
-                                              Text(
-                                                'Yes',
-                                                style: TextStyle(fontSize: 13.0),
-                                              ),
-                                              Radio(
-                                                value: 0.0,
-                                                groupValue: _radioValue3,
-                                                onChanged: _handleRadioValueChange3,
-                                              ),
-                                              Text(
-                                                'No',
-                                                style: TextStyle(fontSize: 13.0),
-                                              ),
-                                            ])),
-                                    Divider(
-                                      height: 5.0,
-                                      color: Colors.black,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(2.0),
-                                    ),
-                                    Text(
-                                      '4. Clinical signs of deep vein thrombosis?',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15.0,
-                                      ),
-                                    ),
-                                    Expanded(
-                                        child: Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Radio(
-                                              value: 3.0,
-                                              groupValue: _radioValue4,
-                                              onChanged: _handleRadioValueChange4,
-                                            ),
-                                            Text(
-                                              'Yes',
-                                              style: TextStyle(fontSize: 13.0),
-                                            ),
-                                            Radio(
-                                              value: 0.0,
-                                              groupValue: _radioValue4,
-                                              onChanged: _handleRadioValueChange4,
-                                            ),
-                                            Text(
-                                              'No',
-                                              style: TextStyle(fontSize: 13.0),
-                                            ),
-                                          ],
-                                        )),
-                                    Divider(
-                                      height: 5.0,
-                                      color: Colors.black,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(2.0),
-                                    ),
-                                    Text(
-                                      '5. Alternative diagnosis less likely than pulmonary embolism?',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15.0,
-                                      ),
-                                    ),
-                                    Expanded(
-                                        child: Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Radio(
-                                              value: 3.0,
-                                              groupValue: _radioValue5,
-                                              onChanged: _handleRadioValueChange5,
-                                            ),
-                                            Text(
-                                              'Yes',
-                                              style: TextStyle(fontSize: 13.0),
-                                            ),
-                                            Radio(
-                                              value: 0.0,
-                                              groupValue: _radioValue5,
-                                              onChanged: _handleRadioValueChange5,
-                                            ),
-                                            Text(
-                                              'No',
-                                              style: TextStyle(fontSize: 13.0),
-                                            ),
-                                          ],
-                                        )),
-                                    Divider(
-                                      height: 5.0,
-                                      color: Colors.black,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(2.0),
-                                    ),
-                                    Text(
-                                      '6. Hemoptysis?',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15.0,
-                                      ),
-                                    ),
-                                    Expanded(
-                                        child: Row(
-                                            mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Radio(
-                                                value: 1.0,
-                                                groupValue: _radioValue6,
-                                                onChanged: _handleRadioValueChange6,
-                                              ),
-                                              Text(
-                                                'Yes',
-                                                style: TextStyle(fontSize: 13.0),
-                                              ),
-                                              Radio(
-                                                value: 0.0,
-                                                groupValue: _radioValue6,
-                                                onChanged: _handleRadioValueChange6,
-                                              ),
-                                              Text(
-                                                'No',
-                                                style: TextStyle(fontSize: 13.0),
-                                              )
-                                            ])),
-                                    Divider(
-                                      height: 5.0,
-                                      color: Colors.black,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(2.0),
-                                    ),
-                                    Text(
-                                      '7. Cancer (treated within the last 6 months)?',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15.0,
-                                      ),
-                                    ),
-                                    Expanded(
-                                        child: Row(
-                                            mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Radio(
-                                                value: 1.0,
-                                                groupValue: _radioValue7,
-                                                onChanged: _handleRadioValueChange7,
-                                              ),
-                                              Text(
-                                                'Yes',
-                                                style: TextStyle(fontSize: 13.0),
-                                              ),
-                                              Radio(
-                                                value: 0.0,
-                                                groupValue: _radioValue7,
-                                                onChanged: _handleRadioValueChange7,
-                                              ),
-                                              Text(
-                                                'No',
-                                                style: TextStyle(fontSize: 13.0),
-                                              )
-                                            ])),
-
-                                    Divider(
-                                      height: 5.0,
-                                      color: Colors.black,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(2.0),
-                                    ),
-                                    ElevatedButton(
-                                      onPressed: computeScore,
-                                      child: Text(
-                                        'Check Final Score',
-                                        style: TextStyle(
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.normal,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(4.0),
-                                    ),
-                                    ElevatedButton(
-                                      onPressed: resetSelection,
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.redAccent,),
-                                      child: Text(
-                                        'Reset Selection',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.normal,
-                                            fontSize: 16.0,
-                                            color: Colors.white),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              )
-                            ]))))));
+      body: Form(
+        //key: _formKey,
+        child: ListView(
+          padding: const EdgeInsets.all(10),
+          children: <Widget>[
+            Text(
+              'Select as appropriate',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.normal),
+            ),
+            Padding(
+              padding: EdgeInsets.all(8.0),
+            ),
+            Divider(height: 5.0, color: Colors.black),
+            Padding(
+              padding: EdgeInsets.all(2.0),
+            ),
+            Text(
+              '1. Previous pulmonary embolism or deep vein thrombosis?',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 15.0,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MyRadioListTile(
+                  value: 1.5,
+                  groupValue: _responsePrevVTE,
+                  answer: 'Yes',
+                  //title: Text('One'),
+                  onChanged: (value) =>
+                      setState(() => _responsePrevVTE = value),
+                ),
+                MyRadioListTile(
+                  value: 0.0,
+                  groupValue: _responsePrevVTE,
+                  answer: 'No',
+                  //title: Text('Two'),
+                  onChanged: (value) =>
+                      setState(() => _responsePrevVTE = value),
+                ),
+              ],
+            ),
+            Divider(
+              height: 5.0,
+              color: Colors.black,
+            ),
+            Padding(
+              padding: EdgeInsets.all(2.0),
+            ),
+            Text(
+              '2. Heart rate >100bpm?',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 15.0,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MyRadioListTile(
+                  value: 1.5,
+                  groupValue: _responseTachycardia,
+                  answer: 'Yes',
+                  //title: Text('One'),
+                  onChanged: (value) =>
+                      setState(() => _responseTachycardia = value),
+                ),
+                MyRadioListTile(
+                  value: 0.0,
+                  groupValue: _responseTachycardia,
+                  answer: 'No',
+                  //title: Text('Two'),
+                  onChanged: (value) =>
+                      setState(() => _responseTachycardia = value),
+                ),
+              ],
+            ),
+            Divider(
+              height: 5.0,
+              color: Colors.black,
+            ),
+            Padding(
+              padding: EdgeInsets.all(2.0),
+            ),
+            Text(
+              '3. Recent surgery or immobilization (within the last 30 days)?',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 15.0,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MyRadioListTile(
+                  value: 1.5,
+                  groupValue: _responseSurgeryImmobilised,
+                  answer: 'Yes',
+                  //title: Text('One'),
+                  onChanged: (value) =>
+                      setState(() => _responseSurgeryImmobilised = value),
+                ),
+                MyRadioListTile(
+                  value: 0.0,
+                  groupValue: _responseSurgeryImmobilised,
+                  answer: 'No',
+                  //title: Text('Two'),
+                  onChanged: (value) =>
+                      setState(() => _responseSurgeryImmobilised = value),
+                ),
+              ],
+            ),
+            Divider(
+              height: 5.0,
+              color: Colors.black,
+            ),
+            Padding(
+              padding: EdgeInsets.all(2.0),
+            ),
+            Text(
+              '4. Clinical signs of deep vein thrombosis?',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 15.0,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MyRadioListTile(
+                  value: 3.0,
+                  groupValue: _responseDVT,
+                  answer: 'Yes',
+                  //title: Text('One'),
+                  onChanged: (value) => setState(() => _responseDVT = value),
+                ),
+                MyRadioListTile(
+                  value: 0.0,
+                  groupValue: _responseDVT,
+                  answer: 'No',
+                  //title: Text('Two'),
+                  onChanged: (value) => setState(() => _responseDVT = value),
+                ),
+              ],
+            ),
+            Divider(
+              height: 5.0,
+              color: Colors.black,
+            ),
+            Padding(
+              padding: EdgeInsets.all(2.0),
+            ),
+            Text(
+              '5. Alternative diagnosis less likely than pulmonary embolism?',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 15.0,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MyRadioListTile(
+                  value: 3.0,
+                  groupValue: _responseAltDiag,
+                  answer: 'Yes',
+                  //title: Text('One'),
+                  onChanged: (value) =>
+                      setState(() => _responseAltDiag = value),
+                ),
+                MyRadioListTile(
+                  value: 0.0,
+                  groupValue: _responseAltDiag,
+                  answer: 'No',
+                  //title: Text('Two'),
+                  onChanged: (value) =>
+                      setState(() => _responseAltDiag = value),
+                ),
+              ],
+            ),
+            Divider(
+              height: 5.0,
+              color: Colors.black,
+            ),
+            Padding(
+              padding: EdgeInsets.all(2.0),
+            ),
+            Text(
+              '6. Hemoptysis?',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 15.0,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MyRadioListTile(
+                  value: 1.0,
+                  groupValue: _responseHaemoptysis,
+                  answer: 'Yes',
+                  //title: Text('One'),
+                  onChanged: (value) =>
+                      setState(() => _responseHaemoptysis = value),
+                ),
+                MyRadioListTile(
+                  value: 0.0,
+                  groupValue: _responseHaemoptysis,
+                  answer: 'No',
+                  //title: Text('Two'),
+                  onChanged: (value) =>
+                      setState(() => _responseHaemoptysis = value),
+                ),
+              ],
+            ),
+            Divider(
+              height: 5.0,
+              color: Colors.black,
+            ),
+            Padding(
+              padding: EdgeInsets.all(2.0),
+            ),
+            Text(
+              '7. Cancer (treated within the last 6 months)?',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 15.0,
+              ),
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MyRadioListTile(
+                  value: 1.0,
+                  groupValue: _responseCancer,
+                  answer: 'Yes',
+                  //title: Text('One'),
+                  onChanged: (value) => setState(() => _responseCancer = value),
+                ),
+                MyRadioListTile(
+                  value: 0.0,
+                  groupValue: _responseCancer,
+                  answer: 'No',
+                  //title: Text('Two'),
+                  onChanged: (value) => setState(() => _responseCancer = value),
+                ),
+              ],
+            ),
+            Divider(
+              height: 5.0,
+              color: Colors.black,
+            ),
+            Padding(
+              padding: EdgeInsets.all(2.0),
+            ),
+            ElevatedButton(
+              onPressed: computeScore,
+              child: Text(
+                'Check Final Score',
+                style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.white),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(4.0),
+            ),
+            ElevatedButton(
+              onPressed: resetSelection,
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.redAccent),
+              child: Text(
+                'Reset Selection',
+                style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.white),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
+
   void resetSelection() {
-    _handleRadioValueChange1(-1);
-    _handleRadioValueChange2(-1);
-    _handleRadioValueChange3(-1);
-    _handleRadioValueChange4(-1);
-    _handleRadioValueChange5(-1);
-    _handleRadioValueChange6(-1);
-    _handleRadioValueChange7(-1);
-    totalScore = 0;
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (BuildContext context) => WellsScorePE()));
   }
 
   void computeScore() {
     validateAnswers();
-    calculateScore();
+    sumAnswers();
     comment();
   }
 
-  void sumAnswers() {
-    totalScore = _radioValue1 +
-        _radioValue2 +
-        _radioValue3 +
-        _radioValue4 +
-        _radioValue5 +
-        _radioValue6 +
-        _radioValue7;
+  void validateAnswers() {
+    if (_responsePrevVTE == -1 ||
+        _responseTachycardia == -1 ||
+        _responseSurgeryImmobilised == -1 ||
+        _responseDVT == -1 ||
+        _responseAltDiag == -1 ||
+        _responseHaemoptysis == -1 ||
+        _responseCancer == -1) {
+      showErrorDialog();
+    } else {
+      showResultDialog();
+    }
   }
 
-  void calculateScore() {
-    validateAnswers();
-    sumAnswers();
+  void sumAnswers() {
+    totalScore = _responsePrevVTE +
+        _responseTachycardia +
+        _responseSurgeryImmobilised +
+        _responseDVT +
+        _responseAltDiag +
+        _responseHaemoptysis +
+        _responseCancer;
   }
 
   void comment() {
-    if (totalScore == 0 || totalScore == 1 ) {
+    if (totalScore < 2) {
       _peRisk = 'Low Risk';
-    } else if (2.0 <= totalScore && totalScore < 6.0 ) {
+    } else if (totalScore < 6.0) {
       _peRisk = 'Intermediate Risk';
     } else if (totalScore >= 6) {
       _peRisk = 'High Risk';
@@ -501,19 +384,7 @@ class _InputFieldsState extends State<InputFields> {
       context: context,
       builder: (BuildContext context) {
         // return object of type Dialog
-        return AlertDialog(
-          title: new Text("Alert"),
-          content: new Text("You left some parameters unanswered."),
-          actions: <Widget>[
-            // usually buttons at the bottom of the dialog
-            TextButton(
-              child: new Text("Back"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
+        return ErrorDialog();
       },
     );
   }
@@ -526,7 +397,7 @@ class _InputFieldsState extends State<InputFields> {
         // return object of type Dialog
         return AlertDialog(
           title: Text(
-            "Well's Score(PE):", textAlign: TextAlign.center,
+            "Well's Score (PE):", textAlign: TextAlign.center,
             //overflow: TextOverflow.ellipsis,
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
@@ -552,40 +423,83 @@ class _InputFieldsState extends State<InputFields> {
                     ),
                     Text('$_peRisk', textAlign: TextAlign.center),
                   ])),
-          actions: <Widget>[
-            // usually buttons at the bottom of the dialog
-            TextButton(
-              child: new Text("Back"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              child: new Text("Reset"),
-              onPressed: () {
-                Navigator.of(context).pop();
-                resetSelection();
-              },
-            ),
-          ],
         );
       },
     );
   }
 
-  void validateAnswers() {
-    if (_radioValue1 == -1 ||
-        _radioValue2 == -1 ||
-        _radioValue3 == -1 ||
-        _radioValue4 == -1 ||
-        _radioValue5 == -1 ||
-        _radioValue6 == -1 ||
-        _radioValue7 == -1)
-        {
-      showErrorDialog();
-    } else {
-      showResultDialog();
-    }
-/**/
-  }
 }
+
+/*class WellScoreCalculator {
+
+  bool hasPE;
+  bool hasHeartRateMoreThan100;
+  bool hasRecentSurgery;
+  bool hasSignsOfDVT;
+  bool hasHaemoptysis;
+  bool hasAlternativeDiag;
+  bool hasCancer;
+
+  static const PE_VALUE = 1.0;
+  static const HEART_RATE_VALUE = 1.0;
+  static const RECENT_SURGERY = 1.0;
+  static const DVT_VALUE = 1.0;
+  static const HAEMOPTYSIS_VALUE = 1.0;
+  static const ALT_DIAG_VALUE = 1.0;
+  static const CANCER_VALUE = 1.0;
+
+  //WellScoreCalculator();
+
+  void setHasPE(bool value) {
+    hasPE = value;
+  }
+
+  void setHasRecentSurgery(bool value) {
+    hasRecentSurgery = value;
+  }
+
+  void setHasHeartRateMoreThan100(bool value) {
+    hasHeartRateMoreThan100 = value;
+  }
+
+  void setHasSignsOfDVT(bool value) {
+    hasSignsOfDVT = value;
+  }
+
+  void setHasHaemoptysis(bool value) {
+    hasHaemoptysis = value;
+  }
+
+  void setHasAlternativeDiag(bool value) {
+    hasAlternativeDiag = value;
+  }
+
+  void setHasCancer(bool value) {
+    hasCancer = value;
+  }
+
+  double process() {
+    return _sumAnswers();
+  }
+
+  double _sumAnswers() {
+    double finalScore = 0;
+
+    if (hasPE) finalScore += PE_VALUE;
+
+    if (hasHeartRateMoreThan100) finalScore += HEART_RATE_VALUE;
+
+    if (hasSignsOfDVT) finalScore += DVT_VALUE;
+
+    if (hasHaemoptysis) finalScore += HAEMOPTYSIS_VALUE;
+
+    if (hasAlternativeDiag) finalScore += ALT_DIAG_VALUE;
+
+    if (hasCancer) finalScore += CANCER_VALUE;
+
+    return finalScore;
+  }
+}*/
+
+
+

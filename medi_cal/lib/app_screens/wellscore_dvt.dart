@@ -1,48 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:medi_cal/app_screens/home_screen.dart';
+import 'package:medi_cal/widget/customRadio.dart';
+import 'package:medi_cal/widget/customWidgets.dart';
 
 class WellsScoreDVT extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "WellsScoreDVT",
-      home: Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Well's Score (DVT)"),
-              IconButton(
-                icon: const Icon(Icons.home,
-                    color: Colors.white, size: 24.0, semanticLabel: "Home"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
-                  );
-                },
-              )
-            ],
-          ),
-        ),
-        body: WellsScoreDVTCore(),
+    return CustomAppView(
+      pageTitle: 'WellsScoreDVT',
+      appBarTitle: CustomAppBarLabel(
+        label: "Well's Score (DVT)",
       ),
+      pageBody: InputFields(),
     );
-  }
-}
-
-class WellsScoreDVTCore extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-        color: Colors.lightBlueAccent,
-        child: Center(
-            child: Container(
-          padding: EdgeInsets.only(top: 0.0),
-          alignment: Alignment.center,
-          child: InputFields(),
-        )));
   }
 }
 
@@ -55,159 +24,19 @@ class InputFields extends StatefulWidget {
 // Define a corresponding State class.
 // This class holds data related to the form.
 class _InputFieldsState extends State<InputFields> {
-  int _radioValue1 = -1;
-  int _radioValue2 = -1;
-  int _radioValue3 = -1;
-  int _radioValue4 = -1;
-  int _radioValue5 = -1;
-  int _radioValue6 = -1;
-  int _radioValue7 = -1;
-  int _radioValue8 = -1;
-  int _radioValue9 = -1;
-  int _radioValue10 = -1;
+  //final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  int _responseCancer = -1;
+  int _responseParesis = -1;
+  int _responseSurgery = -1;
+  int _responseTenderness = -1;
+  int _responseLegSwelling = -1;
+  int _responseCalfSwelling = -1;
+  int _responseOedema = -1;
+  int _responseSuperficialVeins = -1;
+  int _responsePrevDVT = -1;
+  int _responseAltDiag = -1;
   int totalScore = 0;
   var _dvtRisk = "";
-  String _message = 'Please select as appropriate';
-
-  void _handleRadioValueChange1(int value) {
-    setState(() {
-      _radioValue1 = value;
-
-      switch (_radioValue1) {
-        case 0:
-          totalScore++;
-          break;
-        case 1:
-          break;
-      }
-    });
-  }
-
-  void _handleRadioValueChange2(int value) {
-    setState(() {
-      _radioValue2 = value;
-
-      switch (_radioValue2) {
-        case 0:
-          totalScore++;
-          break;
-        case 1:
-          break;
-      }
-    });
-  }
-
-  void _handleRadioValueChange3(int value) {
-    setState(() {
-      _radioValue3 = value;
-
-      switch (_radioValue3) {
-        case 0:
-          totalScore++;
-          break;
-        case 1:
-          break;
-      }
-    });
-  }
-
-  void _handleRadioValueChange4(int value) {
-    setState(() {
-      _radioValue4 = value;
-
-      switch (_radioValue4) {
-        case 0:
-          totalScore++;
-          break;
-        case 1:
-          break;
-      }
-    });
-  }
-
-  void _handleRadioValueChange5(int value) {
-    setState(() {
-      _radioValue5 = value;
-
-      switch (_radioValue5) {
-        case 0:
-          totalScore++;
-          break;
-        case 1:
-          break;
-      }
-    });
-  }
-
-  void _handleRadioValueChange6(int value) {
-    setState(() {
-      _radioValue6 = value;
-
-      switch (_radioValue6) {
-        case 0:
-          totalScore++;
-          break;
-        case 1:
-          break;
-      }
-    });
-  }
-
-  void _handleRadioValueChange7(int value) {
-    setState(() {
-      _radioValue7 = value;
-
-      switch (_radioValue7) {
-        case 0:
-          totalScore++;
-          break;
-        case 1:
-          break;
-      }
-    });
-  }
-
-  void _handleRadioValueChange8(int value) {
-    setState(() {
-      _radioValue8 = value;
-
-      switch (_radioValue8) {
-        case 0:
-          totalScore++;
-          break;
-        case 1:
-          break;
-      }
-    });
-  }
-
-  void _handleRadioValueChange9(int value) {
-    setState(() {
-      _radioValue9 = value;
-
-      switch (_radioValue9) {
-        case 0:
-          totalScore++;
-          break;
-        case 1:
-          break;
-      }
-    });
-  }
-
-  void _handleRadioValueChange10(int value) {
-    setState(() {
-      _radioValue10 = value;
-
-      switch (_radioValue10) {
-        case 0:
-          totalScore++;
-          break;
-        case 1:
-          break;
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -243,40 +72,33 @@ class _InputFieldsState extends State<InputFields> {
                                     ),
                                     Text(
                                       '1. Active cancer (patient either receiving treatment for cancer '
-                                      'within the previous 6 months or currently receiving palliative treatment)',
+                                          'within the previous 6 months or currently receiving palliative treatment)',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15.0,
                                       ),
                                     ),
-                                    Flexible(
-                                        child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        Radio(
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        MyRadioListTile(
                                           value: 1,
-                                          groupValue: _radioValue1,
-                                          onChanged: _handleRadioValueChange1,
+                                          groupValue: _responseCancer,
+                                          answer: 'Yes',
+                                          onChanged: (value) =>
+                                              setState(() => _responseCancer = value),
                                         ),
-                                        Text(
-                                          'Yes',
-                                          style: TextStyle(fontSize: 13.0),
-                                        ),
-                                        Radio(
+                                        MyRadioListTile(
                                           value: 0,
-                                          groupValue: _radioValue1,
-                                          onChanged: _handleRadioValueChange1,
-                                        ),
-                                        Text(
-                                          'No',
-                                          style: TextStyle(
-                                            fontSize: 13.0,
-                                          ),
+                                          groupValue: _responseCancer,
+                                          answer: 'No',
+                                          //title: Text('Two'),
+                                          onChanged: (value) =>
+                                              setState(() => _responseCancer = value),
                                         ),
                                       ],
-                                    )),
+                                    ),
                                     Divider(
                                       height: 5.0,
                                       color: Colors.black,
@@ -286,38 +108,33 @@ class _InputFieldsState extends State<InputFields> {
                                     ),
                                     Text(
                                       '2. Paralysis, paresis, or recent cast immobilization '
-                                      'of the lower extremities?',
+                                          'of the lower extremities?',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15.0,
                                       ),
                                     ),
-                                    Flexible(
-                                        child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: <Widget>[
-                                          Radio(
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        MyRadioListTile(
                                           value: 1,
-                                          groupValue: _radioValue2,
-                                          onChanged: _handleRadioValueChange2,
+                                          groupValue: _responseParesis,
+                                          answer: 'Yes',
+                                          onChanged: (value) =>
+                                              setState(() => _responseParesis = value),
                                         ),
-                                         Text(
-                                          'Yes',
-                                          style: TextStyle(fontSize: 13.0),
-                                        ),
-                                         Radio(
+                                        MyRadioListTile(
                                           value: 0,
-                                          groupValue: _radioValue2,
-                                          onChanged: _handleRadioValueChange2,
-                                        ),
-                                         Text(
-                                          'No',
-                                          style: TextStyle(fontSize: 13.0),
+                                          groupValue: _responseParesis,
+                                          answer: 'No',
+                                          //title: Text('Two'),
+                                          onChanged: (value) =>
+                                              setState(() => _responseParesis = value),
                                         ),
                                       ],
-                                    )),
+                                    ),
                                     Divider(
                                       height: 5.0,
                                       color: Colors.black,
@@ -327,38 +144,34 @@ class _InputFieldsState extends State<InputFields> {
                                     ),
                                     Text(
                                       '3. Recently bedridden for ≥3 days, or major surgery '
-                                      'within the previous 12 weeks requiring general or '
-                                      'regional anesthesia?',
+                                          'within the previous 12 weeks requiring general or '
+                                          'regional anesthesia?',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15.0,
                                       ),
                                     ),
-                                    Expanded(
-                                        child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                          Radio(
-                                            value: 1,
-                                            groupValue: _radioValue3,
-                                            onChanged: _handleRadioValueChange3,
-                                          ),
-                                          Text(
-                                            'Yes',
-                                            style: TextStyle(fontSize: 13.0),
-                                          ),
-                                          Radio(
-                                            value: 0,
-                                            groupValue: _radioValue3,
-                                            onChanged: _handleRadioValueChange3,
-                                          ),
-                                          Text(
-                                            'No',
-                                            style: TextStyle(fontSize: 13.0),
-                                          ),
-                                        ])),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        MyRadioListTile(
+                                          value: 1,
+                                          groupValue: _responseSurgery,
+                                          answer: 'Yes',
+                                          onChanged: (value) =>
+                                              setState(() => _responseSurgery = value),
+                                        ),
+                                        MyRadioListTile(
+                                          value: 0,
+                                          groupValue: _responseSurgery,
+                                          answer: 'No',
+                                          //title: Text('Two'),
+                                          onChanged: (value) =>
+                                              setState(() => _responseSurgery = value),
+                                        ),
+                                      ],
+                                    ),
                                     Divider(
                                       height: 5.0,
                                       color: Colors.black,
@@ -374,31 +187,26 @@ class _InputFieldsState extends State<InputFields> {
                                         fontSize: 15.0,
                                       ),
                                     ),
-                                    Expanded(
-                                        child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        Radio(
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        MyRadioListTile(
                                           value: 1,
-                                          groupValue: _radioValue4,
-                                          onChanged: _handleRadioValueChange4,
+                                          groupValue: _responseTenderness,
+                                          answer: 'Yes',
+                                          onChanged: (value) =>
+                                              setState(() => _responseTenderness = value),
                                         ),
-                                        Text(
-                                          'Yes',
-                                          style: TextStyle(fontSize: 13.0),
-                                        ),
-                                        Radio(
+                                        MyRadioListTile(
                                           value: 0,
-                                          groupValue: _radioValue4,
-                                          onChanged: _handleRadioValueChange4,
-                                        ),
-                                        Text(
-                                          'No',
-                                          style: TextStyle(fontSize: 13.0),
+                                          groupValue: _responseTenderness,
+                                          answer: 'No',
+                                          //title: Text('Two'),
+                                          onChanged: (value) =>
+                                              setState(() => _responseTenderness = value),
                                         ),
                                       ],
-                                    )),
+                                    ),
                                     Divider(
                                       height: 5.0,
                                       color: Colors.black,
@@ -414,31 +222,26 @@ class _InputFieldsState extends State<InputFields> {
                                         fontSize: 15.0,
                                       ),
                                     ),
-                                    Expanded(
-                                        child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        Radio(
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        MyRadioListTile(
                                           value: 1,
-                                          groupValue: _radioValue5,
-                                          onChanged: _handleRadioValueChange5,
+                                          groupValue: _responseLegSwelling,
+                                          answer: 'Yes',
+                                          onChanged: (value) =>
+                                              setState(() => _responseLegSwelling = value),
                                         ),
-                                        Text(
-                                          'Yes',
-                                          style: TextStyle(fontSize: 13.0),
-                                        ),
-                                        Radio(
+                                        MyRadioListTile(
                                           value: 0,
-                                          groupValue: _radioValue5,
-                                          onChanged: _handleRadioValueChange5,
-                                        ),
-                                        Text(
-                                          'No',
-                                          style: TextStyle(fontSize: 13.0),
+                                          groupValue: _responseLegSwelling,
+                                          answer: 'No',
+                                          //title: Text('Two'),
+                                          onChanged: (value) =>
+                                              setState(() => _responseLegSwelling = value),
                                         ),
                                       ],
-                                    )),
+                                    ),
                                     Divider(
                                       height: 5.0,
                                       color: Colors.black,
@@ -448,37 +251,33 @@ class _InputFieldsState extends State<InputFields> {
                                     ),
                                     Text(
                                       '6. Calf swelling at least 3 cm larger than that on the '
-                                      'asymptomatic side (measured 10 cm below tibial tuberosity)?',
+                                          'asymptomatic side (measured 10 cm below tibial tuberosity)?',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15.0,
                                       ),
                                     ),
-                                    Expanded(
-                                        child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                          Radio(
-                                            value: 1,
-                                            groupValue: _radioValue6,
-                                            onChanged: _handleRadioValueChange6,
-                                          ),
-                                          Text(
-                                            'Yes',
-                                            style: TextStyle(fontSize: 13.0),
-                                          ),
-                                          Radio(
-                                            value: 0,
-                                            groupValue: _radioValue6,
-                                            onChanged: _handleRadioValueChange6,
-                                          ),
-                                          Text(
-                                            'No',
-                                            style: TextStyle(fontSize: 13.0),
-                                          )
-                                        ])),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        MyRadioListTile(
+                                          value: 1,
+                                          groupValue: _responseCalfSwelling,
+                                          answer: 'Yes',
+                                          onChanged: (value) =>
+                                              setState(() => _responseCalfSwelling = value),
+                                        ),
+                                        MyRadioListTile(
+                                          value: 0,
+                                          groupValue: _responseCalfSwelling,
+                                          answer: 'No',
+                                          //title: Text('Two'),
+                                          onChanged: (value) =>
+                                              setState(() => _responseCalfSwelling = value),
+                                        ),
+                                      ],
+                                    ),
                                     Divider(
                                       height: 5.0,
                                       color: Colors.black,
@@ -494,30 +293,26 @@ class _InputFieldsState extends State<InputFields> {
                                         fontSize: 15.0,
                                       ),
                                     ),
-                                    Expanded(
-                                        child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                          Radio(
-                                            value: 1,
-                                            groupValue: _radioValue7,
-                                            onChanged: _handleRadioValueChange7,
-                                          ),
-                                          Text(
-                                            'Yes',
-                                            style: TextStyle(fontSize: 13.0),
-                                          ),
-                                          Radio(
-                                            value: 0,
-                                            groupValue: _radioValue7,
-                                            onChanged: _handleRadioValueChange7,
-                                          ),
-                                          Text(
-                                            'No',
-                                            style: TextStyle(fontSize: 13.0),
-                                          )
-                                        ])),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        MyRadioListTile(
+                                          value: 1,
+                                          groupValue: _responseOedema,
+                                          answer: 'Yes',
+                                          onChanged: (value) =>
+                                              setState(() => _responseOedema = value),
+                                        ),
+                                        MyRadioListTile(
+                                          value: 0,
+                                          groupValue: _responseOedema,
+                                          answer: 'No',
+                                          //title: Text('Two'),
+                                          onChanged: (value) =>
+                                              setState(() => _responseOedema = value),
+                                        ),
+                                      ],
+                                    ),
                                     Divider(
                                       height: 5.0,
                                       color: Colors.black,
@@ -533,30 +328,26 @@ class _InputFieldsState extends State<InputFields> {
                                         fontSize: 15.0,
                                       ),
                                     ),
-                                    Expanded(
-                                        child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                          Radio(
-                                            value: 1,
-                                            groupValue: _radioValue8,
-                                            onChanged: _handleRadioValueChange8,
-                                          ),
-                                          Text(
-                                            'Yes',
-                                            style: TextStyle(fontSize: 13.0),
-                                          ),
-                                          Radio(
-                                            value: 0,
-                                            groupValue: _radioValue8,
-                                            onChanged: _handleRadioValueChange8,
-                                          ),
-                                          Text(
-                                            'No',
-                                            style: TextStyle(fontSize: 13.0),
-                                          )
-                                        ])),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        MyRadioListTile(
+                                          value: 1,
+                                          groupValue: _responseSuperficialVeins,
+                                          answer: 'Yes',
+                                          onChanged: (value) =>
+                                              setState(() => _responseSuperficialVeins = value),
+                                        ),
+                                        MyRadioListTile(
+                                          value: 0,
+                                          groupValue: _responseSuperficialVeins,
+                                          answer: 'No',
+                                          //title: Text('Two'),
+                                          onChanged: (value) =>
+                                              setState(() => _responseSuperficialVeins = value),
+                                        ),
+                                      ],
+                                    ),
                                     Divider(
                                       height: 5.0,
                                       color: Colors.black,
@@ -572,30 +363,26 @@ class _InputFieldsState extends State<InputFields> {
                                         fontSize: 15.0,
                                       ),
                                     ),
-                                    Expanded(
-                                        child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                          Radio(
-                                            value: 1,
-                                            groupValue: _radioValue9,
-                                            onChanged: _handleRadioValueChange9,
-                                          ),
-                                          Text(
-                                            'Yes',
-                                            style: TextStyle(fontSize: 13.0),
-                                          ),
-                                          Radio(
-                                            value: 0,
-                                            groupValue: _radioValue9,
-                                            onChanged: _handleRadioValueChange9,
-                                          ),
-                                          Text(
-                                            'No',
-                                            style: TextStyle(fontSize: 13.0),
-                                          )
-                                        ])),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        MyRadioListTile(
+                                          value: 1,
+                                          groupValue: _responsePrevDVT,
+                                          answer: 'Yes',
+                                          onChanged: (value) =>
+                                              setState(() => _responsePrevDVT = value),
+                                        ),
+                                        MyRadioListTile(
+                                          value: 0,
+                                          groupValue: _responsePrevDVT,
+                                          answer: 'No',
+                                          //title: Text('Two'),
+                                          onChanged: (value) =>
+                                              setState(() => _responsePrevDVT = value),
+                                        ),
+                                      ],
+                                    ),
                                     Divider(
                                       height: 5.0,
                                       color: Colors.black,
@@ -611,30 +398,26 @@ class _InputFieldsState extends State<InputFields> {
                                         fontSize: 15.0,
                                       ),
                                     ),
-                                    Expanded(
-                                        child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                          Radio(
-                                            value: -2,
-                                            groupValue: _radioValue10,
-                                            onChanged: _handleRadioValueChange10,
-                                          ),
-                                          Text(
-                                            'Yes',
-                                            style: TextStyle(fontSize: 13.0),
-                                          ),
-                                          Radio(
-                                            value: 0,
-                                            groupValue: _radioValue10,
-                                            onChanged: _handleRadioValueChange10,
-                                          ),
-                                          Text(
-                                            'No',
-                                            style: TextStyle(fontSize: 13.0),
-                                          )
-                                        ])),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        MyRadioListTile(
+                                          value: -2,
+                                          groupValue: _responseAltDiag,
+                                          answer: 'Yes',
+                                          onChanged: (value) =>
+                                              setState(() => _responseAltDiag = value),
+                                        ),
+                                        MyRadioListTile(
+                                          value: 0,
+                                          groupValue: _responseAltDiag,
+                                          answer: 'No',
+                                          //title: Text('Two'),
+                                          onChanged: (value) =>
+                                              setState(() => _responseAltDiag = value),
+                                        ),
+                                      ],
+                                    ),
                                     Divider(
                                       height: 5.0,
                                       color: Colors.black,
@@ -674,41 +457,46 @@ class _InputFieldsState extends State<InputFields> {
   }
 
   void resetSelection() {
-    _handleRadioValueChange1(-1);
-    _handleRadioValueChange2(-1);
-    _handleRadioValueChange3(-1);
-    _handleRadioValueChange4(-1);
-    _handleRadioValueChange5(-1);
-    _handleRadioValueChange6(-1);
-    _handleRadioValueChange7(-1);
-    _handleRadioValueChange8(-1);
-    _handleRadioValueChange9(-1);
-    _handleRadioValueChange10(-1);
-    totalScore = 0;
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (BuildContext context) => WellsScoreDVT()));
   }
 
   void computeScore() {
     validateAnswers();
-    calculateScore();
+    sumAnswers();
     comment();
   }
 
-  void sumAnswers() {
-    totalScore = _radioValue1 +
-        _radioValue2 +
-        _radioValue3 +
-        _radioValue4 +
-        _radioValue5 +
-        _radioValue6 +
-        _radioValue7 +
-        _radioValue8 +
-        _radioValue9 +
-        _radioValue10;
+  void validateAnswers() {
+    if (_responseCancer == -1 ||
+        _responseParesis == -1 ||
+        _responseSurgery == -1 ||
+        _responseTenderness == -1 ||
+        _responseLegSwelling == -1 ||
+        _responseCalfSwelling == -1 ||
+        _responseOedema == -1 ||
+        _responseSuperficialVeins == -1 ||
+        _responsePrevDVT == -1 ||
+        _responseAltDiag == -1) {
+      showErrorDialog();
+    } else {
+      showResultDialog();
+    }
+
+
   }
 
-  void calculateScore() {
-    validateAnswers();
-    sumAnswers();
+  void sumAnswers() {
+    totalScore = _responseCancer +
+        _responseParesis +
+        _responseSurgery +
+        _responseTenderness +
+        _responseLegSwelling +
+        _responseCalfSwelling +
+        _responseOedema +
+        _responseSuperficialVeins +
+        _responsePrevDVT +
+        _responseAltDiag;
   }
 
   void comment() {
@@ -716,7 +504,7 @@ class _InputFieldsState extends State<InputFields> {
       _dvtRisk = 'Low Risk';
     } else if (totalScore == 1 || totalScore == 2) {
       _dvtRisk = 'Intermediate Risk';
-    } else if (totalScore >= 2) {
+    } else if (totalScore > 2) {
       _dvtRisk = 'High Risk';
     }
   }
@@ -727,19 +515,7 @@ class _InputFieldsState extends State<InputFields> {
       context: context,
       builder: (BuildContext context) {
         // return object of type Dialog
-        return AlertDialog(
-          title: new Text("Alert"),
-          content: new Text("You left some parameters unanswered."),
-          actions: <Widget>[
-            // usually buttons at the bottom of the dialog
-            TextButton(
-              child: new Text("Back"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
+        return ErrorDialog();
       },
     );
   }
@@ -760,13 +536,13 @@ class _InputFieldsState extends State<InputFields> {
               height: 150,
               width: 200,
               child: Column(
-                  //mainAxisAlignment: MainAxisAlignment.start,
+                //mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Text(
                       "$totalScore\n", textAlign: TextAlign.center,
                       //overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                          //fontWeight: FontWeight.bold,
+                        //fontWeight: FontWeight.bold,
                           fontSize: 25),
                     ),
                     Text(
@@ -774,46 +550,12 @@ class _InputFieldsState extends State<InputFields> {
                       textAlign: TextAlign.left,
                       overflow: TextOverflow.ellipsis,
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
                     Text('$_dvtRisk', textAlign: TextAlign.center),
                   ])),
-          actions: <Widget>[
-            // usually buttons at the bottom of the dialog
-            TextButton(
-              child: new Text("Back"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              child: new Text("Reset"),
-              onPressed: () {
-                Navigator.of(context).pop();
-                resetSelection();
-              },
-            ),
-          ],
         );
       },
     );
-  }
-
-  void validateAnswers() {
-    if (_radioValue1 == -1 ||
-        _radioValue2 == -1 ||
-        _radioValue3 == -1 ||
-        _radioValue4 == -1 ||
-        _radioValue5 == -1 ||
-        _radioValue6 == -1 ||
-        _radioValue7 == -1 ||
-        _radioValue8 == -1 ||
-        _radioValue9 == -1 ||
-        _radioValue10 == -1) {
-      showErrorDialog();
-    } else {
-      showResultDialog();
-    }
-/**/
   }
 }

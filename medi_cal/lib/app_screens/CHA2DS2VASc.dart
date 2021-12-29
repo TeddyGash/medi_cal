@@ -1,52 +1,20 @@
-//import 'dart:html';
-
 import 'package:flutter/material.dart';
-//import 'package:flutter/services.dart';
-import 'package:medi_cal/app_screens/home_screen.dart';
-//import 'dart:math';
+import 'package:medi_cal/widget/customRadio.dart';
+import 'package:medi_cal/widget/customRadioButton.dart';
+import 'package:medi_cal/widget/customWidgets.dart';
+//import 'package:medi_cal/widget/groupRadioButton.dart';
+//import 'package:medi_cal/widget/widgets.dart';
 
 class CHA2DS2VASc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "CHA2DS2VASc",
-      home: Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("CHA2DS2VASc Score"),
-              IconButton(
-                icon: const Icon(Icons.home,
-                    color: Colors.white, size: 24.0, semanticLabel: "Home"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
-                  );
-                },
-              )
-            ],
-          ),
-        ),
-        body: CHA2DS2VAScCore(),
+    return CustomAppView(
+      pageTitle: 'CHADSVASc Score',
+      appBarTitle: CustomAppBarLabel(
+        label: "CHADSVASc Score",
       ),
+      pageBody: InputFields(),
     );
-  }
-}
-
-class CHA2DS2VAScCore extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-        color: Colors.lightBlueAccent,
-        child: Center(
-            child: Container(
-              padding: EdgeInsets.only(top: 0.0),
-              alignment: Alignment.center,
-              child: InputFields(),
-            )));
   }
 }
 
@@ -59,486 +27,335 @@ class InputFields extends StatefulWidget {
 // Define a corresponding State class.
 // This class holds data related to the form.
 class _InputFieldsState extends State<InputFields> {
-  int _radioValue1 = -1;
-  int _radioValue2 = -1;
-  int _radioValue3 = -1;
-  int _radioValue4 = -1;
-  int _radioValue5 = -1;
-  int _radioValue6 = -1;
-  int _radioValue7 = -1;
+  //final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  int _responseCHF = -1;
+  int _responseHPT = -1;
+  int _responseAge = -1;
+  int _responseDM = -1;
+  int _responsePrevTEE = -1;
+  int _responseVascDx = -1;
+  int _responseSex = -1;
   int totalScore = 0;
   var _strokeRisk = "";
   String _message = 'Please select as appropriate';
-
-  void _handleRadioValueChange1(int value) {
-    setState(() {
-      _radioValue1 = value;
-
-      switch (_radioValue1) {
-        case 0:
-          totalScore++;
-          break;
-        case 1:
-          break;
-      }
-    });
-  }
-
-  void _handleRadioValueChange2(int value) {
-    setState(() {
-      _radioValue2 = value;
-
-      switch (_radioValue2) {
-        case 0:
-          totalScore++;
-          break;
-        case 1:
-          break;
-      }
-    });
-  }
-
-  void _handleRadioValueChange3(int value) {
-    setState(() {
-      _radioValue3 = value;
-
-      switch (_radioValue3) {
-        case 0:
-          totalScore++;
-          break;
-        case 1:
-          break;
-      }
-    });
-  }
-
-  void _handleRadioValueChange4(int value) {
-    setState(() {
-      _radioValue4 = value;
-
-      switch (_radioValue4) {
-        case 0:
-          totalScore++;
-          break;
-        case 1:
-          break;
-      }
-    });
-  }
-
-  void _handleRadioValueChange5(int value) {
-    setState(() {
-      _radioValue5 = value;
-
-      switch (_radioValue5) {
-        case 0:
-          totalScore++;
-          break;
-        case 1:
-          break;
-      }
-    });
-  }
-
-  void _handleRadioValueChange6(int value) {
-    setState(() {
-      _radioValue6 = value;
-
-      switch (_radioValue6) {
-        case 0:
-          totalScore++;
-          break;
-        case 1:
-          break;
-      }
-    });
-  }
-
-  void _handleRadioValueChange7(int value) {
-    setState(() {
-      _radioValue7 = value;
-
-      switch (_radioValue7) {
-        case 0:
-          totalScore++;
-          break;
-        case 1:
-          break;
-      }
-    });
-  }
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.lightBlueAccent,
-        body: Center(
-            child: Container(
-                width: 400,
-                child: Card(
-                    color: Colors.white,
-                    elevation: 10,
-                    child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                        Expanded(
-                        child: ListView(
-                          children: [
-                            Text(
-                              'Select as appropriate',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.normal),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                            ),
-                            Divider(height: 5.0, color: Colors.black),
-                            Padding(
-                              padding: EdgeInsets.all(2.0),
-                            ),
-                            Text(
-                              '1. Congestive heart failure?',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15.0,
-                              ),
-                            ),
-                            Flexible(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Radio(
-                                      value: 1,
-                                      groupValue: _radioValue1,
-                                      onChanged: _handleRadioValueChange1,
-                                    ),
-                                    Text(
-                                      'Yes',
-                                      style: TextStyle(fontSize: 13.0),
-                                    ),
-                                    Radio(
-                                      value: 0,
-                                      groupValue: _radioValue1,
-                                      onChanged: _handleRadioValueChange1,
-                                    ),
-                                    Text(
-                                      'No',
-                                      style: TextStyle(
-                                        fontSize: 13.0,
-                                      ),
-                                    ),
-                                  ],
-                                )),
-                            Divider(
-                              height: 5.0,
-                              color: Colors.black,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(2.0),
-                            ),
-                            Text(
-                              '2. Hypertension (SBP > 160mmHg)?',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15.0,
-                              ),
-                            ),
-                            Flexible(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Radio(
-                                      value: 1,
-                                      groupValue: _radioValue2,
-                                      onChanged: _handleRadioValueChange2,
-                                    ),
-                                    Text(
-                                      'Yes',
-                                      style: TextStyle(fontSize: 13.0),
-                                    ),
-                                    Radio(
-                                      value: 0,
-                                      groupValue: _radioValue2,
-                                      onChanged: _handleRadioValueChange2,
-                                    ),
-                                    Text(
-                                      'No',
-                                      style: TextStyle(fontSize: 13.0),
-                                    ),
-                                  ],
-                                )),
-                            Divider(
-                              height: 5.0,
-                              color: Colors.black,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(2.0),
-                            ),
-                            Text(
-                              '3. Age?',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15.0,
-                              ),
-                            ),
-                            Expanded(
-                                child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Radio(
-                                        value: 0,
-                                        groupValue: _radioValue3,
-                                        onChanged: _handleRadioValueChange3,
-                                      ),
-                                      Text(
-                                        '≤64yrs',
-                                        style: TextStyle(fontSize: 13.0),
-                                      ),
-                                      Radio(
-                                        value: 1,
-                                        groupValue: _radioValue3,
-                                        onChanged: _handleRadioValueChange3,
-                                      ),
-                                      Text(
-                                        '65 to 74 years',
-                                        style: TextStyle(fontSize: 13.0),
-                                      ),
-                                      Radio(
-                                        value: 2,
-                                        groupValue: _radioValue3,
-                                        onChanged: _handleRadioValueChange3,
-                                      ),
-                                      Text(
-                                        '≥75 years',
-                                        style: TextStyle(fontSize: 13.0),
-                                      ),
-                                    ])),
-                            Divider(
-                              height: 5.0,
-                              color: Colors.black,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(2.0),
-                            ),
-                            Text(
-                              '4. Diabetes Mellitus?',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15.0,
-                              ),
-                            ),
-                            Expanded(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Radio(
-                                      value: 0,
-                                      groupValue: _radioValue4,
-                                      onChanged: _handleRadioValueChange4,
-                                    ),
-                                    Text(
-                                      'No',
-                                      style: TextStyle(fontSize: 13.0),
-                                    ),
-                                    Radio(
-                                      value: 1,
-                                      groupValue: _radioValue4,
-                                      onChanged: _handleRadioValueChange4,
-                                    ),
-                                    Text(
-                                      'Yes',
-                                      style: TextStyle(fontSize: 13.0),
-                                    ),
-                                  ],
-                                )),
-                            Divider(
-                              height: 5.0,
-                              color: Colors.black,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(2.0),
-                            ),
-                            Text(
-                              '5. Stroke/Transient Ischemic Attack/Thromboembolic event?',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15.0,
-                              ),
-                            ),
-                            Expanded(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Radio(
-                                      value: 2,
-                                      groupValue: _radioValue5,
-                                      onChanged: _handleRadioValueChange5,
-                                    ),
-                                    Text(
-                                      'Yes',
-                                      style: TextStyle(fontSize: 13.0),
-                                    ),
-                                    Radio(
-                                      value: 0,
-                                      groupValue: _radioValue5,
-                                      onChanged: _handleRadioValueChange5,
-                                    ),
-                                    Text(
-                                      'No',
-                                      style: TextStyle(fontSize: 13.0),
-                                    ),
-                                  ],
-                                )),
-                            Divider(
-                              height: 5.0,
-                              color: Colors.black,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(2.0),
-                            ),
-                            Text(
-                              '6. Vascular disease (prior MI, PAD, aortic plaque)?',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15.0,
-                              ),
-                            ),
-                            Expanded(
-                                child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Radio(
-                                        value: 1,
-                                        groupValue: _radioValue6,
-                                        onChanged: _handleRadioValueChange6,
-                                      ),
-                                      Text(
-                                        'Yes',
-                                        style: TextStyle(fontSize: 13.0),
-                                      ),
-                                      Radio(
-                                        value: 0,
-                                        groupValue: _radioValue6,
-                                        onChanged: _handleRadioValueChange6,
-                                      ),
-                                      Text(
-                                        'No',
-                                        style: TextStyle(fontSize: 13.0),
-                                      )
-                                    ])),
-                            Divider(
-                              height: 5.0,
-                              color: Colors.black,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(2.0),
-                            ),
-                            Text(
-                              '7. Sex category?',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15.0,
-                              ),
-                            ),
-                            Expanded(
-                                child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Radio(
-                                        value: 1,
-                                        groupValue: _radioValue7,
-                                        onChanged: _handleRadioValueChange7,
-                                      ),
-                                      Text(
-                                        'Female',
-                                        style: TextStyle(fontSize: 13.0),
-                                      ),
-                                      Radio(
-                                        value: 0,
-                                        groupValue: _radioValue7,
-                                        onChanged: _handleRadioValueChange7,
-                                      ),
-                                      Text(
-                                        'Male',
-                                        style: TextStyle(fontSize: 13.0),
-                                      )
-                                    ])),
-                            Divider(
-                              height: 5.0,
-                              color: Colors.black,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(2.0),
-                            ),
-                            ElevatedButton(
-                              onPressed: computeScore,
-                              child: Text(
-                                'Check Final Score',
-                                style: TextStyle(
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.normal,
-                                    color: Colors.white),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(4.0),
-                            ),
-                            ElevatedButton(
-                              onPressed: resetSelection,
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.redAccent,),
-                              child: Text(
-                                'Reset Selection',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 16.0,
-                                    color: Colors.white),
-                              ),
-                            )
-                          ],
-                        ),
-                        )
-                          ]))))));
+        body: Form(
+      //key: _formKey,
+          child: ListView(
+        padding: const EdgeInsets.all(10),
+        children: [
+          Text(
+            'Select as appropriate',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.normal),
+          ),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+          ),
+          Divider(height: 5.0, color: Colors.black),
+          Padding(
+            padding: EdgeInsets.all(2.0),
+          ),
+          Text(
+            '1. Congestive heart failure?',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 15.0,
+            ),
+          ),
+            Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MyRadioListTile(
+                value: 1,
+                groupValue: _responseCHF,
+                answer: 'Yes',
+                //title: Text('One'),
+                onChanged: (value) => setState(() => _responseCHF = value),
+              ),
+              MyRadioListTile(
+                value: 0,
+                groupValue: _responseCHF,
+                answer: 'No',
+                //title: Text('Two'),
+                onChanged: (value) => setState(() => _responseCHF = value),
+              ),
+            ],
+          ),//.createState().userChoice,
+          Divider(
+            height: 5.0,
+            color: Colors.black,
+          ),
+          Padding(
+            padding: EdgeInsets.all(2.0),
+          ),
+          Text(
+            '2. Hypertension (SBP > 160mmHg)?',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 15.0,
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MyRadioListTile(
+                value: 1,
+                groupValue: _responseHPT,
+                answer: 'Yes',
+                //title: Text('One'),
+                onChanged: (value) => setState(() => _responseHPT = value),
+              ),
+              MyRadioListTile(
+                value: 0,
+                groupValue: _responseHPT,
+                answer: 'No',
+                //title: Text('Two'),
+                onChanged: (value) => setState(() => _responseHPT = value),
+              ),
+            ],
+          ),
+          Divider(
+            height: 5.0,
+            color: Colors.black,
+          ),
+          Padding(
+            padding: EdgeInsets.all(2.0),
+          ),
+          Text(
+            '3. Age?',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 15.0,
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MyRadioListTile(
+                value: 0,
+                groupValue: _responseAge,
+                answer: '<65yrs',
+                //title: Text('One'),
+                onChanged: (value) => setState(() => _responseAge = value),
+              ),
+              MyRadioListTile(
+                value: 1,
+                groupValue: _responseAge,
+                answer: '65-74yrs',
+                //title: Text('Two'),
+                onChanged: (value) => setState(() => _responseAge = value),
+              ),
+              MyRadioListTile(
+                value: 2,
+                groupValue: _responseAge,
+                answer: '≥75yrs',
+                //title: Text('Two'),
+                onChanged: (value) => setState(() => _responseAge = value),
+              ),
+            ],
+          ),
+          Divider(
+            height: 5.0,
+            color: Colors.black,
+          ),
+          Padding(
+            padding: EdgeInsets.all(2.0),
+          ),
+          Text(
+            '4. Diabetes Mellitus?',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 15.0,
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MyRadioListTile(
+                value: 1,
+                groupValue: _responseDM,
+                answer: 'Yes',
+                //title: Text('One'),
+                onChanged: (value) => setState(() => _responseDM = value),
+              ),
+              MyRadioListTile(
+                value: 0,
+                groupValue: _responseDM,
+                answer: 'No',
+                //title: Text('Two'),
+                onChanged: (value) => setState(() => _responseDM = value),
+              ),
+            ],
+          ),
+          Divider(
+            height: 5.0,
+            color: Colors.black,
+          ),
+          Padding(
+            padding: EdgeInsets.all(2.0),
+          ),
+          Text(
+            '5. Stroke/Transient Ischemic Attack/Thromboembolic event?',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 15.0,
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MyRadioListTile(
+                value: 1,
+                groupValue: _responsePrevTEE,
+                answer: 'Yes',
+                //title: Text('One'),
+                onChanged: (value) => setState(() => _responsePrevTEE = value),
+              ),
+              MyRadioListTile(
+                value: 0,
+                groupValue: _responsePrevTEE,
+                answer: 'No',
+                //title: Text('Two'),
+                onChanged: (value) => setState(() => _responsePrevTEE = value),
+              ),
+            ],
+          ),
+          Divider(
+            height: 5.0,
+            color: Colors.black,
+          ),
+          Padding(
+            padding: EdgeInsets.all(2.0),
+          ),
+          Text(
+            '6. Vascular disease (prior MI, PAD, aortic plaque)?',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 15.0,
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MyRadioListTile(
+                value: 1,
+                groupValue: _responseVascDx,
+                answer: 'Yes',
+                //title: Text('One'),
+                onChanged: (value) => setState(() => _responseVascDx = value),
+              ),
+              MyRadioListTile(
+                value: 0,
+                groupValue: _responseVascDx,
+                answer: 'No',
+                //title: Text('Two'),
+                onChanged: (value) => setState(() => _responseVascDx = value),
+              ),
+            ],
+          ),
+          Divider(
+            height: 5.0,
+            color: Colors.black,
+          ),
+          Padding(
+            padding: EdgeInsets.all(2.0),
+          ),
+          Text(
+            '7. Sex category?',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 15.0,
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MyRadioListTile(
+                value: 1,
+                groupValue: _responseSex,
+                answer: 'Female',
+                //title: Text('One'),
+                onChanged: (value) => setState(() => _responseSex = value),
+              ),
+
+
+          MyRadioListTile(
+            value: 0,
+            groupValue: _responseSex,
+            answer: 'Male',
+            //title: Text('Two'),
+            onChanged: (value) => setState(() => _responseSex = value),
+          ),
+            ],
+          ),
+          Divider(
+            height: 5.0,
+            color: Colors.black,
+          ),
+          Padding(
+            padding: EdgeInsets.all(2.0),
+          ),
+           ElevatedButton(
+            onPressed:computeScore,
+            child: Text(
+              'Check Final Score',
+              style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.white),
+            ),
+          ),
+           Padding(
+            padding: EdgeInsets.all(4.0),
+          ),
+           ElevatedButton(
+            onPressed:resetSelection,
+             style: ElevatedButton.styleFrom(
+               primary: Colors.redAccent),
+            child: Text(
+              'Reset Selection',
+              style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+    ));
   }
 
   void resetSelection() {
-    _handleRadioValueChange1(-1);
-    _handleRadioValueChange2(-1);
-    _handleRadioValueChange3(-1);
-    _handleRadioValueChange4(-1);
-    _handleRadioValueChange5(-1);
-    _handleRadioValueChange6(-1);
-    _handleRadioValueChange7(-1);
-
-    totalScore = 0;
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (BuildContext context) => CHA2DS2VASc()));
   }
 
   void computeScore() {
-    validateAnswers();
+    //validateAnswers();
     calculateScore();
     comment();
   }
 
   void sumAnswers() {
-    totalScore = _radioValue1 +
-        _radioValue2 +
-        _radioValue3 +
-        _radioValue4 +
-        _radioValue5 +
-        _radioValue6 +
-        _radioValue7;
+    totalScore = _responseCHF +
+            _responseHPT +
+            _responseAge +
+            _responseDM +
+            _responsePrevTEE +
+            _responseVascDx +
+            _responseSex;
   }
 
   void calculateScore() {
@@ -562,19 +379,7 @@ class _InputFieldsState extends State<InputFields> {
       context: context,
       builder: (BuildContext context) {
         // return object of type Dialog
-        return AlertDialog(
-          title: new Text("Alert"),
-          content: new Text("You left some parameters unanswered."),
-          actions: <Widget>[
-            // usually buttons at the bottom of the dialog
-            TextButton(
-              child: new Text("Back"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
+        return ErrorDialog();
       },
     );
   }
@@ -586,20 +391,31 @@ class _InputFieldsState extends State<InputFields> {
       builder: (BuildContext context) {
         // return object of type Dialog
         return AlertDialog(
-          title: Text("CHA2DS2VASc Score:", textAlign: TextAlign.center,
+          title: Text(
+            "CHA2DS2VASc Score:", textAlign: TextAlign.center,
             //overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontWeight: FontWeight.bold),),
-          content: Container ( height: 150, width: 200,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          content: Container(
+              height: 150,
+              width: 200,
               child: Column(
-                //mainAxisAlignment: MainAxisAlignment.start,
+                  //mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    Text ("$totalScore\n", textAlign: TextAlign.center,
+                    Text(
+                      "$totalScore\n", textAlign: TextAlign.center,
                       //overflow: TextOverflow.ellipsis,
-                      style: TextStyle(//fontWeight: FontWeight.bold,
-                          fontSize: 25),),
-                    Text('Stroke Risk:\n', textAlign: TextAlign.left,
+                      style: TextStyle(
+                          //fontWeight: FontWeight.bold,
+                          fontSize: 25),
+                    ),
+                    Text(
+                      'Stroke Risk:\n',
+                      textAlign: TextAlign.left,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
                     Text('$_strokeRisk', textAlign: TextAlign.center),
                   ])),
           actions: <Widget>[
@@ -624,17 +440,83 @@ class _InputFieldsState extends State<InputFields> {
   }
 
   void validateAnswers() {
-    if (_radioValue1 == -1 ||
-        _radioValue2 == -1 ||
-        _radioValue3 == -1 ||
-        _radioValue4 == -1 ||
-        _radioValue5 == -1 ||
-        _radioValue6 == -1 ||
-        _radioValue7 == -1 ){
+    if (_responseCHF == -1 ||
+        _responseHPT == -1 ||
+        _responseAge == -1 ||
+        _responseDM == -1 ||
+        _responsePrevTEE == -1 ||
+        _responseVascDx == -1 ||
+        _responseSex == -1) {
       showErrorDialog();
     } else {
       showResultDialog();
     }
-/**/
   }
 }
+
+/*class EditableSelectButton extends StatelessWidget {
+  EditableSelectButton({
+    Key key,
+    @required this.onChanged,
+    @required this.initialValue,
+    this.yesButtonColor,
+    this.noButtonColor,
+    this.value,
+  }) : super(key: key);
+
+  final Function(double value) onChanged;
+  final double initialValue;
+  final Color yesButtonColor;
+  final Color noButtonColor;
+  final double value;
+
+  @override
+  Widget build(BuildContext context) {
+    return FormField<double>(
+      validator: (value) {
+        if (value == -1) return 'field is required';
+        return null;
+      },
+      onSaved: (value) => onChanged(value),
+      initialValue: -1,
+      builder: (formState) {
+        return Row(
+          children: [
+            OutlinedButton(
+              //color: yesButtonColor,
+              onPressed: () {
+                onChanged(1.0);
+              },
+              child: Row(
+                children: [
+                  Text('Yes'),
+                  if (value == 1.0) Icon(Icons.done, size: 20)
+                ],
+              ),
+            ),
+            SizedBox(width: 16),
+            OutlinedButton(
+              //color: noButtonColor,
+              onPressed: () {
+                onChanged(0.0);
+              },
+              child: Row(
+                children: [
+                  Text('No'),
+                  if (value == 0.0) Icon(Icons.done, size: 20)
+                ],
+              ),
+            ),
+            if (formState.hasError) ...[
+              SizedBox(width: 10),
+              Text(
+                '*',
+                style: TextStyle(color: Colors.red, fontSize: 20),
+              )
+            ]
+          ],
+        );
+      },
+    );
+  }
+}*/

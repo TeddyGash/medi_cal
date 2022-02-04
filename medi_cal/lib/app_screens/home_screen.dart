@@ -11,6 +11,8 @@ import 'package:medi_cal/app_screens/GAcalculator3.dart';
 import 'package:medi_cal/app_screens/alvarado.dart';
 import 'package:medi_cal/app_screens/bishop.dart';
 
+import 'electrolytes.dart';
+
 //import 'welcome_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -205,15 +207,47 @@ CalcList(context) => GridView.count(
             child: Image.asset('assets/images/GCS_score.jpeg'),
           )),
         ),
-        Container(
-          padding: const EdgeInsets.all(8),
-          child: const Text('Revolution is coming...'),
-          color: Colors.teal[500],
+        GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => SelectElectrolyte()));
+          },
+          child: (Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              border: Border.all(),
+              borderRadius: const BorderRadius.all(const Radius.circular(8)),
+            ),
+            child: Image.asset('assets/images/electrolytes.jpeg'),
+          )),
         ),
-        Container(
-          padding: const EdgeInsets.all(8),
-          child: const Text('Revolution, they...'),
-          color: Colors.teal[600],
+        GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => GCS()));
+          },
+          child: (Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              border: Border.all(),
+              borderRadius: const BorderRadius.all(const Radius.circular(8)),
+            ),
+            child: Image.asset('assets/images/paed_fluid.jpeg'),
+          )),
+        ),
+        GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => GCS()));
+          },
+          child: (Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              border: Border.all(),
+              borderRadius: const BorderRadius.all(const Radius.circular(8)),
+            ),
+            child: Image.asset('assets/images/child_growth.jpeg'),
+          )),
         ),
       ],
     );

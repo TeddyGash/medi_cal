@@ -1,11 +1,9 @@
-import 'dart:async';
-import 'package:medi_cal/app_screens/GAcalculator3.dart';
 import 'package:medi_cal/app_screens/GAcalculatorLMP.dart';
 import 'package:medi_cal/app_screens/GAcalculatorGA.dart';
 import 'package:medi_cal/app_screens/GAcalculatorEDD.dart';
-import 'package:direct_select/direct_select.dart';
 import 'package:flutter/material.dart';
 import 'package:medi_cal/app_screens/home_screen.dart';
+import 'package:medi_cal/widget/customRadio.dart';
 
 class ChooseMethod extends StatefulWidget {
   @override
@@ -13,22 +11,22 @@ class ChooseMethod extends StatefulWidget {
 }
 
 class _ChooseMethodState extends State<ChooseMethod> {
-  int _radioValue1 = -1;
+  int _responseMethod = -1;
 
-  void _handleRadioValueChange1(value) {
+  /*void _handleRadioValueChange1(value) {
     setState(() {
       _radioValue1 = value;
     });
-  }
+  }*/
 
   void goToInputScreen() {
-    if (_radioValue1 == 1) {
+    if (_responseMethod == 1) {
       Navigator.of(context).push(MaterialPageRoute(
           builder: (BuildContext context) => GAcalculatorLMP()));
-    } else if (_radioValue1 == 2) {
+    } else if (_responseMethod == 2) {
       Navigator.of(context).push(MaterialPageRoute(
           builder: (BuildContext context) => GAcalculatorGA()));
-    } else if (_radioValue1 == 3) {
+    } else if (_responseMethod == 3) {
       Navigator.of(context).push(MaterialPageRoute(
           builder: (BuildContext context) => GAcalculatorEDD()));
       //add an error message if nothing is selected.
@@ -84,22 +82,33 @@ class _ChooseMethodState extends State<ChooseMethod> {
                                         Padding(
                                           padding: EdgeInsets.all(8.0),
                                         ),
-                                        Row(
-                                          //mainAxisAlignment: MainAxisAlignment.center,
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
-                                            Radio(
+                                            MyRadioListTile(
                                               value: 1,
-                                              groupValue: _radioValue1,
-                                              onChanged:
-                                                  _handleRadioValueChange1,
+                                              groupValue: _responseMethod,
+                                              answer: 'LMP',
+                                              //title: Text('One'),
+                                              onChanged: (value) => setState(() => _responseMethod = value),
                                             ),
-                                            Text(
-                                              'LMP',
-                                              style: TextStyle(fontSize: 15.0),
+                                            MyRadioListTile(
+                                              value: 2,
+                                              groupValue: _responseMethod,
+                                              answer: 'EGA',
+                                              //title: Text('Two'),
+                                              onChanged: (value) => setState(() => _responseMethod = value),
+                                            ),
+                                            MyRadioListTile(
+                                              value: 3,
+                                              groupValue: _responseMethod,
+                                              answer: 'EDD',
+                                              //title: Text('Two'),
+                                              onChanged: (value) => setState(() => _responseMethod = value),
                                             ),
                                           ],
                                         ),
-                                        Row(
+                                        /*Row(
                                           //mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
                                             Radio(
@@ -113,8 +122,8 @@ class _ChooseMethodState extends State<ChooseMethod> {
                                               style: TextStyle(fontSize: 15.0),
                                             ),
                                           ],
-                                        ),
-                                        Row(
+                                        ),*/
+                                        /*Row(
                                           //mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
                                             Radio(
@@ -128,7 +137,7 @@ class _ChooseMethodState extends State<ChooseMethod> {
                                               style: TextStyle(fontSize: 15.0),
                                             ),
                                           ],
-                                        ),
+                                        ),*/
                                         Padding(
                                           padding: EdgeInsets.all(8.0),
                                         ),
@@ -138,7 +147,7 @@ class _ChooseMethodState extends State<ChooseMethod> {
                                         ElevatedButton(
                                           onPressed: goToInputScreen,
                                           child: Text(
-                                            'Input Value',
+                                            'Continue',
                                             style: TextStyle(
                                                 fontSize: 16.0,
                                                 fontWeight: FontWeight.normal,

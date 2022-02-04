@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medi_cal/widget/customRadio.dart';
-import 'package:medi_cal/widget/customRadioButton.dart';
 import 'package:medi_cal/widget/customWidgets.dart';
-//import 'package:medi_cal/widget/groupRadioButton.dart';
-//import 'package:medi_cal/widget/widgets.dart';
 
 class CHA2DS2VASc extends StatelessWidget {
   @override
@@ -37,7 +34,6 @@ class _InputFieldsState extends State<InputFields> {
   int _responseSex = -1;
   int totalScore = 0;
   var _strokeRisk = "";
-  String _message = 'Please select as appropriate';
 
 
   @override
@@ -204,7 +200,7 @@ class _InputFieldsState extends State<InputFields> {
             padding: EdgeInsets.all(2.0),
           ),
           Text(
-            '5. Stroke/Transient Ischemic Attack/Thromboembolic event?',
+            '5. Stroke/Transient Ischemic Attack/Thrombo-embolic event?',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontWeight: FontWeight.bold,

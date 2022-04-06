@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:medi_cal/app_screens/adultFluids.dart';
 import 'package:medi_cal/app_screens/home_screen.dart';
+import 'package:medi_cal/app_screens/paediatricFluids.dart';
 import 'package:medi_cal/app_screens/potassium_deficit.dart';
 import 'package:medi_cal/app_screens/sodium_deficit.dart';
 
-class SelectElectrolyte extends StatefulWidget {
+class FluidsHome extends StatefulWidget {
   @override
-  _SelectElectrolyteState createState() => _SelectElectrolyteState();
+  _FluidsHomeState createState() => _FluidsHomeState();
 }
 
-class _SelectElectrolyteState extends State<SelectElectrolyte> {
-
+class _FluidsHomeState extends State<FluidsHome> {
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: "ElectrolyteDeficitCalculator",
+        title: "FluidsHome",
         home: Scaffold(
             appBar: AppBar(
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Electrolyte Deficit Calculator"),
+                  Text("Fluids Calculator"),
                   IconButton(
                     icon: const Icon(Icons.home,
                         color: Colors.white, size: 24.0, semanticLabel: "Home"),
@@ -42,15 +43,15 @@ class _SelectElectrolyteState extends State<SelectElectrolyte> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SizedBox(height: 15),
-                        Text(
+                        /*Text(
                           'Select Electrolyte',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontStyle: FontStyle.italic,
+                              fontStyle: FontStyle.italic,
                               fontSize: 15.0, fontWeight: FontWeight.normal),
-                        ),
-                        SizedBox(height: 15),
-                        Row(
+                        ),*/
+                        /*SizedBox(height: 15),*/
+                        Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
                               GestureDetector(
@@ -58,11 +59,12 @@ class _SelectElectrolyteState extends State<SelectElectrolyte> {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (BuildContext context) =>
-                                                SodiumDeficit()));
+                                                PaediatricFluids()));
                                   },
                                   child: SizedBox(
-                                    height: 170,
-                                    width: 170,
+                                    //padding: EdgeInsets.all(10),
+                                    width: MediaQuery.of(context).size.width / 1.3,
+                                    height: MediaQuery.of(context).size.height / 3.3,
                                     child: (Container(
                                       decoration: BoxDecoration(
                                         border: Border.all(
@@ -72,7 +74,7 @@ class _SelectElectrolyteState extends State<SelectElectrolyte> {
                                       ),
                                       margin: const EdgeInsets.all(4),
                                       child: Image.asset(
-                                          'assets/images/sodium2.jpeg'),
+                                          'assets/images/paediatric.png'),
                                     )),
                                   )),
                               GestureDetector(
@@ -80,11 +82,12 @@ class _SelectElectrolyteState extends State<SelectElectrolyte> {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (BuildContext context) =>
-                                                PotassiumDeficit()));
+                                                AdultFluids()));
                                   },
                                   child: SizedBox(
-                                    height: 170,
-                                    width: 170,
+                                    //padding: EdgeInsets.all(10),
+                                    width: MediaQuery.of(context).size.width / 1.3,
+                                    height: MediaQuery.of(context).size.height / 3.3,
                                     child: (Container(
                                       decoration: BoxDecoration(
                                         border: Border.all(
@@ -94,7 +97,7 @@ class _SelectElectrolyteState extends State<SelectElectrolyte> {
                                       ),
                                       margin: const EdgeInsets.all(4),
                                       child: Image.asset(
-                                          'assets/images/potassium2.webp'),
+                                          'assets/images/adult.png'),
                                     )),
                                   ))
                             ]),

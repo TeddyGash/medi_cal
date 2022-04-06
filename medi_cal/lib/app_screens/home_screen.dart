@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:medi_cal/app_screens/bmi_inputscreen.dart';
 import 'package:medi_cal/app_screens/egfr.dart';
+import 'package:medi_cal/app_screens/fluidsHome.dart';
 import 'package:medi_cal/app_screens/gcs.dart';
 import 'package:medi_cal/app_screens/hasbleed.dart';
 import 'package:medi_cal/app_screens/CHA2DS2VASc.dart';
+import 'package:medi_cal/app_screens/weightEstimator.dart';
 import 'package:medi_cal/app_screens/wellscore_dvt.dart';
 import 'package:medi_cal/app_screens/wellscore_pe.dart';
 import 'package:medi_cal/app_screens/curb_65.dart';
@@ -224,7 +226,7 @@ CalcList(context) => GridView.count(
         GestureDetector(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => GCS()));
+                builder: (BuildContext context) => FluidsHome()));
           },
           child: (Container(
             padding: const EdgeInsets.all(8),
@@ -238,7 +240,7 @@ CalcList(context) => GridView.count(
         GestureDetector(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => GCS()));
+                builder: (BuildContext context) => WeightEstimator()));
           },
           child: (Container(
             padding: const EdgeInsets.all(8),

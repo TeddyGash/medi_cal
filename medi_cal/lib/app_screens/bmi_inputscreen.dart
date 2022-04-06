@@ -138,10 +138,17 @@ class _InputFieldsState extends State<InputFields> {
                       height: 30,
                     ),
                     Container(
-                      child: Text(
-                        _bmi == null ? 'No Result' : _bmi.toStringAsFixed(2),
-                        style: TextStyle(fontSize: 50),
-                        textAlign: TextAlign.center,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            _bmi == null ? 'No Result' : _bmi.toStringAsFixed(2),
+                            style: TextStyle(fontSize: 50),
+                            textAlign: TextAlign.center,
+                          ),
+                          Text('kg/m2',  style: TextStyle(fontSize: 25),
+                            textAlign: TextAlign.center,)
+                        ],
                       ),
                     ),
                     SizedBox(

@@ -1,0 +1,34 @@
+TO DO
+
+TWEAKS
+- Categorise by discipline.
+- Implement search.
+- Background image
+- Icon/Logo
+- Cover/Home image
+- validate for numbers only
+- Back button
+- add daily requirements to deficits (fluids, electrolytes).
+
+
+CALCULATORS
+- Caprini Score
+- IUGR detector
+- Mixtard Dosing (by weight/by sliding scale)
+- Parenteral Iron dosing.
+- Paediatric Weight-for-Age
+- Paediatric Height-for-Age
+- APGARS
+- Daily Fluids Requirements
+- Paediatric Weight Estimator (done)
+- Regular calculator for misc.
+- Zatuchni-Andros Breech Score
+- RANSON Score
+- PERC
+- Anion Gap
+- Osmolar Gap
+- Rib Fracture probability
+- Heart Score
+- MELD
+- GLEASON
+- ETT tube size = age/4 + 4 (-1 if cuffed)

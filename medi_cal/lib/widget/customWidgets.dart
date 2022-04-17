@@ -138,12 +138,13 @@ class CustomAppView extends StatelessWidget {
   final String pageTitle;
   final Widget appBarTitle;
   final Widget pageBody;
+  final backButtonDestination;
 
-  const CustomAppView({
+   const CustomAppView({
     Key key,
     this.pageTitle,
     this.appBarTitle,
-    this.pageBody,
+    this.pageBody, this.backButtonDestination,
   }) : super(key: key);
 
   @override
@@ -153,6 +154,14 @@ class CustomAppView extends StatelessWidget {
       title: pageTitle,
       home: Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => backButtonDestination),
+                );
+              }),
           title: appBarTitle,
         ),
         body: pageBody,

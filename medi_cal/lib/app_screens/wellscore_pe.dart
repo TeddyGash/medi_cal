@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medi_cal/app_screens/home_screen.dart';
 import 'package:medi_cal/widget/customRadio.dart';
 import 'package:medi_cal/widget/customWidgets.dart';
 
@@ -8,6 +9,7 @@ class WellsScorePE extends StatelessWidget {
     return CustomAppView(
       pageTitle: 'WellsScore(PE)',
       appBarTitle: CustomAppBarLabel(label: "WellsScore(PE)",),
+      backButtonDestination: HomeScreen(),
       pageBody: InputFields(),
     );
   }
@@ -429,77 +431,6 @@ class _InputFieldsState extends State<InputFields> {
   }
 
 }
-
-/*class WellScoreCalculator {
-
-  bool hasPE;
-  bool hasHeartRateMoreThan100;
-  bool hasRecentSurgery;
-  bool hasSignsOfDVT;
-  bool hasHaemoptysis;
-  bool hasAlternativeDiag;
-  bool hasCancer;
-
-  static const PE_VALUE = 1.0;
-  static const HEART_RATE_VALUE = 1.0;
-  static const RECENT_SURGERY = 1.0;
-  static const DVT_VALUE = 1.0;
-  static const HAEMOPTYSIS_VALUE = 1.0;
-  static const ALT_DIAG_VALUE = 1.0;
-  static const CANCER_VALUE = 1.0;
-
-  //WellScoreCalculator();
-
-  void setHasPE(bool value) {
-    hasPE = value;
-  }
-
-  void setHasRecentSurgery(bool value) {
-    hasRecentSurgery = value;
-  }
-
-  void setHasHeartRateMoreThan100(bool value) {
-    hasHeartRateMoreThan100 = value;
-  }
-
-  void setHasSignsOfDVT(bool value) {
-    hasSignsOfDVT = value;
-  }
-
-  void setHasHaemoptysis(bool value) {
-    hasHaemoptysis = value;
-  }
-
-  void setHasAlternativeDiag(bool value) {
-    hasAlternativeDiag = value;
-  }
-
-  void setHasCancer(bool value) {
-    hasCancer = value;
-  }
-
-  double process() {
-    return _sumAnswers();
-  }
-
-  double _sumAnswers() {
-    double finalScore = 0;
-
-    if (hasPE) finalScore += PE_VALUE;
-
-    if (hasHeartRateMoreThan100) finalScore += HEART_RATE_VALUE;
-
-    if (hasSignsOfDVT) finalScore += DVT_VALUE;
-
-    if (hasHaemoptysis) finalScore += HAEMOPTYSIS_VALUE;
-
-    if (hasAlternativeDiag) finalScore += ALT_DIAG_VALUE;
-
-    if (hasCancer) finalScore += CANCER_VALUE;
-
-    return finalScore;
-  }
-}*/
 
 
 

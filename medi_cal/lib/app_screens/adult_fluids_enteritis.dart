@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medi_cal/app_screens/adultFluids.dart';
 import 'package:medi_cal/widget/customWidgets.dart';
 import 'package:wc_form_validators/wc_form_validators.dart';
 
@@ -10,6 +11,7 @@ class AdultGastroenteritis extends StatelessWidget {
       appBarTitle: CustomAppBarLabel(
         label: "Gastroenteritis (Adult)",
       ),
+      backButtonDestination: AdultFluids(),
       pageBody: InputFields(),
     );
   }
@@ -57,8 +59,8 @@ class _InputFieldsState extends State<InputFields> {
             children: [
               Container(
                 padding: EdgeInsets.all(10),
-                width: MediaQuery.of(context).size.width / 1.3,
-                height: MediaQuery.of(context).size.height / 5.2,
+                //width: MediaQuery.of(context).size.width / 1.3,
+                //height: MediaQuery.of(context).size.height / 5.2,
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   color: Colors.blue,
@@ -71,6 +73,7 @@ class _InputFieldsState extends State<InputFields> {
                     Text(
                       "\u2022 The values from this calculator are estimates that take "
                           "into account fluid deficit, ongoing losses and daily maintenance.\n",
+                      softWrap: true,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12.0,
@@ -81,6 +84,7 @@ class _InputFieldsState extends State<InputFields> {
                     ),
                     Text(
                       "\u2022 Clinical judgement should always however take precedence over these estimates.\n",
+                      softWrap: true,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12.0,
@@ -91,6 +95,7 @@ class _InputFieldsState extends State<InputFields> {
                     ),
                     Text(
                       "\u2022 Choice of fluid to be based on clinical judgement.\n",
+                      softWrap: true,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12.0,

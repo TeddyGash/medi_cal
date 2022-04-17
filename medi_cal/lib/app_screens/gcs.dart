@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medi_cal/app_screens/home_screen.dart';
 import 'package:medi_cal/widget/customRadio.dart';
 import 'package:medi_cal/widget/customWidgets.dart';
 
@@ -8,6 +9,7 @@ class GCS extends StatelessWidget {
     return CustomAppView(
       pageTitle: 'GCS Score',
       appBarTitle: CustomAppBarLabel(label: "GCS Score",),
+      backButtonDestination: HomeScreen(),
       pageBody: InputFields(),
     );
   }

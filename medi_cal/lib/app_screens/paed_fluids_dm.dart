@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medi_cal/app_screens/paediatricFluids.dart';
 import 'package:medi_cal/widget/customWidgets.dart';
 import 'package:wc_form_validators/wc_form_validators.dart';
 
@@ -10,6 +11,7 @@ class PaedDailyMaintenance extends StatelessWidget {
       appBarTitle: CustomAppBarLabel(
         label: "Daily Maintenance Fluid",
       ),
+      backButtonDestination: PaediatricFluids(),
       pageBody: InputFields(),
     );
   }
@@ -52,8 +54,8 @@ class _InputFieldsState extends State<InputFields> {
             children: [
               Container(
                 padding: EdgeInsets.all(10),
-                width: MediaQuery.of(context).size.width / 1.3,
-                height: MediaQuery.of(context).size.height / 6.3,
+                //width: MediaQuery.of(context).size.width / 1.3,
+                //height: MediaQuery.of(context).size.height / 6.3,
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   color: Colors.blue,
@@ -61,10 +63,11 @@ class _InputFieldsState extends State<InputFields> {
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       "\u2022 This calculator is based on the Holliday-Segar formula.\n",
+                      softWrap: true,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12.0,
@@ -75,6 +78,7 @@ class _InputFieldsState extends State<InputFields> {
                     ),
                     Text(
                       "\u2022 It is valid for children >28days old or >3.5kg.\n",
+                      softWrap: true,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12.0,
@@ -85,6 +89,7 @@ class _InputFieldsState extends State<InputFields> {
                     ),
                     Text(
                       "\u2022 For neonates (0-28days or <3.5kg), a modified formula is used based on the age (in days) .\n",
+                      softWrap: true,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12.0,
@@ -156,7 +161,7 @@ class _InputFieldsState extends State<InputFields> {
                   height: MediaQuery.of(context).size.height / 12,
                   padding: EdgeInsets.all(15.0),
                   child: Material(
-                      color: Colors.green,
+                      color: Colors.blue,
                       borderRadius: BorderRadius.circular(25.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,

@@ -9,7 +9,7 @@ import 'package:medi_cal/app_screens/weightEstimator.dart';
 import 'package:medi_cal/app_screens/wellscore_dvt.dart';
 import 'package:medi_cal/app_screens/wellscore_pe.dart';
 import 'package:medi_cal/app_screens/curb_65.dart';
-import 'package:medi_cal/app_screens/GAcalculator3.dart';
+import 'package:medi_cal/app_screens/GAcalculator.dart';
 import 'package:medi_cal/app_screens/alvarado.dart';
 import 'package:medi_cal/app_screens/bishop.dart';
 

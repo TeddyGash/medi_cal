@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medi_cal/app_screens/electrolytes.dart';
 import 'package:medi_cal/widget/customWidgets.dart';
 import 'package:wc_form_validators/wc_form_validators.dart';
-import 'dart:async';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:flutter/gestures.dart';
 
 class PotassiumDeficit extends StatelessWidget {
@@ -15,6 +13,7 @@ class PotassiumDeficit extends StatelessWidget {
       appBarTitle: CustomAppBarLabel(
         label: "Potassium Deficit Calculator",
       ),
+      backButtonDestination: SelectElectrolyte(),
       pageBody: InputFields(),
     );
   }
@@ -65,12 +64,12 @@ class _InputFieldsState extends State<InputFields> {
                 height: MediaQuery.of(context).size.height / 5.0,
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  color: Colors.blueGrey,
+                  color: Colors.blue,
                   borderRadius: BorderRadius.all(Radius.circular(10.0)),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     TextWidget(text: 'The reference ranges for blood potassium levels are as follows:\n'),
                   TextWidget(text: '\u2022 Adult/elderly: 3.5-5.0 mmol/L'),
@@ -86,7 +85,7 @@ class _InputFieldsState extends State<InputFields> {
                           ),
                           TextSpan(
                             text: 'Medscape',
-                            style: TextStyle(color: Colors.blue),
+                            style: TextStyle(color: Colors.black),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () { launch('https://emedicine.medscape.com/article/2054364-overview#:~:text=Adult%2Felderly%3A%203.5%2D5.0,%3A%204.1%2D5.3%20mEq%2FL');
                               },
@@ -131,7 +130,7 @@ class _InputFieldsState extends State<InputFields> {
                   height: MediaQuery.of(context).size.height / 12,
                   padding: EdgeInsets.all(15.0),
                   child: Material(
-                      color: Colors.green,
+                      color: Colors.blue,
                       borderRadius: BorderRadius.circular(25.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,

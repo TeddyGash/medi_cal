@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medi_cal/app_screens/fluidsHome.dart';
 import 'package:medi_cal/widget/customWidgets.dart';
 
 import 'adult_fluids_abd.dart';
@@ -14,6 +15,7 @@ class AdultFluids extends StatelessWidget {
       appBarTitle: CustomAppBarLabel(
         label: "Fluids Calculator (Adults)",
       ),
+      backButtonDestination: FluidsHome(),
       pageBody: InputFields(),
     );
   }

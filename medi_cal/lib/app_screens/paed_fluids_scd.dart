@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medi_cal/app_screens/paediatricFluids.dart';
 import 'package:medi_cal/widget/customWidgets.dart';
 import 'package:wc_form_validators/wc_form_validators.dart';
 
@@ -10,6 +11,7 @@ class PaedDailySCD extends StatelessWidget {
       appBarTitle: CustomAppBarLabel(
         label: "SCD Crisis Maintenance",
       ),
+      backButtonDestination: PaediatricFluids(),
       pageBody: InputFields(),
     );
   }
@@ -52,19 +54,20 @@ class _InputFieldsState extends State<InputFields> {
             children: [
               Container(
                 padding: EdgeInsets.all(10),
-                width: MediaQuery.of(context).size.width / 1.3,
-                height: MediaQuery.of(context).size.height / 4.8,
+                //width: MediaQuery.of(context).size.width / 1.3,
+                //height: MediaQuery.of(context).size.height / 4.8,
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  color: Colors.purple,
+                  color: Colors.blue,
                   borderRadius: BorderRadius.all(Radius.circular(10.0)),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       "\u2022 This calculator makes use of the Holliday-Segar formula.\n",
+                      softWrap: true,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12.0,
@@ -76,6 +79,7 @@ class _InputFieldsState extends State<InputFields> {
                     Text(
                       "\u2022 It is an estimate that seeks to hydrate a child in "
                           "SC Crisis with a minimum of 1.5x the daily maintenance fluid.\n",
+                      softWrap: true,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12.0,
@@ -86,6 +90,7 @@ class _InputFieldsState extends State<InputFields> {
                     ),
                     Text(
                       "\u2022 Clinical judgement should however take precedence over these estimates especially in ACS.\n",
+                      softWrap: true,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12.0,
@@ -128,7 +133,7 @@ class _InputFieldsState extends State<InputFields> {
                   height: MediaQuery.of(context).size.height / 12,
                   padding: EdgeInsets.all(15.0),
                   child: Material(
-                      color: Colors.purple,
+                      color: Colors.blue,
                       borderRadius: BorderRadius.circular(25.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,

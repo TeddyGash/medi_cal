@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medi_cal/app_screens/fluidsHome.dart';
 import 'package:medi_cal/app_screens/paed_fluids_burns.dart';
 import 'package:medi_cal/app_screens/paed_fluids_dm.dart';
 import 'package:medi_cal/app_screens/paed_fluids_ge.dart';
@@ -13,6 +14,7 @@ class PaediatricFluids extends StatelessWidget {
       appBarTitle: CustomAppBarLabel(
         label: "Paediatric Fluids Calculator",
       ),
+      backButtonDestination: FluidsHome(),
       pageBody: InputFields(),
     );
   }

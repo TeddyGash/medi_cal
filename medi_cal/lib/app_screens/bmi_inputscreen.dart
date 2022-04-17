@@ -1,34 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:medi_cal/app_screens/home_screen.dart';
+import 'package:medi_cal/widget/customWidgets.dart';
 
 class BmiInputScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "BMI Calculator",
-      home: Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("BMI Calculator"),
-              IconButton(
-                icon: const Icon(Icons.home,
-                    color: Colors.white, size: 24.0, semanticLabel: "Home"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
-                  );
-                },
-              )
-            ],
-          ),
-        ),
-        body: BmiInputCore(),
+    return CustomAppView(
+      pageTitle: 'BMI',
+      appBarTitle: CustomAppBarLabel(
+        label: "BMI Calculator",
       ),
+      backButtonDestination: HomeScreen(),
+      pageBody: BmiInputCore(),
     );
   }
 }
@@ -143,10 +127,10 @@ class _InputFieldsState extends State<InputFields> {
                         children: [
                           Text(
                             _bmi == null ? 'No Result' : _bmi.toStringAsFixed(2),
-                            style: TextStyle(fontSize: 50),
+                            style: TextStyle(fontSize: 40),
                             textAlign: TextAlign.center,
                           ),
-                          Text('kg/m2',  style: TextStyle(fontSize: 25),
+                          Text(_bmi == null ? '' : 'kg/m2',  style: TextStyle(fontSize: 20),
                             textAlign: TextAlign.center,)
                         ],
                       ),
@@ -168,52 +152,3 @@ class _InputFieldsState extends State<InputFields> {
         ));
   }
 }
-
-/*@override
-  Widget build(BuildContext context) {
-    // Build a Form widget using the _formKey created above.
-    return Form(
-      key: _formKey,
-      child:
-      Column(
-          children: [
-            TextField(
-              decoration: new InputDecoration(labelText: "Enter age (in years)"),
-              keyboardType: TextInputType.number,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
-              ],),
-            TextField(
-              decoration: new InputDecoration(labelText: "Enter weight (in kg)"),
-              keyboardType: TextInputType.number,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
-              ],),
-            TextField(
-              decoration: new InputDecoration(labelText: "Enter height (in m)"),
-              keyboardType: TextInputType.number,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
-              ],),
-            Container(
-            margin: EdgeInsets.only(top: 70.0),
-            width: 250.0,
-            height: 50.0,
-            child:
-              ElevatedButton(
-              onPressed: () {},
-                child: Text('Calculate BMI',
-                    style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white,
-                    ),),
-          ),
-          // Add TextFormFields and ElevatedButton here.
-
-    ),
-      ],
-    ));
-  }*/
-
-//class CalculateBMI

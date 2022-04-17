@@ -5,33 +5,18 @@ import 'package:flutter/services.dart';
 import 'package:medi_cal/app_screens/home_screen.dart';
 import 'dart:math';
 
+import 'package:medi_cal/widget/customWidgets.dart';
+
 class EGFR extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "eGFR Calculator",
-      home: Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("eGFR Calculator"),
-              IconButton(
-                icon: const Icon(Icons.home,
-                    color: Colors.white, size: 24.0, semanticLabel: "eGFR Calculator"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
-                  );
-                },
-              )
-            ],
-          ),
-        ),
-        body: EGFRCore(),
+    return CustomAppView(
+      pageTitle: 'eGFR',
+      appBarTitle: CustomAppBarLabel(
+        label: "eGFR Calculator",
       ),
+      backButtonDestination: HomeScreen(),
+      pageBody: EGFRCore(),
     );
   }
 }

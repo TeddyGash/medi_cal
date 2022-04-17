@@ -6,8 +6,6 @@ TWEAKS
 - Background image
 - Icon/Logo
 - Cover/Home image
-- validate for numbers only
-- Back button
 - add daily requirements to deficits (fluids, electrolytes).
 
 

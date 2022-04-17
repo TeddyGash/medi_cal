@@ -10,6 +10,7 @@ class AdultMaintenance extends StatelessWidget {
       appBarTitle: CustomAppBarLabel(
         label: "Daily Maintenance(Adult)",
       ),
+      backButtonDestination: AdultFluids(),
       pageBody: InputFields(),
     );
   }
@@ -39,8 +40,8 @@ class _InputFieldsState extends State<InputFields> {
             children: [
               Container(
                 padding: EdgeInsets.all(10),
-                width: MediaQuery.of(context).size.width / 1.3,
-                height: MediaQuery.of(context).size.height / 4.7,
+                //width: MediaQuery.of(context).size.width / 1.3,
+                //height: MediaQuery.of(context).size.height / 4.7,
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   color: Colors.blue,
@@ -52,6 +53,7 @@ class _InputFieldsState extends State<InputFields> {
                   children: [
                     Text(
                       "\u2022 These are average values based on research, for the tropics.\n",
+                      softWrap: true,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12.0,
@@ -62,6 +64,7 @@ class _InputFieldsState extends State<InputFields> {
                     ),
                     Text(
                       "\u2022 It is valid for average adults weighing around 70kg without any fluid deficits or ongoing losses and is NIL PER OS.\n",
+                      softWrap: true,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12.0,
@@ -72,6 +75,7 @@ class _InputFieldsState extends State<InputFields> {
                     ),
                     Text(
                       "\u2022 Clinical judgement should however always take precedence.\n",
+                      softWrap: true,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12.0,
@@ -135,33 +139,6 @@ class _InputFieldsState extends State<InputFields> {
                   fontFamily: 'helvetica_neue_light',
                 ),
                 textAlign: TextAlign.start,
-              ),
-              MaterialButton(
-                onPressed: () {
-                  close();
-                },
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height / 12,
-                  padding: EdgeInsets.all(15.0),
-                  child: Material(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(25.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            'Back',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18.0,
-                              fontFamily: 'helvetica_neue_light',
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      )),
-                ),
               ),
             ],
           ),

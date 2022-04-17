@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'package:direct_select/direct_select.dart';
 import 'package:flutter/material.dart';
 import 'package:medi_cal/app_screens/home_screen.dart';
-import 'package:medi_cal/app_screens/GAcalculator3.dart';
+import 'package:medi_cal/app_screens/GAcalculator.dart';
 import 'package:medi_cal/app_screens/GAcalculatorLMP.dart';
 import 'package:medi_cal/app_screens/GAcalculatorGA.dart';
+import 'package:medi_cal/widget/customWidgets.dart';
 
 
 
@@ -12,30 +12,13 @@ import 'package:medi_cal/app_screens/GAcalculatorGA.dart';
 class GAcalculatorEDD extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "GAcalculator",
-      home: Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("EGA/EDD Calculator"),
-              IconButton(
-                icon: const Icon(Icons.home,
-                    color: Colors.white, size: 24.0, semanticLabel: "Home"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
-                  );
-                },
-              )
-            ],
-          ),
-        ),
-        body: GAcalculatorCoreEDD(),
+    return CustomAppView(
+      pageTitle: 'EGA/EDD Calculator',
+      appBarTitle: CustomAppBarLabel(
+        label: "EGA/EDD Calculator",
       ),
+      backButtonDestination: ChooseMethod(),
+      pageBody: GAcalculatorCoreEDD(),
     );
   }
 }

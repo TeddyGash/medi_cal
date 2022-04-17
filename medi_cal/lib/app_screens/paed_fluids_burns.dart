@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:medi_cal/app_screens/paediatricFluids.dart';
 import 'package:medi_cal/widget/customWidgets.dart';
 import 'package:wc_form_validators/wc_form_validators.dart';
 
@@ -11,6 +12,7 @@ class PaedDailyBurns extends StatelessWidget {
       appBarTitle: CustomAppBarLabel(
         label: "Burns Maintenance",
       ),
+      backButtonDestination: PaediatricFluids(),
       pageBody: InputFields(),
     );
   }
@@ -59,19 +61,20 @@ class _InputFieldsState extends State<InputFields> {
             children: [
               Container(
                 padding: EdgeInsets.all(10),
-                width: MediaQuery.of(context).size.width / 1.3,
-                height: MediaQuery.of(context).size.height / 4.3,
+                //width: MediaQuery.of(context).size.width / 1.3,
+                //height: MediaQuery.of(context).size.height / 4.3,
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  color: Colors.redAccent,
+                  color: Colors.blue,
                   borderRadius: BorderRadius.all(Radius.circular(10.0)),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       "\u2022 This calculator makes use of the Parkland's formula.\n",
+                      softWrap: true,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12.0,
@@ -83,6 +86,7 @@ class _InputFieldsState extends State<InputFields> {
                     Text(
                       "\u2022 It is an estimate that makes use of TBSA for burns of 2nd degree "
                           "and above.\n",
+                      softWrap: true,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12.0,
@@ -94,6 +98,7 @@ class _InputFieldsState extends State<InputFields> {
                     Text(
                       "\u2022 It is applicable for children <50kg, with TBSA ≥10% "
                           "and burns severity of ≥2nd degree.\n",
+                      softWrap: true,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12.0,
@@ -105,6 +110,7 @@ class _InputFieldsState extends State<InputFields> {
                     Text(
                       "\u2022 Clinical judgement should however always take precedence "
                           "over these estimates.\n",
+                      softWrap: true,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12.0,
@@ -206,7 +212,7 @@ class _InputFieldsState extends State<InputFields> {
                   height: MediaQuery.of(context).size.height / 12,
                   padding: EdgeInsets.all(15.0),
                   child: Material(
-                      color: Colors.redAccent,
+                      color: Colors.blue,
                       borderRadius: BorderRadius.circular(25.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,

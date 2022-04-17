@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:medi_cal/app_screens/adultFluids.dart';
 import 'package:medi_cal/widget/customWidgets.dart';
 import 'package:wc_form_validators/wc_form_validators.dart';
 
@@ -11,6 +12,7 @@ class AdultBurns extends StatelessWidget {
       appBarTitle: CustomAppBarLabel(
         label: "Burns (Adult)",
       ),
+      backButtonDestination: AdultFluids(),
       pageBody: InputFields(),
     );
   }
@@ -57,8 +59,8 @@ class _InputFieldsState extends State<InputFields> {
             children: [
               Container(
                 padding: EdgeInsets.all(10),
-                width: MediaQuery.of(context).size.width / 1.3,
-                height: MediaQuery.of(context).size.height / 3.3,
+                //width: MediaQuery.of(context).size.width / 1.3,
+                //height: MediaQuery.of(context).size.height / 3.3,
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   color: Colors.blue,

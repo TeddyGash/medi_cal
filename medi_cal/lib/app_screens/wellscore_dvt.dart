@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medi_cal/app_screens/home_screen.dart';
 import 'package:medi_cal/widget/customRadio.dart';
 import 'package:medi_cal/widget/customWidgets.dart';
 
@@ -10,6 +11,7 @@ class WellsScoreDVT extends StatelessWidget {
       appBarTitle: CustomAppBarLabel(
         label: "Well's Score (DVT)",
       ),
+      backButtonDestination: HomeScreen(),
       pageBody: InputFields(),
     );
   }

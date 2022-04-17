@@ -11,6 +11,7 @@ class SodiumDeficit extends StatelessWidget {
       appBarTitle: CustomAppBarLabel(
         label: "Sodium Deficit Calculator",
       ),
+      backButtonDestination: SelectElectrolyte(),
       pageBody: InputFields(),
     );
   }

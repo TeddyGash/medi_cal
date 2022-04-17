@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:medi_cal/app_screens/home_screen.dart';
 import 'package:medi_cal/widget/customRadio.dart';
-
 import 'package:medi_cal/widget/customWidgets.dart';
 
 class BISHOP extends StatelessWidget {
@@ -11,6 +11,7 @@ class BISHOP extends StatelessWidget {
       appBarTitle: CustomAppBarLabel(
         label: "BISHOP Score",
       ),
+      backButtonDestination: HomeScreen(),
       pageBody: InputFields(),
     );
   }

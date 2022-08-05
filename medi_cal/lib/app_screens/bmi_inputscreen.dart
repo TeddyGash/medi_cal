@@ -53,16 +53,16 @@ class _InputFieldsState extends State<InputFields> {
   // the controller for the text field associated with "weight"
   final _weightController = TextEditingController();
 
-  double _bmi;
+  late double _bmi;
 
   // the message at the beginning
   String _message = 'Please enter height and weight';
 
   void _calculate() {
-    final double height = double.tryParse(_heightController.value.text);
-    final double weight = double.tryParse(_weightController.value.text);
+    final double? height = double.tryParse(_heightController.value.text);
+    final double? weight = double.tryParse(_weightController.value.text);
 
-    if (height <= 0 || weight <= 0) {
+    if (height! <= 0 || weight! <= 0) {
       setState(() {
         _message = "Height and weight must be positive numbers";
       });

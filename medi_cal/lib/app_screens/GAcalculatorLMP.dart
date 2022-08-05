@@ -1,7 +1,5 @@
 import 'dart:async';
-import 'package:direct_select/direct_select.dart';
 import 'package:flutter/material.dart';
-import 'package:medi_cal/app_screens/home_screen.dart';
 import 'package:medi_cal/app_screens/GAcalculator.dart';
 import 'package:medi_cal/app_screens/GAcalculatorGA.dart';
 import 'package:medi_cal/app_screens/GAcalculatorEDD.dart';
@@ -79,7 +77,7 @@ class _InputFieldsLMPState extends State<InputFieldsLMP> {
   }
 
   Future<void> _selectLMP(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
+    final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: selectedLMP,
       firstDate: DateTime(2019, 8),
@@ -191,7 +189,7 @@ class _InputFieldsLMPState extends State<InputFieldsLMP> {
 
   @override
   Widget build(BuildContext context) {
-    final _style = Theme.of(context).textTheme.display2;
+    //final _style = Theme.of(context).textTheme.display2;
     return Scaffold(
         backgroundColor: Colors.lightBlueAccent,
         body: Center(
@@ -369,7 +367,7 @@ class _DisplayResultLMPState extends State<DisplayResultLMP> {
   }
 
   Future<void> _selectLMP(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
+    final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: selectedLMP,
       firstDate: DateTime(2019, 8),
@@ -411,7 +409,7 @@ class _DisplayResultLMPState extends State<DisplayResultLMP> {
 
   @override
   Widget build(BuildContext context) {
-    final _style = Theme.of(context).textTheme.display2;
+    //final _style = Theme.of(context).textTheme.display2;
     return Scaffold(
         backgroundColor: Colors.lightBlueAccent,
         body: Center(
@@ -516,6 +514,7 @@ class _DisplayResultLMPState extends State<DisplayResultLMP> {
                                     ),
                                     ElevatedButton(
                                       //onPressed: computeScore,
+                                      onPressed: () {  },
                                       child: Text(
                                         'Calculate',
                                         style: TextStyle(
@@ -591,8 +590,8 @@ class MySelectionItem extends StatelessWidget {
   final int title;
   final bool isForList;
 
-  const MySelectionItem({Key key, this.title, this.isForList = true})
-      : super(key: key);
+  const MySelectionItem({ required this.title, this.isForList = true})
+      : super();
 
   @override
   Widget build(BuildContext context) {

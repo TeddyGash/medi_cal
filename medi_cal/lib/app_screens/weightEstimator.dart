@@ -40,8 +40,8 @@ class _InputFieldsState extends State<InputFields> {
 
 //saving form after validation
   void _saveForm() {
-    final isValid = _form.currentState.validate();
-    if (!isValid) {
+    final isValid = _form.currentState?.validate();
+    if (!isValid!) {
       return;
     } else {
       verifyInput();
@@ -60,8 +60,8 @@ class _InputFieldsState extends State<InputFields> {
           children: [
             Container(
                 padding: EdgeInsets.all(10),
-                width: MediaQuery.of(context).size.width / 1.3,
-                height: MediaQuery.of(context).size.height / 5.5,
+                //width: MediaQuery.of(context).size.width / 1.3,
+                //height: MediaQuery.of(context).size.height / 5.5,
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   color: Colors.blue,
@@ -69,7 +69,7 @@ class _InputFieldsState extends State<InputFields> {
                 ),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextWidget(
                           text:
@@ -156,9 +156,9 @@ class _InputFieldsState extends State<InputFields> {
     ));
   }
 
-  double _weight;
+  late double _weight;
 
-  String _weightRounded;
+  late String _weightRounded;
 
   var _age;
 
@@ -169,9 +169,9 @@ class _InputFieldsState extends State<InputFields> {
   }
 
   void verifyInput() {
-    final int ageYears = int.tryParse(_ageYearsController.value.text);
-    final int ageMonths = int.tryParse(_ageMonthsController.value.text);
-    if (ageYears == 0 && ageMonths < 3) {
+    final int? ageYears = int.tryParse(_ageYearsController.value.text);
+    final int? ageMonths = int.tryParse(_ageMonthsController.value.text);
+    if (ageYears == 0 && ageMonths! < 3) {
       displayInputError();
     } else
       compute();
@@ -198,17 +198,17 @@ class _InputFieldsState extends State<InputFields> {
   }
 
   void convertAge() {
-    final int ageYears = int.tryParse(_ageYearsController.value.text);
-    final int ageMonths = int.tryParse(_ageMonthsController.value.text);
+    final int? ageYears = int.tryParse(_ageYearsController.value.text);
+    final int? ageMonths = int.tryParse(_ageMonthsController.value.text);
     if (ageYears == 0) {
       _age = ageMonths;
     } else {
-      _age = ageYears + (ageMonths / 12);
+      _age = (ageYears! + (ageMonths! / 12));
     }
   }
 
   void calculateWeight() {
-    final int ageYears = int.tryParse(_ageYearsController.value.text);
+    final int? ageYears = int.tryParse(_ageYearsController.value.text);
     //final int ageMonths = int.tryParse(_ageMonthsController.value.text);
     if (ageYears == 0) {
       _weight = (_age + 9) / 2;

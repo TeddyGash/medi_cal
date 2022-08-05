@@ -34,8 +34,8 @@ class _InputFieldsState extends State<InputFields> {
 
 //saving form after validation
   void _saveForm() {
-    final isValid = _form.currentState.validate();
-    if (!isValid) {
+    final isValid = _form.currentState?.validate();
+    if (!isValid!) {
       return;
     } else {
       compute();
@@ -63,7 +63,7 @@ class _InputFieldsState extends State<InputFields> {
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "\u2022 This calculator is based on the Holliday-Segar formula.\n",
@@ -186,21 +186,17 @@ class _InputFieldsState extends State<InputFields> {
     );
   }
 
-  String _message ='';
 
-  double _weight;
 
-  int _ageInDays;
+  late double _fluids;
 
-  double _fluids;
+  late String _maxLimitComment;
 
-  String _maxLimitComment;
+  late String _fluidsToDisplay;
 
-  String _fluidsToDisplay;
+  late double _flowRate;
 
-  double _flowRate;
-
-  String _flowRateRounded;
+  late String _flowRateRounded;
 
   void compute() {
     //verifyInputSetMessage();
@@ -295,26 +291,26 @@ class _InputFieldsState extends State<InputFields> {
   }*/
 
   void chooseCalculator(){
-    final double _weight = double.tryParse(_weightController.value.text);
-    final int _ageInDays = int.tryParse(_ageController.value.text);
-    if (_ageInDays==null&&_weight>=3.5){hollidaySegarFormula();}
-    else if (_weight<3.5||_ageInDays!=null){modifiedCalculator();}
+    final double? _weight = double.tryParse(_weightController.value.text);
+    final int? _ageInDays = int.tryParse(_ageController.value.text);
+    if (_ageInDays==null&&_weight!>=3.5){hollidaySegarFormula();}
+    else if (_weight!<3.5||_ageInDays!=null){modifiedCalculator();}
   }
 
   void modifiedCalculator(){
-    final double _weight = double.tryParse(_weightController.value.text);
-    final int _ageInDays = int.tryParse(_ageController.value.text);
-if (_ageInDays==1){_fluids = 50*_weight;}
-else if (_ageInDays==2){_fluids = 70*_weight;}
-else if (_ageInDays==3||_weight<3.5){_fluids = 80*_weight;}
+    final double? _weight = double.tryParse(_weightController.value.text);
+    final int? _ageInDays = int.tryParse(_ageController.value.text);
+if (_ageInDays==1){_fluids = 50*_weight!;}
+else if (_ageInDays==2){_fluids = 70*_weight!;}
+else if (_ageInDays==3||_weight!<3.5){_fluids = 80*_weight!;}
 else if (_ageInDays==4){_fluids = 100*_weight;}
-else if (5<= _ageInDays && _ageInDays <=28){_fluids = 120*_weight;}
+else if (5<= _ageInDays! && _ageInDays <=28){_fluids = 120*_weight;}
 else if (_weight >= 3.5 && _ageInDays>28){hollidaySegarFormula();}
   }
 
   void hollidaySegarFormula(){
-    final double _weight = double.tryParse(_weightController.value.text);
-    if (_weight<=10){_fluids=100*_weight;}
+    final double? _weight = double.tryParse(_weightController.value.text);
+    if (_weight!<=10){_fluids=100*_weight;}
     else if (_weight>10&&_weight<=20){_fluids=1000+ (50*(_weight-10));}
     else if (_weight>20){_fluids=1500+ (20*(_weight-20));}
   }

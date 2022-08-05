@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:medi_cal/app_screens/home_screen.dart';
 import 'package:medi_cal/app_screens/GAcalculator.dart';
 import 'package:medi_cal/app_screens/GAcalculatorLMP.dart';
 import 'package:medi_cal/app_screens/GAcalculatorGA.dart';
@@ -79,7 +78,7 @@ class _InputFieldsEDDState extends State<InputFieldsEDD> {
   }
 
   Future<void> _selectEDD(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
+    final DateTime? picked = await showDatePicker(
         context: context,
         initialDate: selectedEDD,
         firstDate: DateTime(2019, 8),
@@ -180,7 +179,7 @@ class _InputFieldsEDDState extends State<InputFieldsEDD> {
 
   @override
   Widget build(BuildContext context) {
-    final _style = Theme.of(context).textTheme.display2;
+    //final _style = Theme.of(context).textTheme.displayMedium;
     return Scaffold(
         backgroundColor: Colors.lightBlueAccent,
         body: Center(
@@ -322,7 +321,7 @@ class MySelectionItem extends StatelessWidget {
   final int title;
   final bool isForList;
 
-  const MySelectionItem({Key key, this.title, this.isForList = true})
+  const MySelectionItem({required Key key, required this.title, this.isForList = true})
       : super(key: key);
 
   @override

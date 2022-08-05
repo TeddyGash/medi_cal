@@ -39,8 +39,8 @@ class _InputFieldsState extends State<InputFields> {
 
 //saving form after validation
   void _saveForm() {
-    final isValid = _form.currentState.validate();
-    if (!isValid) {
+    final isValid = _form.currentState?.validate();
+    if (!isValid!) {
       return;
     }
     else { compute();}
@@ -117,9 +117,9 @@ class _InputFieldsState extends State<InputFields> {
   }
 
 
-  double _deficit;
+  late double _deficit;
 
-  String _deficitRounded;
+  late String _deficitRounded;
 
   void compute() {
     calculateDeficit();
@@ -127,9 +127,9 @@ class _InputFieldsState extends State<InputFields> {
   }
 
   void calculateDeficit() {
-    final double serumSodium = double.tryParse(_serumSodiumController.value.text);
-    final double weight = double.tryParse(_weightController.value.text);
-    _deficit = 0.6 * weight * (135 - serumSodium);
+    final double? serumSodium = double.tryParse(_serumSodiumController.value.text);
+    final double? weight = double.tryParse(_weightController.value.text);
+    _deficit = 0.6 * weight! * (135 - serumSodium!);
     _deficitRounded = _deficit.toStringAsFixed(2);
   }
 

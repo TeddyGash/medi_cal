@@ -55,12 +55,12 @@ class _InputFieldsState extends State<InputFields> {
   final _ageController = TextEditingController();
 
   // the controller for the text field associated with "weight"
-  final _genderController = TextEditingController();
+  //final _genderController = TextEditingController();
 
   // the controller for the text field associated with "weight"
   final _creatinineController = TextEditingController();
 
-  double _egfr;
+  late double _egfr;
 
   // the message at the beginning
   String _message = 'Please enter age, gender and serum creatinine';
@@ -68,11 +68,11 @@ class _InputFieldsState extends State<InputFields> {
   var _currentSelectedValue = 'male';
 
   void _calculate() {
-    final double age = double.tryParse(_ageController.value.text);
+    final double? age = double.tryParse(_ageController.value.text);
     final String gender = 'male';
-    final double creatinine = double.tryParse(_creatinineController.value.text);
+    final double? creatinine = double.tryParse(_creatinineController.value.text);
 
-    if (age <= 0 || creatinine <= 0) {
+    if (age! <= 0 || creatinine! <= 0) {
       setState(() {
         _message = "Age and Creatinine must be positive numbers";
       });
@@ -81,7 +81,7 @@ class _InputFieldsState extends State<InputFields> {
 
     if (gender == 'female' && creatinine <= 62) {
       setState(() {
-        _egfr = 144 * pow((creatinine / 61.6), -0.329) * pow(0.993, age);
+        _egfr = 144.0 * pow((creatinine / 61.6), -0.329) * pow(0.993, age);
           if (_egfr > 90) {
             _message = "Normal eGFR or Stage 1 CKD. Correlate with imaging studies";
           } else if (_egfr > 60) {
@@ -100,7 +100,7 @@ class _InputFieldsState extends State<InputFields> {
 
     else if (gender == 'female' && creatinine >= 62) {
       setState(() {
-        _egfr = 144 * pow((creatinine / 61.6), -1.209) * pow(0.993, age);
+        _egfr = 144.0 * pow((creatinine / 61.6), -1.209) * pow(0.993, age);
         if (_egfr > 90) {
           _message = "Normal eGFR or Stage 1 CKD. Correlate with imaging studies";
         } else if (_egfr > 60) {
@@ -119,7 +119,7 @@ class _InputFieldsState extends State<InputFields> {
 
     else if (gender == 'male' && creatinine <= 62) {
       setState(() {
-        _egfr = 141 * pow((creatinine / 79.2), -0.411) * pow(0.993, age);
+        _egfr = 141.0 * pow((creatinine / 79.2), -0.411) * pow(0.993, age);
         if (_egfr > 90) {
           _message = "Normal eGFR or Stage 1 CKD. Correlate with imaging studies";
         } else if (_egfr > 60) {
@@ -139,7 +139,7 @@ class _InputFieldsState extends State<InputFields> {
 
     else if (gender == 'male' && creatinine >= 62) {
       setState(() {
-        _egfr = 141 * pow((creatinine / 79.2), -1.209) * pow(0.993, age);
+        _egfr = 141.0 * pow((creatinine / 79.2), -1.209) * pow(0.993, age);
         if (_egfr > 90) {
           _message = "Normal eGFR or Stage 1 CKD. Correlate with imaging studies";
         } else if (_egfr > 60) {
@@ -193,9 +193,9 @@ class _InputFieldsState extends State<InputFields> {
                           }).toList(),
                               //value: _currentSelectedValue,
                               //isDense: true,
-                      onChanged: (String newValue) {
+                      onChanged: (newValue) {
                                 setState(() {
-                                  _currentSelectedValue = newValue;
+                                  _currentSelectedValue = newValue!;
                                   //state.didChange(newValue);
                                 });
                               },

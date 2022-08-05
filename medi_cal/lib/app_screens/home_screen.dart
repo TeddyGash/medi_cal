@@ -5,6 +5,7 @@ import 'package:medi_cal/app_screens/fluidsHome.dart';
 import 'package:medi_cal/app_screens/gcs.dart';
 import 'package:medi_cal/app_screens/hasbleed.dart';
 import 'package:medi_cal/app_screens/CHA2DS2VASc.dart';
+import 'package:medi_cal/app_screens/neonatalCalcHome.dart';
 import 'package:medi_cal/app_screens/weightEstimator.dart';
 import 'package:medi_cal/app_screens/wellscore_dvt.dart';
 import 'package:medi_cal/app_screens/wellscore_pe.dart';
@@ -54,6 +55,20 @@ CalcList(context) => GridView.count(
       mainAxisSpacing: 10,
       crossAxisCount: 2,
       children: <Widget>[
+        GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => NeonatalHome()));
+          },
+          child: (Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              border: Border.all(),
+              borderRadius: const BorderRadius.all(const Radius.circular(8)),
+            ),
+            child: Image.asset('assets/images/neonatal.jpeg'),
+          )),
+        ),
         GestureDetector(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(

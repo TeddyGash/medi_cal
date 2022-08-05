@@ -1,7 +1,5 @@
-import 'dart:async';
 import 'package:direct_select/direct_select.dart';
 import 'package:flutter/material.dart';
-import 'package:medi_cal/app_screens/home_screen.dart';
 import 'package:medi_cal/app_screens/GAcalculator.dart';
 import 'package:medi_cal/app_screens/GAcalculatorLMP.dart';
 import 'package:medi_cal/app_screens/GAcalculatorEDD.dart';
@@ -188,7 +186,7 @@ class _InputFieldsGAState extends State<InputFieldsGA> {
 
   @override
   Widget build(BuildContext context) {
-    final _style = Theme.of(context).textTheme.display2;
+    //final _style = Theme.of(context).textTheme.display2;
     return Scaffold(
         backgroundColor: Colors.lightBlueAccent,
         body: Center(
@@ -296,7 +294,7 @@ class _InputFieldsGAState extends State<InputFieldsGA> {
                                                 ),
                                                 onSelectedItemChanged: (index) {
                                                   setState(() {
-                                                    selectedIndex1 = index;
+                                                    selectedIndex1 = index!;
                                                   });
                                                 },
                                                 items: _buildItems1()),
@@ -319,7 +317,7 @@ class _InputFieldsGAState extends State<InputFieldsGA> {
                                                 ),
                                                 onSelectedItemChanged: (index) {
                                                   setState(() {
-                                                    selectedIndex2 = index;
+                                                    selectedIndex2 = index!;
                                                   });
                                                 },
                                                 items: _buildItems2()),
@@ -382,8 +380,8 @@ class MySelectionItem extends StatelessWidget {
   final int title;
   final bool isForList;
 
-  const MySelectionItem({Key key, this.title, this.isForList = true})
-      : super(key: key);
+  const MySelectionItem({ this.isForList = true, required this.title})
+      : super();
 
   @override
   Widget build(BuildContext context) {

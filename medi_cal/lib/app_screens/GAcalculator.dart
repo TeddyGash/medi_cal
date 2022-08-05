@@ -151,7 +151,7 @@ class MySelectionItem extends StatelessWidget {
   final int title;
   final bool isForList;
 
-  const MySelectionItem({Key key, this.title, this.isForList = true})
+  const MySelectionItem({required Key key, required this.title, this.isForList = true})
       : super(key: key);
 
   @override

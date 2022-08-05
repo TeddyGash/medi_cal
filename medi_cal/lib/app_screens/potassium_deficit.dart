@@ -41,7 +41,7 @@ class _InputFieldsState extends State<InputFields> {
 
 //saving form after validation
   void _saveForm() {
-    final isValid = _form.currentState.validate();
+    final isValid = _form.currentState!.validate();
     if (!isValid) {
       return;
     }
@@ -60,8 +60,8 @@ class _InputFieldsState extends State<InputFields> {
             children: <Widget>[
               Container(
                 padding: EdgeInsets.all(10),
-                width: MediaQuery.of(context).size.width / 1.3,
-                height: MediaQuery.of(context).size.height / 5.0,
+                //width: MediaQuery.of(context).size.width / 1.3,
+                //height: MediaQuery.of(context).size.height / 5.0,
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   color: Colors.blue,
@@ -69,13 +69,13 @@ class _InputFieldsState extends State<InputFields> {
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextWidget(text: 'The reference ranges for blood potassium levels are as follows:\n'),
-                  TextWidget(text: '\u2022 Adult/elderly: 3.5-5.0 mmol/L'),
-                  TextWidget(text: '\u2022 Child: 3.4-4.7 mmol/L'),
-                  TextWidget(text: '\u2022 Infant: 4.1-5.3 mmol/L'),
-                  TextWidget(text: '\u2022 Newborn: 3.9-5.9 mmol/L \n'),
+                  TextWidget(text: '\u2022 Adult/elderly: 3.5-5.0 mmol/L',),
+                  TextWidget(text: '\u2022 Child: 3.4-4.7 mmol/L',),
+                  TextWidget(text: '\u2022 Infant: 4.1-5.3 mmol/L',),
+                  TextWidget(text: '\u2022 Newborn: 3.9-5.9 mmol/L \n',),
                     RichText(
                       text: TextSpan(
                         children: [
@@ -164,9 +164,9 @@ class _InputFieldsState extends State<InputFields> {
     }
   }*/
 
-  double _deficit;
+  late double _deficit;
 
-  String _deficitRounded;
+  late String _deficitRounded;
 
   void compute() {
     calculateDeficit();
@@ -174,8 +174,8 @@ class _InputFieldsState extends State<InputFields> {
   }
 
   void calculateDeficit() {
-    final double serumPotassium = double.tryParse(_serumPotassiumController.value.text);
-    final double weight = double.tryParse(_weightController.value.text);
+    final double serumPotassium = double.tryParse(_serumPotassiumController.value.text)!;
+    final double weight = double.tryParse(_weightController.value.text)!;
     _deficit = 0.4 * weight * (3.5 - serumPotassium);
     _deficitRounded = _deficit.toStringAsFixed(2);
   }
@@ -264,8 +264,8 @@ class TextWidget extends StatelessWidget {
   final String text;
 
   const TextWidget({
-    Key key, this.text,
-  }) : super(key: key);
+    required this.text,
+  }) : super(key: null);
 
   @override
   Widget build(BuildContext context) {

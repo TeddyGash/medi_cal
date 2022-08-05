@@ -30,3 +30,5 @@ CALCULATORS
 - MELD
 - GLEASON
 - ETT tube size = age/4 + 4 (-1 if cuffed)
+- Ballard's score
+- Thompson's score

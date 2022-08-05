@@ -1,4 +1,4 @@
-import 'dart:async';
+/*import 'dart:async';
 import 'package:intl/intl.dart';
 import 'package:direct_select/direct_select.dart';
 import 'package:flutter/material.dart';
@@ -625,7 +625,8 @@ class _InputFieldsState extends State<InputFields> {
                                 ),
                               )
                             ]))))));
-  }}
+  }
+}
 
 
 class MySelectionItem extends StatelessWidget {
@@ -666,7 +667,7 @@ class MySelectionItem extends StatelessWidget {
       child: Text("$title"),
     );
   }
-}
+}*/
 
 /*
 void resetSelection() {

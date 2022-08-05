@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 import 'package:medi_cal/app_screens/home_screen.dart';
 
@@ -161,6 +162,7 @@ class CustomAppView extends StatelessWidget {
   }
 }
 
+*/
 /*class CustomSelectButton extends StatelessWidget {
   final Color yesButtonColor;
   final Color noButtonColor;
@@ -213,6 +215,8 @@ class CustomAppView extends StatelessWidget {
     );
   }
 }*/
+/*
+
 
 class RadioFormField extends StatefulWidget {
 
@@ -319,3 +323,4 @@ class ErrorDialog extends StatelessWidget {
     );
   }
 }
+*/

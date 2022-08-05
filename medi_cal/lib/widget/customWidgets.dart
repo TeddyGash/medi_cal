@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medi_cal/app_screens/home_screen.dart';
 
-class ResetSelectionButton extends StatelessWidget {
+/*class ResetSelectionButton extends StatelessWidget {
   const ResetSelectionButton({
     Key key,
     @required GlobalKey<FormState> formKey,
@@ -26,9 +26,9 @@ class ResetSelectionButton extends StatelessWidget {
       ),
     );
   }
-}
+}*/
 
-class ResultDialog extends StatelessWidget {
+/*class ResultDialog extends StatelessWidget {
   ///eg. Well's Score or GCS
   final String dialogTitle;
 
@@ -103,15 +103,14 @@ class ResultDialog extends StatelessWidget {
       ],
     );
   }
-}
+}*/
 
 class CustomAppBarLabel extends StatelessWidget {
   final String label;
 
   const CustomAppBarLabel({
-    Key key,
-    this.label,
-  }) : super(key: key);
+    required this.label,
+  }) : super();
 
   @override
   Widget build(BuildContext context) {
@@ -141,11 +140,10 @@ class CustomAppView extends StatelessWidget {
   final backButtonDestination;
 
    const CustomAppView({
-    Key key,
-    this.pageTitle,
-    this.appBarTitle,
-    this.pageBody, this.backButtonDestination,
-  }) : super(key: key);
+    required this.pageTitle,
+    required this.appBarTitle,
+    required this.pageBody, this.backButtonDestination,
+  }) : super();
 
   @override
   Widget build(BuildContext context) {
@@ -307,9 +305,7 @@ class CustomAppView extends StatelessWidget {
 }*/
 
 class ErrorDialog extends StatelessWidget {
-  const ErrorDialog({
-    Key key,
-  }) : super(key: key);
+  const ErrorDialog() : super();
 
   @override
   Widget build(BuildContext context) {

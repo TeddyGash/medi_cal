@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 
 class RadioFormField extends StatefulWidget {
@@ -38,6 +39,7 @@ class _RadioFormFieldState extends State<RadioFormField> {
     );
   }
 }
+*/
 
 /*
 GroupButton(
@@ -49,7 +51,7 @@ onSelected: (index, isSelected) => setState(() => selectedButton = index),
 buttons: ["Yes", "No"],
 )*/
 
-class CustomRadio extends StatelessWidget {
+/*class CustomRadio extends StatelessWidget {
   // @override
   // _CustomRadioState createState() => _CustomRadioState();
   int selectedValue;
@@ -98,7 +100,7 @@ class CustomRadio extends StatelessWidget {
       ],
     );
   }
-}
+}*/
 
 /*class _CustomRadioState extends State<CustomRadio> {
 

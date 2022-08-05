@@ -1,6 +1,8 @@
+/*
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+*/
 /*
 void main(){
   runApp(
@@ -13,7 +15,8 @@ void main(){
       )
   );
 }
-*/
+*//*
+
 
 
 class MyCustomRadio extends StatefulWidget {
@@ -38,8 +41,10 @@ class _MyCustomRadioState extends State<MyCustomRadio> {
     //this.text,
   });
 
-  /*List<IconData> iconList = [Icons.settings, Icons.bookmark, Icons.account_circle];
-  int secondaryIndex = 0;*/
+  */
+/*List<IconData> iconList = [Icons.settings, Icons.bookmark, Icons.account_circle];
+  int secondaryIndex = 0;*//*
+
 
   @override
   Widget build(BuildContext context) {
@@ -78,18 +83,22 @@ class _MyCustomRadioState extends State<MyCustomRadio> {
     );
   }
 
-  /*void changeSecondaryIndex(int index){
+  */
+/*void changeSecondaryIndex(int index){
     setState(() {
       secondaryIndex = index;
     });
-  }*/
+  }*//*
 
-  /*Widget customRadio2(IconData icon,int index){
+
+  */
+/*Widget customRadio2(IconData icon,int index){
     return OutlineButton(
       onPressed: () => changeSecondaryIndex(index),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
       borderSide: BorderSide(color: secondaryIndex == index ? Colors.deepOrangeAccent[700] : Colors.grey),
       child: Icon(icon,color:  secondaryIndex == index ? Colors.deepOrangeAccent : Colors.grey,),
     );
-  }*/
-}
+  }*//*
+
+}*/

@@ -10,8 +10,8 @@ class MyRadioListTile extends StatelessWidget {
   const MyRadioListTile({
     this.value,
     this.groupValue,
-    this.onChanged,
-    this.answer,
+    required this.onChanged,
+    required this.answer,
     //this.title,
   });
 
@@ -42,7 +42,7 @@ class MyRadioListTile extends StatelessWidget {
         color: isSelected ? Colors.blue : null,
         borderRadius: BorderRadius.circular(4),
         border: Border.all(
-          color: isSelected ? Colors.blue : Colors.grey[300],
+          color: isSelected ? Colors.blue : (Colors.grey[300])!,
           width: 2,
         ),
       ),

@@ -18,19 +18,19 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.2 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  intl: 0.15.7
+  intl: ^0.17.0
 
-  direct_select: ^1.0.3
+  direct_select: ^2.0.0
 
-  group_button: ^3.3.1
+  group_button: ^5.0.1
 
-  getwidget: ^ 2.0.4
+  getwidget: ^3.0.1
 
   validators: ^3.0.0
 
@@ -38,13 +38,21 @@ dependencies:
 
   flutter_linkify: ^5.0.2
 
-  url_launcher: ^6.0.0
+  url_launcher: ^6.1.5
+
+  dropdown_button2: ^1.6.3
+
+  #sizer: ^2.0.15
+
+  flutter_sizer: ^1.0.4
+
+  device_preview: ^1.1.0
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  date_format: ^2.0.4
+  cupertino_icons: ^1.0.5
+  date_format: ^2.0.6
 
 dev_dependencies:
   flutter_test:
@@ -64,7 +72,12 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
      - assets/images/
-#     - images/a_dot_ham.jpeg
+     - assets/images/Ballard/posture/
+     - assets/images/Ballard/square_window/
+     - assets/images/Ballard/arm_recoil/
+     - assets/images/Ballard/popliteal_angle/
+     - assets/images/Ballard/scarf_sign/
+     - assets/images/Ballard/heel_ear/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

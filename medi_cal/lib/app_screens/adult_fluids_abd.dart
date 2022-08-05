@@ -41,8 +41,8 @@ class _InputFieldsState extends State<InputFields> {
 
 //saving form after validation
   void _saveForm() {
-    final isValid = _form.currentState.validate();
-    if (!isValid) {
+    final isValid = _form.currentState?.validate();
+    if (!isValid!) {
       return;
     } else {
       compute();
@@ -70,7 +70,7 @@ class _InputFieldsState extends State<InputFields> {
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "\u2022 The values from this calculator are estimates that take "
@@ -267,17 +267,17 @@ class _InputFieldsState extends State<InputFields> {
     );
   }
 
-  String _totalFluidsRounded;
+  late String _totalFluidsRounded;
 
-  double _flowRate;
+  late double _flowRate;
 
-  String _flowRateRounded;
+  late String _flowRateRounded;
 
-  double _totalDeficit;
+  late double _totalDeficit;
 
-  double _totalOngoing;
+  late double _totalOngoing;
 
-  double _totalFluids;
+  late double _totalFluids;
 
   void compute() {
     calcDeficit();
@@ -291,16 +291,16 @@ class _InputFieldsState extends State<InputFields> {
 
 
   void calcDeficit(){
-    final double _deficitVomitus = double.tryParse(_deficitVomitusController.value.text);
-    final double _deficitDiarrhoea = double.tryParse(_deficitDiarrhoeaController.value.text);
-    _totalDeficit = _deficitDiarrhoea + _deficitVomitus;
+    final double? _deficitVomitus = double.tryParse(_deficitVomitusController.value.text);
+    final double? _deficitDiarrhoea = double.tryParse(_deficitDiarrhoeaController.value.text);
+    _totalDeficit = _deficitDiarrhoea! + _deficitVomitus!;
   }
 
   void calcOngoing(){
-    final double _ongoingVomitus = double.tryParse(_ongoingVomitusController.value.text);
-    final double _ongoingDiarrhoea = double.tryParse(_ongoingDiarrhoeaController.value.text);
-    final double _ongoingDrains = double.tryParse(_ongoingDrainsController.value.text);
-    _totalOngoing = _ongoingDiarrhoea + _ongoingVomitus + _ongoingDrains;
+    final double? _ongoingVomitus = double.tryParse(_ongoingVomitusController.value.text);
+    final double? _ongoingDiarrhoea = double.tryParse(_ongoingDiarrhoeaController.value.text);
+    final double? _ongoingDrains = double.tryParse(_ongoingDrainsController.value.text);
+    _totalOngoing = _ongoingDiarrhoea! + _ongoingVomitus! + _ongoingDrains!;
   }
 
   void calcTotalFluid(){

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:medi_cal/app_screens/paediatricFluids.dart';
 import 'package:medi_cal/widget/customWidgets.dart';
@@ -41,8 +40,8 @@ class _InputFieldsState extends State<InputFields> {
 
 //saving form after validation
   void _saveForm() {
-    final isValid = _form.currentState.validate();
-    if (!isValid) {
+    final isValid = _form.currentState?.validate();
+    if (!isValid!) {
       return;
     } else {
       compute();
@@ -70,7 +69,7 @@ class _InputFieldsState extends State<InputFields> {
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "\u2022 This calculator makes use of the Parkland's formula.\n",
@@ -237,29 +236,29 @@ class _InputFieldsState extends State<InputFields> {
     );
   }
 
-  double _parkland;
+  late double _parkland;
 
-  double _maintenance;
+  late double _maintenance;
 
-  double _halfFluid;
+  late double _halfFluid;
 
-  String _roundedHalf;
+  late String _roundedHalf;
 
-  double _totalFluid;
+  late double _totalFluid;
 
-  double _first8hrFlowRate;
+  late double _first8hrFlowRate;
 
-  double _remaining16hrFlowRate;
+  late double _remaining16hrFlowRate;
 
-  String _first8hrFlowRateRounded;
+  late String _first8hrFlowRateRounded;
 
-  String _remaining16hrFlowRateRounded;
+  late String _remaining16hrFlowRateRounded;
 
-  String _totalFluidRounded;
+  late String _totalFluidRounded;
 
-  double _value24hrFlowRate;
+  late double _value24hrFlowRate;
 
-  String _value24hrFlowRateRounded;
+  late String _value24hrFlowRateRounded;
 
   void compute() {
     parklandFormula();
@@ -274,14 +273,14 @@ class _InputFieldsState extends State<InputFields> {
   }
 
   void parklandFormula(){
-    final double _weight = double.tryParse(_weightController.value.text);
-    final double _tbsa = double.tryParse(_tbsaController.value.text);
-    _parkland = 3*_tbsa*_weight;
+    final double? _weight = double.tryParse(_weightController.value.text);
+    final double? _tbsa = double.tryParse(_tbsaController.value.text);
+    _parkland = 3*_tbsa!*_weight!;
   }
 
   void maintenance(){
-    final double _weight = double.tryParse(_weightController.value.text);
-    if (_weight<=10){_maintenance=4*_weight;}
+    final double? _weight = double.tryParse(_weightController.value.text);
+    if (_weight!<=10){_maintenance=4*_weight;}
     else if (_weight>10&&_weight<=20){_maintenance=40+(2*(_weight-10));}
     else if (_weight>20){_maintenance=60 + (1*(_weight-20));}
   }
@@ -303,15 +302,15 @@ class _InputFieldsState extends State<InputFields> {
     ///will require how long after burns before initiation of intervention.
   ///needs to optimised further!!!
   void first8hrFlowRate(){
-    final double _timer = double.tryParse(_burnsTimerController.value.text);
-    if (_timer<8){_first8hrFlowRate= _halfFluid/(8-_timer); _remaining16hrFlowRate = _halfFluid/16;}
+    final double? _timer = double.tryParse(_burnsTimerController.value.text);
+    if (_timer!<8){_first8hrFlowRate= _halfFluid/(8-_timer); _remaining16hrFlowRate = _halfFluid/16;}
     else if (_timer>8){_first8hrFlowRate=_totalFluid/24; _value24hrFlowRate = _totalFluid/24;}
   }
 
 
   void roundFlowRates(){
-    final double _timer = double.tryParse(_burnsTimerController.value.text);
-    if (_timer<8){
+    final double? _timer = double.tryParse(_burnsTimerController.value.text);
+    if (_timer!<8){
     _first8hrFlowRateRounded = _first8hrFlowRate.toStringAsFixed(0);
     _remaining16hrFlowRateRounded = _remaining16hrFlowRate.toStringAsFixed(0);}
    else _value24hrFlowRateRounded = _value24hrFlowRate.toStringAsFixed(0);
@@ -577,8 +576,8 @@ class _InputFieldsState extends State<InputFields> {
   }
 
   void displayResult(){
-    final double _timer = double.tryParse(_burnsTimerController.value.text);
-    if (_timer<=8){displayResult_8hr(context);}
+    final double? _timer = double.tryParse(_burnsTimerController.value.text);
+    if (_timer!<=8){displayResult_8hr(context);}
     else if (_timer>8){displayResult_24hr(context);}
   }
 

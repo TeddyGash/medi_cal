@@ -8,9 +8,7 @@ class PaedDailyBurns extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'PaedDailyBurns',
-      appBarTitle: CustomAppBarLabel(
-        label: "Burns Maintenance",
-      ),
+      label: "Burns Maintenance",
       backButtonDestination: PaediatricFluids(),
       pageBody: InputFields(),
     );

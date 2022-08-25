@@ -8,9 +8,7 @@ class PaedDailyMaintenance extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'PaedDailyMaintenance',
-      appBarTitle: CustomAppBarLabel(
-        label: "Daily Maintenance Fluid",
-      ),
+      label: "Daily Maintenance Fluid",
       backButtonDestination: PaediatricFluids(),
       pageBody: InputFields(),
     );

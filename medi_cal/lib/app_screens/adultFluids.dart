@@ -12,9 +12,7 @@ class AdultFluids extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'AdultFluids',
-      appBarTitle: CustomAppBarLabel(
-        label: "Fluids Calculator (Adults)",
-      ),
+      label: "Fluids Calculator (Adults)",
       backButtonDestination: FluidsHome(),
       pageBody: InputFields(),
     );

@@ -8,9 +8,7 @@ class CHA2DS2VASc extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'CHADSVASc Score',
-      appBarTitle: CustomAppBarLabel(
-        label: "CHADSVASc Score",
-      ),
+      label: "CHADSVASc Score",
       backButtonDestination: HomeScreen(),
       pageBody: InputFields(),
     );

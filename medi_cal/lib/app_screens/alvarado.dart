@@ -8,9 +8,7 @@ class ALVARADO extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'ALVARADO Score',
-      appBarTitle: CustomAppBarLabel(
-        label: "ALVARADO Score",
-      ),
+      label: "ALVARADO Score",
       backButtonDestination: HomeScreen(),
       pageBody: InputFields(),
     );

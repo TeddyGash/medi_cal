@@ -11,9 +11,7 @@ class PaediatricFluids extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'PaediatricFluids',
-      appBarTitle: CustomAppBarLabel(
-        label: "Paediatric Fluids Calculator",
-      ),
+      label: "Paediatric Fluids Calculator",
       backButtonDestination: FluidsHome(),
       pageBody: InputFields(),
     );

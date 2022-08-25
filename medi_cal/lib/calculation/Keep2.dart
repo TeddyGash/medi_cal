@@ -324,3 +324,19 @@ class ErrorDialog extends StatelessWidget {
   }
 }
 */
+
+/*
+setState(() {
+_bmi = (weight / (height * height));
+if (_bmi < 18.5) {
+_comment = "Underweight";
+} else if (18.5 <= _bmi && _bmi < 25) {
+_comment = 'Normal BMI';
+} else if (25 <= _bmi && _bmi < 30) {
+_comment = 'Overweight';
+} else if (30 <= _bmi && _bmi < 40) {
+_comment = 'Obese';
+} else {
+_comment = 'Morbidly Obese';
+}
+});*/

@@ -1,20 +1,21 @@
 //import 'dart:html';
 
+import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:medi_cal/app_screens/home_screen.dart';
 import 'dart:math';
-
 import 'package:medi_cal/widget/customWidgets.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:wc_form_validators/wc_form_validators.dart';
 
 class EGFR extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'eGFR',
-      appBarTitle: CustomAppBarLabel(
-        label: "eGFR Calculator",
-      ),
+      label: "eGFR Calculator",
       backButtonDestination: HomeScreen(),
       pageBody: EGFRCore(),
     );
@@ -41,251 +42,338 @@ class InputFields extends StatefulWidget {
   _InputFieldsState createState() => _InputFieldsState();
 }
 
-// Define a corresponding State class.
-// This class holds data related to the form.
 class _InputFieldsState extends State<InputFields> {
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
-  //
-  // Note: This is a `GlobalKey<FormState>`,
-  // not a GlobalKey<MyCustomFormState>.
-  //final _formKey = GlobalKey<FormState>();
 
-  // the controller for the text field associated with "height"
   final _ageController = TextEditingController();
 
-  // the controller for the text field associated with "weight"
-  //final _genderController = TextEditingController();
-
-  // the controller for the text field associated with "weight"
   final _creatinineController = TextEditingController();
+
+  final _sexController = TextEditingController();
 
   late double _egfr;
 
-  // the message at the beginning
-  String _message = 'Please enter age, gender and serum creatinine';
 
-  var _currentSelectedValue = 'male';
+  late String _comment;
+  double _k = 0.9;
+  double _a = -0.302;
+  double _kf = 1;
+  late double _sCrKRatio;
+  late double sCr;
 
-  void _calculate() {
-    final double? age = double.tryParse(_ageController.value.text);
-    final String gender = 'male';
-    final double? creatinine = double.tryParse(_creatinineController.value.text);
+  final List<String> _units = [
+    'umol/L',
+    'mg/dl',
+  ];
+  String? _selectedUnit = "umol/L";
 
-    if (age! <= 0 || creatinine! <= 0) {
-      setState(() {
-        _message = "Age and Creatinine must be positive numbers";
-      });
-      return;
-    }
+  final List<String> _genders = ["male", "female",];
+  String? _selectedGender = "male";
 
-    if (gender == 'female' && creatinine <= 62) {
-      setState(() {
-        _egfr = 144.0 * pow((creatinine / 61.6), -0.329) * pow(0.993, age);
-          if (_egfr > 90) {
-            _message = "Normal eGFR or Stage 1 CKD. Correlate with imaging studies";
-          } else if (_egfr > 60) {
-            _message = 'CKD Stage 2';
-          } else if (_egfr > 45) {
-            _message = 'CKD Stage 3a';
-          } else if (_egfr > 30) {
-            _message = 'CKD Stage 3b';
-          } else if (_egfr > 15) {
-            _message = 'CKD Stage 4';
-          } else {
-            _message = 'End Stage Kidney Disease';
-          }
-      });
-    }
-
-    else if (gender == 'female' && creatinine >= 62) {
-      setState(() {
-        _egfr = 144.0 * pow((creatinine / 61.6), -1.209) * pow(0.993, age);
-        if (_egfr > 90) {
-          _message = "Normal eGFR or Stage 1 CKD. Correlate with imaging studies";
-        } else if (_egfr > 60) {
-          _message = 'CKD Stage 2';
-        } else if (_egfr > 45) {
-          _message = 'CKD Stage 3a';
-        } else if (_egfr > 30) {
-          _message = 'CKD Stage 3b';
-        } else if (_egfr > 15) {
-          _message = 'CKD Stage 4';
-        } else {
-          _message = 'End Stage Kidney Disease';
-        }
-      });
-    }
-
-    else if (gender == 'male' && creatinine <= 62) {
-      setState(() {
-        _egfr = 141.0 * pow((creatinine / 79.2), -0.411) * pow(0.993, age);
-        if (_egfr > 90) {
-          _message = "Normal eGFR or Stage 1 CKD. Correlate with imaging studies";
-        } else if (_egfr > 60) {
-          _message = 'CKD Stage 2';
-        } else if (_egfr > 45) {
-          _message = 'CKD Stage 3a';
-        } else if (_egfr > 30) {
-          _message = 'CKD Stage 3b';
-        } else if (_egfr > 15) {
-          _message = 'CKD Stage 4';
-        } else {
-          _message = 'End Stage Kidney Disease';
-        }
-      });
-
-    }
-
-    else if (gender == 'male' && creatinine >= 62) {
-      setState(() {
-        _egfr = 141.0 * pow((creatinine / 79.2), -1.209) * pow(0.993, age);
-        if (_egfr > 90) {
-          _message = "Normal eGFR or Stage 1 CKD. Correlate with imaging studies";
-        } else if (_egfr > 60) {
-          _message = 'CKD Stage 2';
-        } else if (_egfr > 45) {
-          _message = 'CKD Stage 3a';
-        } else if (_egfr > 30) {
-          _message = 'CKD Stage 3b';
-        } else if (_egfr > 15) {
-          _message = 'CKD Stage 4';
-        } else {
-          _message = 'End Stage Kidney Disease';
-        }
-      });
-
-    }
-
-  }
-
-
-
-  var _gender = ["male", "female",];
+  final _form = GlobalKey<FormState>(); //for storing form state.
+  final Uri _url = Uri.parse('https://www.kidney.org/content/ckd-epi-creatinine-equation-2021');
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.lightBlueAccent,
-        body: Center(
-          child: Container(
-            width: 320,
-            child: Card(
-              color: Colors.white,
-              elevation: 10,
-              child: Padding(
-                padding: const EdgeInsets.all(20),
+      body: Form(
+        key: _form, //assigning key to form
+        child: Container(
+          padding: EdgeInsets.all(8.w),
+          child: ListView(
+            children: [
+              Container(
+                padding: EdgeInsets.all(5.w),
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                ),
                 child: Column(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TextField(
-                      keyboardType:
-                      TextInputType.numberWithOptions(decimal: false),
-                      decoration: InputDecoration(labelText: 'Age (years)'),
-                      controller: _ageController,
-                    ),
-                     DropdownButton<String>(
-                       items: _gender.map((String dropDownStringItem) {
-                          return DropdownMenuItem<String>(
-                          value: dropDownStringItem,
-                          child: Text(dropDownStringItem),
-                          );
-                          }).toList(),
-                              //value: _currentSelectedValue,
-                              //isDense: true,
-                      onChanged: (newValue) {
-                                setState(() {
-                                  _currentSelectedValue = newValue!;
-                                  //state.didChange(newValue);
-                                });
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '\u2022 This calculator is based on the ',
+                            style: new TextStyle(color: Colors.white,
+                                fontSize: 12.dp),
+                          ),
+                          TextSpan(
+                            text: "CKD-EPI Creatinine Equation (2021).\n",
+                            style: TextStyle(color: Colors.black, fontSize: 12.0.dp),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                launchUrl(_url);
                               },
-                       value: _currentSelectedValue,
-                            ),
-                    TextField(
-                      keyboardType:
-                      TextInputType.numberWithOptions(decimal: true),
-                      decoration: InputDecoration(
-                        labelText: 'Serum Creatinine (umol/L)',
-                      ),
-                      controller: _creatinineController,
-                    ),
-                    ElevatedButton(
-                      onPressed: _calculate,
-                      child: Text('Calculate'),
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Container(
-                      child: Text(
-                        _egfr == null ? 'No Result' : _egfr.toStringAsFixed(2),
-                        style: TextStyle(fontSize: 50),
-                        textAlign: TextAlign.center,
+                          ),
+                        ],
                       ),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      child: Text(
-                        _message,
-                        textAlign: TextAlign.center,
-                      ),
-                    )
+                    TextWidget(text: "\u2022 It is valid for persons aged ≥ 18yrs.\n"),
+                    TextWidget(text: "\u2022 For people less than 18 years of age, the Bedside Schwartz equation is recommended."),
                   ],
                 ),
               ),
-            ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 58.w,
+                    child: TextFormField(
+                      keyboardType:
+                      TextInputType.numberWithOptions(decimal: true),
+                      decoration: InputDecoration(labelText: 'age*'),
+                      controller: _ageController,
+                      validator: Validators.compose([
+                        Validators.required('age is required'),
+                        Validators.min(18, "valid for ≥18yrs"),
+                        //Validators.max(28, ''),
+                      ]),
+                    ),
+                  ),
+                  SizedBox(width: 13.w,
+                      child: Text("yrs",
+                        style: TextStyle(
+                          fontSize: 15.0.dp,
+                        ),))
+                ],
+              ),
+                Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 68.w,
+                          child: DropdownButton2(
+                            items: _genders
+                                .map((_gender) =>
+                                DropdownMenuItem<String>(
+                                  value: _gender,
+                                  child: Text(
+                                    _gender,
+                                    style: TextStyle(
+                                      fontSize: 15.dp,
+                                    ),
+                                  ),
+                                ))
+                                .toList(),
+                            value: _selectedGender,
+                            onChanged: (value) {
+                              setState(() {
+                                _selectedGender = value as String;
+                              });
+                            },
+                            buttonHeight: 11.h,
+                            buttonWidth: 63.w,
+                            itemHeight: 6.h,
+                            dropdownWidth: 63.w,
+                          ),
+                        ),
+                      ],),
+              Row(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                   children: [
+                      SizedBox(
+                       width: 45.w,
+                        child: TextFormField(
+                      keyboardType:
+                      TextInputType.numberWithOptions(decimal: true),
+                      decoration: InputDecoration(labelText: 'serum Creatinine*'),
+                      controller: _creatinineController,
+                      validator: Validators.compose([
+                        Validators.required('required'),
+                        Validators.min(0, "invalid input"),
+                      ]),
+                    ),
+                  ),
+                      SizedBox(width: 20.w,
+                        child:  DropdownButton2(
+                          hint: Text(
+                        'unit',
+                        style: TextStyle(
+                          fontSize: 15.dp,
+                             ),
+                            ),
+                          items: _units
+                          .map((_unit) =>
+                          DropdownMenuItem<String>(
+                            value: _unit,
+                            child: Text(
+                              _unit,
+                              style: TextStyle(
+                                fontSize: 13.dp,
+                              ),
+                            ),
+                          ))
+                          .toList(),
+                      value: _selectedUnit,
+                      onChanged: (value) {
+                        setState(() {
+                          _selectedUnit = value as String;
+                        });
+                      },
+                      buttonHeight: 11.h,
+                      buttonWidth: 20.w,
+                      itemHeight: 4.h,
+                      dropdownWidth: 21.w,
+                    ),)
+                ],
+              ),
+
+                     SizedBox(height: 2.h,),
+
+                     SizedBox(height: 2.h,),
+
+                    MaterialButton(
+                      onPressed: () {
+                      _saveForm();},
+                       child: Container(
+                         width: 70.w,
+                         height: 10.0.h,
+                         padding: EdgeInsets.all(15.0),
+                         child: Material(
+                           color: Colors.blue,
+                          borderRadius: BorderRadius.circular(7.0),
+                             child: Column(
+                           mainAxisAlignment: MainAxisAlignment.center,
+                           children: <Widget>[
+                                Text(
+                              'Calculate',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18.0,
+                              fontFamily: 'helvetica_neue_light',
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      )),
+                ),
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
+  }
+
+  double customHeight =  45.h;
+  double customWidth =  80.w;
+  Color _color = Colors.black;
+
+  //saving form after validation
+  void _saveForm() {
+    final isValid = _form.currentState?.validate();
+    if (!isValid!) {
+      return;
+    } else {
+      compute();
+    }
+  }
+
+  void compute(){
+    processGender();
+    processUnit();
+    sCrKRatio();
+    calculateGFR();
+    comment();
+    showResultDialog();
+  }
+
+  void processGender(){
+    if (_selectedGender == 'female'){
+      _k = 0.7;
+      _a = -0.241;
+      _kf = 1.012;
+    }
+  }
+
+  void processUnit(){
+    final double? _sCr = double.tryParse(_creatinineController.value.text);
+    if (_selectedUnit == 'umol/L'){sCr = _sCr! * 0.0113;}
+    else if (_selectedUnit == 'mg/dl'){sCr = _sCr!;}
+  }
+
+  void sCrKRatio(){
+    _sCrKRatio = sCr/_k;
+  }
+
+  void calculateGFR() {
+    final double? _age = double.tryParse(_ageController.value.text);
+    _egfr = 142 * pow(min(_sCrKRatio, 1), _a) * pow(max(_sCrKRatio, 1), -1.2) * pow(0.9938, _age!) * _kf;
+  }
+
+  void comment() {
+    if (_egfr > 90) {
+      _comment = "Normal eGFR or Stage 1 CKD. Correlate with imaging studies";
+      _color = Colors.green;
+    } else if (_egfr > 60) {
+      _comment = 'CKD Stage 2';
+    } else if (_egfr > 45) {
+      _comment = 'CKD Stage 3a';
+    } else if (_egfr > 30) {
+      _color = Colors.brown;
+      _comment = 'CKD Stage 3b';
+    } else if (_egfr > 15) {
+      _color = Colors.deepOrange;
+      _comment = 'CKD Stage 4';
+    } else {
+      _comment = 'End Stage Kidney Disease';
+      _color = Colors.red;
+    }
+  }
+
+  void showResultDialog() {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(4.w))),
+          contentPadding: EdgeInsets.all(0.0),
+          content: Container(
+              height: customHeight, width: customWidth,
+              child: Column(
+                  children: <Widget>[
+                    Container(
+                      width: customWidth,
+                      padding: EdgeInsets.only(top: 2.0.h, bottom: 2.0.h),
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(4.0.w),
+                            topRight: Radius.circular(4.0.w)),
+                      ),
+                      child: Text("eGFR", textAlign: TextAlign.center,
+                        //overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontWeight: FontWeight.bold,  fontSize: 30.dp, color: Colors.white),),
+                    ),
+                    Padding(padding: EdgeInsets.only(top: 4.h)),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text (_egfr.toStringAsFixed(1), textAlign: TextAlign.center,
+                          style: TextStyle(//fontWeight: FontWeight.bold,
+                              fontSize: 40.dp),),
+                        Text (" ml/min/1.73 m2", textAlign: TextAlign.center,
+                          style: TextStyle(//fontWeight: FontWeight.bold,
+                              fontSize: 20.dp, fontStyle: FontStyle.italic),),
+                      ],
+                    ),
+                    Padding(padding: EdgeInsets.only(top: 3.h)),
+                    Text("Comment" , textAlign: TextAlign.left,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23.dp, color: Colors.blue),),
+                    Padding(padding: EdgeInsets.only(top: 2.h)),
+                    Padding(padding: EdgeInsets.only(top: 1.h)),
+                    Text("$_comment", textAlign: TextAlign.center, style: TextStyle(fontStyle: FontStyle.italic,
+                        fontSize: 18.dp, fontWeight: FontWeight.normal, color: _color),),
+                  ])),
+        );
+      },
+    );
   }
 }
-
-/*@override
-  Widget build(BuildContext context) {
-    // Build a Form widget using the _formKey created above.
-    return Form(
-      key: _formKey,
-      child:
-      Column(
-          children: [
-            TextField(
-              decoration: new InputDecoration(labelText: "Enter age (in years)"),
-              keyboardType: TextInputType.number,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
-              ],),
-            TextField(
-              decoration: new InputDecoration(labelText: "Enter weight (in kg)"),
-              keyboardType: TextInputType.number,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
-              ],),
-            TextField(
-              decoration: new InputDecoration(labelText: "Enter height (in m)"),
-              keyboardType: TextInputType.number,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
-              ],),
-            Container(
-            margin: EdgeInsets.only(top: 70.0),
-            width: 250.0,
-            height: 50.0,
-            child:
-              ElevatedButton(
-              onPressed: () {},
-                child: Text('Calculate BMI',
-                    style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white,
-                    ),),
-          ),
-          // Add TextFormFields and ElevatedButton here.
-
-    ),
-      ],
-    ));
-  }*/
-
-//class CalculateBMI

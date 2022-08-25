@@ -7,9 +7,7 @@ class AdultMaintenance extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'AdultDailyMaintenance',
-      appBarTitle: CustomAppBarLabel(
-        label: "Daily Maintenance(Adult)",
-      ),
+      label: "Daily Maintenance(Adult)",
       backButtonDestination: AdultFluids(),
       pageBody: InputFields(),
     );

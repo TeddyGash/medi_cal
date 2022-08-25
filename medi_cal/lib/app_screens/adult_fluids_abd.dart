@@ -8,9 +8,7 @@ class AdultSurgicalAbdomen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'AdultSurgicalAbdomen',
-      appBarTitle: CustomAppBarLabel(
         label: "Surgical Abdomen",
-      ),
       backButtonDestination: AdultFluids(),
       pageBody: InputFields(),
     );

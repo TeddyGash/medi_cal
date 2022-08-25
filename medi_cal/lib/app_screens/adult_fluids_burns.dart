@@ -8,9 +8,7 @@ class AdultBurns extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'AdultBurns',
-      appBarTitle: CustomAppBarLabel(
         label: "Burns (Adult)",
-      ),
       backButtonDestination: AdultFluids(),
       pageBody: InputFields(),
     );

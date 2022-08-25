@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:medi_cal/app_screens/home_screen.dart';
 
 /*class ResetSelectionButton extends StatelessWidget {
@@ -105,7 +106,7 @@ import 'package:medi_cal/app_screens/home_screen.dart';
   }
 }*/
 
-class CustomAppBarLabel extends StatelessWidget {
+/*class CustomAppBarLabel extends StatelessWidget {
   final String label;
 
   const CustomAppBarLabel({
@@ -115,11 +116,13 @@ class CustomAppBarLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(label),
+        Text(label, style: TextStyle(fontSize: 20.dp),),
+        SizedBox(width: 7.w,),
         IconButton(
-          icon: const Icon(Icons.home,
+          icon: Icon(Icons.home,
               color: Colors.white, size: 24.0, semanticLabel: "Home"),
           onPressed: () {
             Navigator.push(
@@ -131,18 +134,21 @@ class CustomAppBarLabel extends StatelessWidget {
       ],
     );
   }
-}
+}*/
 
 class CustomAppView extends StatelessWidget {
   final String pageTitle;
-  final Widget appBarTitle;
+  //final Widget appBarTitle;
   final Widget pageBody;
   final backButtonDestination;
+  final String label;
 
    const CustomAppView({
     required this.pageTitle,
-    required this.appBarTitle,
-    required this.pageBody, this.backButtonDestination,
+    //required this.appBarTitle,
+    required this.pageBody,
+     this.backButtonDestination,
+     required this.label,
   }) : super();
 
   @override
@@ -153,6 +159,7 @@ class CustomAppView extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           leading: IconButton(
+            padding: EdgeInsets.only(right: 0.0),
               icon: Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.push(
@@ -160,13 +167,84 @@ class CustomAppView extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => backButtonDestination),
                 );
               }),
-          title: appBarTitle,
+          title: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+
+              Text(label, style: TextStyle(fontSize: 20.dp),),
+              SizedBox(width: 7.w,),
+               IconButton(
+                icon: Icon(Icons.home,
+                    color: Colors.white, size: 24.0, semanticLabel: "Home"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                  );
+                },
+              )
+            ],
+          ),
         ),
         body: pageBody,
       ),
     );
   }
 }
+
+/*void showResultDialog() {
+  // flutter defined function
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      // return object of type Dialog
+      return AlertDialog(
+        //insetPadding: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(2.w))),
+        contentPadding: EdgeInsets.all(0.0),
+        //title:
+        content: Container( height: 45.h, width: 70.w,
+            child: Column(
+              //mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    width: 80.w,
+                    padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                    decoration: BoxDecoration(
+                      color: Colors.blueAccent,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(2.0.w),
+                          topRight: Radius.circular(2.0.w)),
+                    ),
+                    child: Text("Ballard Score", textAlign: TextAlign.center,
+                      //overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontWeight: FontWeight.bold,  fontSize: 23.dp, color: Colors.white),),
+                  ),
+                  Padding(padding: EdgeInsets.only(top: 3.h)),
+                  Text ("$totalScore\n" , textAlign: TextAlign.center,
+                    //overflow: TextOverflow.ellipsis,
+                    style: TextStyle(//fontWeight: FontWeight.bold,
+                        fontSize: 20.dp),),
+                  Text('Maturity\n', textAlign: TextAlign.left,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23.dp, color: Colors.blueAccent),),
+                  Padding(padding: EdgeInsets.only(top: 0.0)),
+                  Text ("$_weeks"+"weeks+"+"$_days"+"day(s)\n" , textAlign: TextAlign.center,
+                    //overflow: TextOverflow.ellipsis,
+                    style: TextStyle(//fontWeight: FontWeight.bold,
+                        fontSize: 20.dp),),
+                  Text('Comment:\n', textAlign: TextAlign.left,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                  Text('$_comment', textAlign: TextAlign.center, style: TextStyle(fontStyle: FontStyle.italic,
+                      fontSize: 18.dp, fontWeight: FontWeight.bold),),
+                ])),
+      );
+    },
+  );
+}*/
 
 /*class CustomSelectButton extends StatelessWidget {
   final Color yesButtonColor;
@@ -321,6 +399,111 @@ class ErrorDialog extends StatelessWidget {
           },
         ),
       ],
+    );
+  }
+}
+
+class ResultDialog extends StatelessWidget {
+  ResultDialog({
+    Key? key,
+    required this.customHeight,
+    required this.customWidth,
+    required this.title,
+    required this.total,
+    required this.subHeader,
+    this.interpretation,
+    required this.comment,
+  }) : super(key: key);
+
+  double customHeight = 45.h;
+  double customWidth = 80.w;
+  final String title;
+  final String total;
+  final String subHeader;
+  final String? interpretation;
+  final String comment;
+  Color _color = Colors.black;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      //insetPadding: EdgeInsets.zero,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(4.w))),
+      contentPadding: EdgeInsets.all(0.0),
+      //title:
+      content: Container(
+          height: customHeight, width: customWidth,
+          child: Column(
+            //mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  width: customWidth,
+                  padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                  decoration: BoxDecoration(
+                    color: Colors.blueAccent,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(4.0.w),
+                        topRight: Radius.circular(4.0.w)),
+                  ),
+                  child: Text(title, textAlign: TextAlign.center,
+                    //overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontWeight: FontWeight.bold,  fontSize: 23.dp, color: Colors.white),),
+                ),
+                Padding(padding: EdgeInsets.only(top: 4.h)),
+                Text (total, textAlign: TextAlign.center,
+                  //overflow: TextOverflow.ellipsis,
+                  style: TextStyle(//fontWeight: FontWeight.bold,
+                      fontSize: 40.dp),),
+                Padding(padding: EdgeInsets.only(top: 3.h)),
+                Text(subHeader , textAlign: TextAlign.left,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23.dp, color: Colors.blueAccent),),
+                Padding(padding: EdgeInsets.only(top: 2.h)),
+                if (interpretation != null)...[
+                Text (interpretation!, textAlign: TextAlign.center,
+                  //overflow: TextOverflow.ellipsis,
+                  style: TextStyle(//fontWeight: FontWeight.bold,
+                      fontSize: 20.dp),),
+                /*Text('Comment:\n', textAlign: TextAlign.left,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),*/
+                ],
+                Padding(padding: EdgeInsets.only(top: 1.h)),
+                Text(comment, textAlign: TextAlign.center, style: TextStyle(fontStyle: FontStyle.italic,
+                    fontSize: 18.dp, fontWeight: FontWeight.bold, color: _color),),
+              ])),
+    );
+  }
+}
+
+TextStyle buildTextStyle() {
+  return TextStyle(
+    color: Colors.white,
+    fontSize: 12.0.dp,
+    fontStyle: FontStyle.italic,
+    fontFamily: 'helvetica_neue_light',
+  );
+}
+
+class TextWidget extends StatelessWidget {
+  final String text;
+
+  const TextWidget({
+    required this.text,
+  }) : super(key: null);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 12.0,
+        fontStyle: FontStyle.normal,
+        fontFamily: 'helvetica_neue_light',
+      ),
+      textAlign: TextAlign.start,
     );
   }
 }

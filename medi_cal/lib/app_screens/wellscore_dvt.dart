@@ -8,9 +8,7 @@ class WellsScoreDVT extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'WellsScoreDVT',
-      appBarTitle: CustomAppBarLabel(
-        label: "Well's Score (DVT)",
-      ),
+      label: "Well's Score (DVT)",
       backButtonDestination: HomeScreen(),
       pageBody: InputFields(),
     );

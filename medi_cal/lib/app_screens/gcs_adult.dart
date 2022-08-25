@@ -3,12 +3,12 @@ import 'package:medi_cal/app_screens/home_screen.dart';
 import 'package:medi_cal/widget/customRadio.dart';
 import 'package:medi_cal/widget/customWidgets.dart';
 
-class GCS extends StatelessWidget {
+class AdultGCS extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'GCS Score',
-      appBarTitle: CustomAppBarLabel(label: "GCS Score",),
+      label: "GCS Score",
       backButtonDestination: HomeScreen(),
       pageBody: InputFields(),
     );
@@ -274,7 +274,7 @@ class _InputFieldsState extends State<InputFields> {
   ///Methods
   void resetSelection() {
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (BuildContext context) => GCS()));
+        builder: (BuildContext context) => AdultGCS()));
   }
 
   void computeScore() {

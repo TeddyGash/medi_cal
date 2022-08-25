@@ -13,9 +13,7 @@ class GAcalculatorEDD extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'EGA/EDD Calculator',
-      appBarTitle: CustomAppBarLabel(
-        label: "EGA/EDD Calculator",
-      ),
+      label: "EGA/EDD Calculator",
       backButtonDestination: ChooseMethod(),
       pageBody: GAcalculatorCoreEDD(),
     );

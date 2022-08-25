@@ -8,9 +8,7 @@ class CURB65 extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'CURB-65 Score',
-      appBarTitle: CustomAppBarLabel(
-        label: "CURB-65 Score",
-      ),
+      label: "CURB-65 Score",
       backButtonDestination: HomeScreen(),
       pageBody: InputFields(),
     );

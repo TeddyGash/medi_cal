@@ -9,9 +9,7 @@ class WeightEstimator extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'WeightEstimator',
-      appBarTitle: CustomAppBarLabel(
-        label: "Paediatric Weight Estimator",
-      ),
+      label: "Paediatric Weight Estimator",
       backButtonDestination: HomeScreen(),
       pageBody: InputFields(),
     );

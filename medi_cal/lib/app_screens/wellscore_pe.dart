@@ -8,7 +8,7 @@ class WellsScorePE extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'WellsScore(PE)',
-      appBarTitle: CustomAppBarLabel(label: "WellsScore(PE)",),
+      label: "WellsScore(PE)",
       backButtonDestination: HomeScreen(),
       pageBody: InputFields(),
     );

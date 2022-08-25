@@ -8,9 +8,7 @@ class BISHOP extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'BISHOP Score',
-      appBarTitle: CustomAppBarLabel(
-        label: "BISHOP Score",
-      ),
+      label: "BISHOP Score",
       backButtonDestination: HomeScreen(),
       pageBody: InputFields(),
     );

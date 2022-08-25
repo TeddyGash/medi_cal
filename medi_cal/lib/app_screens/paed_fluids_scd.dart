@@ -8,9 +8,7 @@ class PaedDailySCD extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'PaedSCD',
-      appBarTitle: CustomAppBarLabel(
-        label: "SCD Crisis Maintenance",
-      ),
+      label: "SCD Crisis Maintenance",
       backButtonDestination: PaediatricFluids(),
       pageBody: InputFields(),
     );

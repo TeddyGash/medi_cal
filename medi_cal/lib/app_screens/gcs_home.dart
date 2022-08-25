@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:medi_cal/app_screens/adultFluids.dart';
 import 'package:medi_cal/app_screens/home_screen.dart';
-import 'package:medi_cal/app_screens/paediatricFluids.dart';
 import 'package:medi_cal/widget/customWidgets.dart';
+import 'gcs_adult.dart';
+import 'gcs_paeds.dart';
 
-class FluidsHome extends StatefulWidget {
+class GCSHome extends StatefulWidget {
   @override
-  _FluidsHomeState createState() => _FluidsHomeState();
+  _GCSHomeState createState() => _GCSHomeState();
 }
 
-class _FluidsHomeState extends State<FluidsHome> {
+class _GCSHomeState extends State<GCSHome> {
 
   @override
   Widget build(BuildContext context) {
     return CustomAppView(
-      pageTitle: 'FluidsHome',
-      label: "Fluids Calculator",
+      pageTitle: 'GCSHome',
+      label: "GCS Calculator",
       backButtonDestination: HomeScreen(),
       pageBody: Center(
           child: Container(
@@ -32,7 +32,7 @@ class _FluidsHomeState extends State<FluidsHome> {
                               Navigator.of(context).push(
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          PaediatricFluids()));
+                                          PaediatricGCS()));
                             },
                             child: SizedBox(
                               //padding: EdgeInsets.all(10),
@@ -55,7 +55,7 @@ class _FluidsHomeState extends State<FluidsHome> {
                               Navigator.of(context).push(
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          AdultFluids()));
+                                          AdultGCS()));
                             },
                             child: SizedBox(
                               //padding: EdgeInsets.all(10),

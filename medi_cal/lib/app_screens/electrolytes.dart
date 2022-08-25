@@ -16,9 +16,7 @@ class _SelectElectrolyteState extends State<SelectElectrolyte> {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'ElectrolyteDeficitCalculator',
-      appBarTitle: CustomAppBarLabel(
-        label: "Electrolyte Deficit Calculator",
-      ),
+      label: "Electrolyte Deficit Calculator",
       backButtonDestination: HomeScreen(),
       pageBody: Center(
           child: Container(

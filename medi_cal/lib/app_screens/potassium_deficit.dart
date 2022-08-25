@@ -10,9 +10,7 @@ class PotassiumDeficit extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'Potassium Deficit Calculator',
-      appBarTitle: CustomAppBarLabel(
-        label: "Potassium Deficit Calculator",
-      ),
+      label: "Potassium Deficit Calculator",
       backButtonDestination: SelectElectrolyte(),
       pageBody: InputFields(),
     );
@@ -38,6 +36,7 @@ class _InputFieldsState extends State<InputFields> {
   //final double weight = double.tryParse(_weightController.value.text);
 
   final _form = GlobalKey<FormState>(); //for storing form state.
+  final Uri _url = Uri.parse('https://emedicine.medscape.com/article/2054364-overview#:~:text=Adult%2Felderly%3A%203.5%2D5.0,%3A%204.1%2D5.3%20mEq%2FL');
 
 //saving form after validation
   void _saveForm() {
@@ -87,7 +86,7 @@ class _InputFieldsState extends State<InputFields> {
                             text: 'Medscape',
                             style: TextStyle(color: Colors.black),
                             recognizer: TapGestureRecognizer()
-                              ..onTap = () { launch('https://emedicine.medscape.com/article/2054364-overview#:~:text=Adult%2Felderly%3A%203.5%2D5.0,%3A%204.1%2D5.3%20mEq%2FL');
+                              ..onTap = () { launchUrl(_url);
                               },
                           ),
                         ],
@@ -260,25 +259,4 @@ class _InputFieldsState extends State<InputFields> {
   }
 }
 
-class TextWidget extends StatelessWidget {
-  final String text;
-
-  const TextWidget({
-    required this.text,
-  }) : super(key: null);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: 12.0,
-        fontStyle: FontStyle.italic,
-        fontFamily: 'helvetica_neue_light',
-      ),
-      textAlign: TextAlign.start,
-    );
-  }
-}
 

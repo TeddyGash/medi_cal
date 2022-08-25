@@ -8,9 +8,7 @@ class AdultGastroenteritis extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'AdultGastroenteritis',
-      appBarTitle: CustomAppBarLabel(
         label: "Gastroenteritis (Adult)",
-      ),
       backButtonDestination: AdultFluids(),
       pageBody: InputFields(),
     );

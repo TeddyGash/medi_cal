@@ -8,9 +8,7 @@ class PaedDailyGE extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppView(
       pageTitle: 'PaedGE',
-      appBarTitle: CustomAppBarLabel(
-        label: "Gastroenteritis Maintenance",
-      ),
+      label: "Gastroenteritis Maintenance",
       backButtonDestination: PaediatricFluids(),
       pageBody: InputFields(),
     );

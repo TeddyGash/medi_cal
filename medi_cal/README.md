@@ -1,16 +1,27 @@
 # medi_cal
 
-A new Flutter application.
+MediCal is a multitool Medical Calculator containing commonly used calculators in 
+General Medical practice. 
 
-## Getting Started
+Programming Language: Dart.
+SDK: Flutter.
+Platforms: android, iOS.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Includes:
+ - eGFR Calculator
+ - BMI Calculator
+ - HASBLED Score Calculator 
+ - CHA2DS2VASC Score Calculator
+ - Well's Score (DVT) Calculator
+ - Well's Score (PE) Calculator
+ - CURB-65 Score Calculator
+ - Gestational Age, LMP, EDD Calculator
+ - Alvarado Score Calculator
+ - GCS Calculator
+ - Electrolyte Deficits Calculator
+ - Adult IV Fluids Volume calculator (Burns, Surgical, Enteritis, SCD, etc)
+ - Paediatric IV Fluids Volume calculator (Burns, Surgical, Enteritis, SCD, etc)
+ - Pediatric Weight Estimator
+ - Ballard's Score Calculators
+ - Thompson's Score Calculator
+ - Serum Bilirubin Calculator

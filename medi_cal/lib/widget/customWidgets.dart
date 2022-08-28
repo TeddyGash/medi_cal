@@ -415,14 +415,14 @@ class ResultDialog extends StatelessWidget {
     required this.comment,
   }) : super(key: key);
 
-  double customHeight = 45.h;
-  double customWidth = 80.w;
+  final double customHeight;
+  final double customWidth;
   final String title;
   final String total;
   final String subHeader;
   final String? interpretation;
   final String comment;
-  Color _color = Colors.black;
+  final Color _color = Colors.black;
 
   @override
   Widget build(BuildContext context) {
@@ -472,6 +472,69 @@ class ResultDialog extends StatelessWidget {
                 Padding(padding: EdgeInsets.only(top: 1.h)),
                 Text(comment, textAlign: TextAlign.center, style: TextStyle(fontStyle: FontStyle.italic,
                     fontSize: 18.dp, fontWeight: FontWeight.bold, color: _color),),
+              ])),
+    );
+  }
+}
+
+class ResultDialog2 extends StatelessWidget {
+  ResultDialog2({
+    Key? key,
+    required this.customHeight,
+    required this.customWidth,
+    required this.title,
+    required this.total,
+    required this.subHeader,
+    required this.comment,
+    required this.commentColor,
+  }) : super(key: key);
+
+  final double customHeight;
+  final double customWidth;
+  final String title;
+  final String total;
+  final String subHeader;
+  final String comment;
+  final Color commentColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      //insetPadding: EdgeInsets.zero,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(4.w))),
+      contentPadding: EdgeInsets.all(0.0),
+      //title:
+      content: Container(
+          height: customHeight, width: customWidth,
+          child: Column(
+            //mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  width: customWidth,
+                  padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(4.0.w),
+                        topRight: Radius.circular(4.0.w)),
+                  ),
+                  child: Text(title, textAlign: TextAlign.center,
+                    //overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontWeight: FontWeight.bold,  fontSize: 23.dp, color: Colors.white),),
+                ),
+                Padding(padding: EdgeInsets.only(top: 4.h)),
+                Text (total, textAlign: TextAlign.center,
+                  //overflow: TextOverflow.ellipsis,
+                  style: TextStyle(//fontWeight: FontWeight.bold,
+                      fontSize: 40.dp),),
+                Padding(padding: EdgeInsets.only(top: 3.h)),
+                Text(subHeader , textAlign: TextAlign.left,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23.dp, color: Colors.blue),),
+                Padding(padding: EdgeInsets.only(top: 1.5.h)),
+                Text(comment, textAlign: TextAlign.center, style: TextStyle(fontStyle: FontStyle.italic,
+                    fontSize: 18.dp, fontWeight: FontWeight.normal, color: commentColor),),
               ])),
     );
   }

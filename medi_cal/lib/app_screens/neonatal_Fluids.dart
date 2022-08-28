@@ -240,7 +240,7 @@ class _InputFieldsState extends State<InputFields> {
     roundFluids();
     calcFlowRate();
     roundFlowRate();
-    displayResult();
+    showResultDialog();
   }
 
   void chooseCalculator() {
@@ -284,6 +284,25 @@ class _InputFieldsState extends State<InputFields> {
 
   void roundFlowRate(){
     _flowRateRounded = _flowRate.toStringAsFixed(0);
+  }
+
+  Color _color = Colors.black;
+  void showResultDialog() {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return ResultDialog2(
+          customHeight: 38.h,
+          customWidth: 75.w,
+          title: "24h Maintenance",
+          total: "$_fluidsToDisplay"+"ml",
+          subHeader: "Flow Rate:",
+          comment: "$_flowRateRounded"+"ml/h",
+          commentColor: _color,
+        );
+      },
+    );
   }
 
   void displayResult() {
@@ -342,82 +361,3 @@ class _InputFieldsState extends State<InputFields> {
         builder: (BuildContext context) => Fluids()));
   }
 }
-
-/*
-AlertDialog(
-content: Container(
-width: 75.w,
-//MediaQuery.of(context).size.width / 1.3,
-height: 40.h,
-//MediaQuery.of(context).size.height / 3.0,
-decoration: BoxDecoration(
-shape: BoxShape.rectangle,
-color: const Color(0xFFFFFF),
-borderRadius: BorderRadius.all(Radius.circular(4.0.w)),
-),
-child: Column(
-mainAxisAlignment: MainAxisAlignment.start,
-children: <Widget>[
-Text(
-'Daily Maintenance Fluid',
-style: TextStyle(
-color: Colors.blueAccent,
-fontSize: 24.0,
-//fontStyle: FontStyle.bold,
-fontFamily: 'helvetica_neue_light',
-),
-textAlign: TextAlign.center,
-),
-Text(
-"Total: $_fluidsToDisplay ml/24h",
-//maxLines: 11,
-overflow: TextOverflow.ellipsis,
-style: TextStyle(
-color: Colors.black,
-fontSize: 20.0,
-fontFamily: 'RobotoMono',
-),
-textAlign: TextAlign.center,
-),
-Text(
-"Flow rate: $_flowRateRounded ml/h",
-//maxLines: 11,
-overflow: TextOverflow.ellipsis,
-style: TextStyle(
-color: Colors.black,
-fontSize: 20.0,
-fontFamily: 'RobotoMono',
-),
-textAlign: TextAlign.center,
-),
-MaterialButton(
-onPressed: () {
-close();
-},
-child: Container(
-width: MediaQuery.of(context).size.width,
-height: MediaQuery.of(context).size.height / 12,
-padding: EdgeInsets.all(15.0),
-child: Material(
-color: Colors.green,
-borderRadius: BorderRadius.circular(25.0),
-child: Column(
-mainAxisAlignment: MainAxisAlignment.center,
-children: <Widget>[
-Text(
-'Dismiss',
-style: TextStyle(
-color: Colors.white,
-fontSize: 18.0,
-fontFamily: 'helvetica_neue_light',
-),
-textAlign: TextAlign.center,
-),
-],
-)),
-),
-),
-],
-),
-),
-);*/

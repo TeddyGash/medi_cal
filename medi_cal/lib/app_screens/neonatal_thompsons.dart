@@ -624,9 +624,6 @@ class _InputFieldsState extends State<InputFields> {
         ));
   }
 
-  double customHeight =  40.h;
-  double customWidth =  80.w;
-
   void resetSelection() {
     Navigator.of(context).push(MaterialPageRoute(
         builder: (BuildContext context) => ThompsonsScore()));
@@ -687,7 +684,27 @@ class _InputFieldsState extends State<InputFields> {
     );
   }
 
+  Color _color = Colors.black;
+
   void showResultDialog() {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return ResultDialog2(
+          customHeight: 40.h,
+          customWidth: 75.w,
+          title: "Thompson Score",
+          total: '$totalScore',
+          subHeader: "Comment:",
+          comment: _comment,
+          commentColor: _color,
+        );
+      },
+    );
+  }
+
+  /*void showResultDialog() {
     // flutter defined function
     showDialog(
       context: context,
@@ -729,5 +746,5 @@ class _InputFieldsState extends State<InputFields> {
         );
       },
     );
-  }
+  }*/
 }

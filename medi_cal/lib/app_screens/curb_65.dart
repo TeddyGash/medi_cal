@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:medi_cal/app_screens/home_screen.dart';
 import 'package:medi_cal/widget/customRadio.dart';
 import 'package:medi_cal/widget/customWidgets.dart';
@@ -37,219 +38,241 @@ class _InputFieldsState extends State<InputFields> {
     return Scaffold(
         body: Form(
           //key: _formKey,
-          child: ListView(
-            children: [
-              Text(
-                'Select as appropriate',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: 15.0,
-                    fontWeight: FontWeight.normal),
-              ),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-              ),
-              Divider(height: 5.0, color: Colors.black),
-              Padding(
-                padding: EdgeInsets.all(2.0),
-              ),
-              Text(
-                '1. Confusion?',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15.0,
+          child: Container(
+            width: 100.w,
+            padding: EdgeInsets.all(2.w),
+            child: ListView(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(0.9.h),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  MyRadioListTile(
-                    value: 1,
-                    groupValue: _responseConfusion,
-                    answer: 'Yes',
-                    //title: Text('One'),
-                    onChanged: (value) => setState(() => _responseConfusion = value),
-                  ),
-                  MyRadioListTile(
-                    value: 0,
-                    groupValue: _responseConfusion,
-                    answer: 'No',
-                    //title: Text('Two'),
-                    onChanged: (value) => setState(() => _responseConfusion = value),
-                  ),
-                ],
-              ),
-              Divider(
-                height: 5.0,
-                color: Colors.black,
-              ),
-              Padding(
-                padding: EdgeInsets.all(2.0),
-              ),
-              Text(
-                '2. Serum Urea >7mmol/L?',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15.0,
+                Text(
+                  'Select as appropriate',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 15.0.dp, fontWeight: FontWeight.normal,
+                      fontStyle: FontStyle.italic),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  MyRadioListTile(
-                    value: 1,
-                    groupValue: _responseUrea,
-                    answer: 'Yes',
-                    //title: Text('One'),
-                    onChanged: (value) => setState(() => _responseUrea = value),
-                  ),
-                  MyRadioListTile(
-                    value: 0,
-                    groupValue: _responseUrea,
-                    answer: 'No',
-                    //title: Text('Two'),
-                    onChanged: (value) => setState(() => _responseUrea = value),
-                  ),
-                ],
-              ),
-              Divider(
-                height: 5.0,
-                color: Colors.black,
-              ),
-              Padding(
-                padding: EdgeInsets.all(2.0),
-              ),
-              Text(
-                '3. Respiratory rate ≥30cpm?',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15.0,
+                Padding(
+                  padding: EdgeInsets.all(0.7.h),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  MyRadioListTile(
-                    value: 1,
-                    groupValue: _responseResp,
-                    answer: 'Yes',
-                    //title: Text('One'),
-                    onChanged: (value) => setState(() => _responseResp = value),
+                Text(
+                  '1. Confusion?',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15.0.dp,
                   ),
-                  MyRadioListTile(
-                    value: 0,
-                    groupValue: _responseResp,
-                    answer: 'No',
-                    //title: Text('Two'),
-                    onChanged: (value) => setState(() => _responseResp = value),
-                  ),
-                ],
-              ),
-              Divider(
-                height: 5.0,
-                color: Colors.black,
-              ),
-              Padding(
-                padding: EdgeInsets.all(2.0),
-              ),
-              Text(
-                '4. SBP ≤ 90mmHg or DBP ≤ 60mmHg?',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15.0,
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  MyRadioListTile(
-                    value: 1,
-                    groupValue: _responseHypotension,
-                    answer: 'Yes',
-                    //title: Text('One'),
-                    onChanged: (value) => setState(() => _responseHypotension = value),
-                  ),
-                  MyRadioListTile(
-                    value: 0,
-                    groupValue: _responseHypotension,
-                    answer: 'No',
-                    //title: Text('Two'),
-                    onChanged: (value) => setState(() => _responseHypotension = value),
-                  ),
-                ],
-              ),
-              Divider(
-                height: 5.0,
-                color: Colors.black,
-              ),
-              Padding(
-                padding: EdgeInsets.all(2.0),
-              ),
-              Text(
-                '5. Age >65years?',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15.0,
+                Padding(
+                  padding: EdgeInsets.all(0.5.h),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  MyRadioListTile(
-                    value: 1,
-                    groupValue: _responseAge,
-                    answer: 'Yes',
-                    //title: Text('One'),
-                    onChanged: (value) => setState(() => _responseAge = value),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    MyRadioListTile(
+                      value: 1,
+                      groupValue: _responseConfusion,
+                      answer: 'Yes',
+                      //title: Text('One'),
+                      onChanged: (value) => setState(() => _responseConfusion = value),
+                    ),
+                    MyRadioListTile(
+                      value: 0,
+                      groupValue: _responseConfusion,
+                      answer: ' No ',
+                      //title: Text('Two'),
+                      onChanged: (value) => setState(() => _responseConfusion = value),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.all(1.h),
+                ),
+                Text(
+                  '2. Serum Urea >7mmol/L?',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15.0.dp,
                   ),
-                  MyRadioListTile(
-                    value: 0,
-                    groupValue: _responseAge,
-                    answer: 'No',
-                    //title: Text('Two'),
-                    onChanged: (value) => setState(() => _responseAge = value),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(0.5.h),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    MyRadioListTile(
+                      value: 1,
+                      groupValue: _responseUrea,
+                      answer: 'Yes',
+                      //title: Text('One'),
+                      onChanged: (value) => setState(() => _responseUrea = value),
+                    ),
+                    MyRadioListTile(
+                      value: 0,
+                      groupValue: _responseUrea,
+                      answer: ' No ',
+                      //title: Text('Two'),
+                      onChanged: (value) => setState(() => _responseUrea = value),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.all(1.h),
+                ),
+                Text(
+                  '3. Respiratory rate ≥30cpm?',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15.0.dp,
                   ),
-                ],
-              ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(0.5.h),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    MyRadioListTile(
+                      value: 1,
+                      groupValue: _responseResp,
+                      answer: 'Yes',
+                      //title: Text('One'),
+                      onChanged: (value) => setState(() => _responseResp = value),
+                    ),
+                    MyRadioListTile(
+                      value: 0,
+                      groupValue: _responseResp,
+                      answer: ' No ',
+                      //title: Text('Two'),
+                      onChanged: (value) => setState(() => _responseResp = value),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.all(1.h),
+                ),
+                Text(
+                  '4. SBP ≤ 90mmHg or DBP ≤ 60mmHg?',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15.0.dp,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(0.5.h),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    MyRadioListTile(
+                      value: 1,
+                      groupValue: _responseHypotension,
+                      answer: 'Yes',
+                      //title: Text('One'),
+                      onChanged: (value) => setState(() => _responseHypotension = value),
+                    ),
+                    MyRadioListTile(
+                      value: 0,
+                      groupValue: _responseHypotension,
+                      answer: ' No ',
+                      //title: Text('Two'),
+                      onChanged: (value) => setState(() => _responseHypotension = value),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.all(1.h),
+                ),
+                Text(
+                  '5. Age >65years?',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15.0.dp,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(0.5.h),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    MyRadioListTile(
+                      value: 1,
+                      groupValue: _responseAge,
+                      answer: 'Yes',
+                      //title: Text('One'),
+                      onChanged: (value) => setState(() => _responseAge = value),
+                    ),
+                    MyRadioListTile(
+                      value: 0,
+                      groupValue: _responseAge,
+                      answer: ' No ',
+                      //title: Text('Two'),
+                      onChanged: (value) => setState(() => _responseAge = value),
+                    ),
+                  ],
+                ),
 
-              Divider(
-                height: 5.0,
-                color: Colors.black,
-              ),
-              Padding(
-                padding: EdgeInsets.all(2.0),
-              ),
-              ElevatedButton(
-                onPressed: computeScore,
-                child: Text(
-                  'Check Final Score',
-                  style: TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.normal,
-                      color: Colors.white),
+                Padding(
+                  padding: EdgeInsets.all(1.h),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(4.0),
-              ),
-              ElevatedButton(
-                onPressed:resetSelection,
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.redAccent),
-                child: Text(
-                  'Reset Selection',
-                  style: TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.normal,
-                      color: Colors.white),
+                MaterialButton(
+                  onPressed:validateAnswers,
+                  child: Container(
+                    width: 70.w,
+                    height: 10.0.h,
+                    padding: EdgeInsets.all(15.0),
+                    child: Material(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(7.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              'Check Final Score',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16.0.dp,
+                                fontFamily: 'helvetica_neue_light',
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        )),
+                  ),
                 ),
-              ),
-            ],
+                MaterialButton(
+                  onPressed:resetSelection,
+                  child: Container(
+                    width: 70.w,
+                    height: 10.0.h,
+                    padding: EdgeInsets.only(left: 4.w, right: 4.w, bottom: 7.w),
+                    child: Material(
+                        color: Colors.redAccent,
+                        borderRadius: BorderRadius.circular(7.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              'Reset Selection',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16.0.dp,
+                                fontFamily: 'helvetica_neue_light',
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        )),
+                  ),
+                ),
+              ],
+            ),
           ),
         ));
   }
@@ -261,9 +284,9 @@ class _InputFieldsState extends State<InputFields> {
   }
 
   void computeScore() {
-    validateAnswers();
     sumAnswers();
     comment();
+    showResultDialog();
   }
 
   void validateAnswers() {
@@ -275,9 +298,8 @@ class _InputFieldsState extends State<InputFields> {
     {
       showErrorDialog();
     } else {
-      showResultDialog();
+      computeScore();
     }
-/**/
   }
 
   void sumAnswers() {
@@ -290,11 +312,17 @@ class _InputFieldsState extends State<InputFields> {
 
   void comment() {
     if (totalScore == 0 || totalScore == 1 ) {
-      _pneumoniaSeverity = 'MILD; consider OPD mgt.';
+      _pneumoniaSeverity = 'MILD; '
+          '\nconsider OPD mgt.';
+      _color = Colors.green;
     } else if (totalScore ==2 ) {
-      _pneumoniaSeverity = 'MODERATE; consider in-patient mgt';
+      _pneumoniaSeverity = 'MODERATE; '
+          '\nconsider in-patient mgt';
+      _color = Colors.brown;
     } else if (totalScore > 2) {
-      _pneumoniaSeverity = 'SEVERE; requires admission';
+      _pneumoniaSeverity = 'SEVERE; '
+          '\nrequires admission';
+      _color = Colors.red;
     }
   }
 
@@ -309,40 +337,20 @@ class _InputFieldsState extends State<InputFields> {
     );
   }
 
+  Color _color = Colors.black;
   void showResultDialog() {
     // flutter defined function
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        // return object of type Dialog
-        return AlertDialog(
-          title: Text(
-            "CURB-65 Score:", textAlign: TextAlign.center,
-            //overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          content: Container(
-              height: 150,
-              width: 200,
-              child: Column(
-                //mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      "$totalScore\n", textAlign: TextAlign.center,
-                      //overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        //fontWeight: FontWeight.bold,
-                          fontSize: 25),
-                    ),
-                    Text(
-                      'Pneumonia Severity:\n',
-                      textAlign: TextAlign.left,
-                      overflow: TextOverflow.ellipsis,
-                      style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
-                    Text('$_pneumoniaSeverity', textAlign: TextAlign.center),
-                  ])),
+        return ResultDialog2(
+          customHeight: 40.h,
+          customWidth: 75.w,
+          title: "CURB-65 Score",
+          total: '$totalScore',
+          subHeader: "Severity:",
+          comment: _pneumoniaSeverity,
+          commentColor: _color,
         );
       },
     );

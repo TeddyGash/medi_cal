@@ -49,7 +49,7 @@ class _InputFieldsState extends State<InputFields> {
                 child: ListView(
                      children: [
                        Padding(
-                         padding: EdgeInsets.all(1.5.w),
+                         padding: EdgeInsets.all(0.9.h),
                        ),
                      Text(
                        'Select as appropriate',
@@ -60,7 +60,7 @@ class _InputFieldsState extends State<InputFields> {
                        fontStyle: FontStyle.italic),
                      ),
                        Padding(
-                         padding: EdgeInsets.all(1.w),
+                         padding: EdgeInsets.all(0.7.h),
                        ),
                      //Divider(height: 5.0, color: Colors.black),
                      Text(
@@ -72,7 +72,7 @@ class _InputFieldsState extends State<InputFields> {
                        ),
                      ),
                        Padding(
-                         padding: EdgeInsets.all(1.w),
+                         padding: EdgeInsets.all(0.5.h),
                        ),
                      Row(
                      mainAxisAlignment: MainAxisAlignment.center,
@@ -94,7 +94,7 @@ class _InputFieldsState extends State<InputFields> {
                      ),
                      //Divider(height: 5.0, color: Colors.black,),
                        Padding(
-                         padding: EdgeInsets.all(2.w),
+                         padding: EdgeInsets.all(1.h),
                        ),
                      Text(
                        '2. Abnormal Renal Function?',
@@ -105,7 +105,7 @@ class _InputFieldsState extends State<InputFields> {
                        ),
                      ),
                        Padding(
-                         padding: EdgeInsets.all(1.w),
+                         padding: EdgeInsets.all(0.5.h),
                        ),
                      Row(
                        mainAxisAlignment: MainAxisAlignment.center,
@@ -128,7 +128,7 @@ class _InputFieldsState extends State<InputFields> {
                      ),
                      //Divider(height: 5.0, color: Colors.black,),
                        Padding(
-                         padding: EdgeInsets.all(2.w),
+                         padding: EdgeInsets.all(1.h),
                        ),
                      Text(
                        '3. Abnormal Liver Function?',
@@ -139,7 +139,7 @@ class _InputFieldsState extends State<InputFields> {
                        ),
                      ),
                        Padding(
-                         padding: EdgeInsets.all(1.w),
+                         padding: EdgeInsets.all(0.5.h),
                        ),
                      Row(
                        mainAxisAlignment: MainAxisAlignment.center,
@@ -162,7 +162,7 @@ class _InputFieldsState extends State<InputFields> {
                      ),
                      //Divider(height: 5.0, color: Colors.black,),
                        Padding(
-                         padding: EdgeInsets.all(2.w),
+                         padding: EdgeInsets.all(1.h),
                        ),
                      Text(
                        '4. Age?',
@@ -173,7 +173,7 @@ class _InputFieldsState extends State<InputFields> {
                        ),
                      ),
                        Padding(
-                         padding: EdgeInsets.all(1.w),
+                         padding: EdgeInsets.all(0.5.h),
                        ),
                      Row(
                        mainAxisAlignment: MainAxisAlignment.center,
@@ -196,7 +196,7 @@ class _InputFieldsState extends State<InputFields> {
                      ),
                      //Divider(height: 5.0, color: Colors.black,),
                        Padding(
-                         padding: EdgeInsets.all(2.w),
+                         padding: EdgeInsets.all(1.h),
                        ),
                      Text(
                        '5. Previous Stroke?',
@@ -207,7 +207,7 @@ class _InputFieldsState extends State<InputFields> {
                        ),
                      ),
                        Padding(
-                         padding: EdgeInsets.all(1.w),
+                         padding: EdgeInsets.all(0.5.h),
                        ),
                      Row(
                        mainAxisAlignment: MainAxisAlignment.center,
@@ -230,7 +230,7 @@ class _InputFieldsState extends State<InputFields> {
                      ),
                      //Divider(height: 5.0, color: Colors.black,),
                        Padding(
-                         padding: EdgeInsets.all(2.w),
+                         padding: EdgeInsets.all(1.h),
                        ),
                      Text(
                        '6. Prior major bleeding/Predisposition?',
@@ -241,7 +241,7 @@ class _InputFieldsState extends State<InputFields> {
                        ),
                      ),
                        Padding(
-                         padding: EdgeInsets.all(1.w),
+                         padding: EdgeInsets.all(0.5.h),
                        ),
                      Row(
                        mainAxisAlignment: MainAxisAlignment.center,
@@ -264,7 +264,7 @@ class _InputFieldsState extends State<InputFields> {
                      ),
                      //Divider(height: 5.0, color: Colors.black,),
                        Padding(
-                         padding: EdgeInsets.all(2.w),
+                         padding: EdgeInsets.all(1.h),
                        ),
                      Text(
                        '7. Taking drugs likely to cause bleeding?',
@@ -275,7 +275,7 @@ class _InputFieldsState extends State<InputFields> {
                        ),
                      ),
                        Padding(
-                         padding: EdgeInsets.all(1.w),
+                         padding: EdgeInsets.all(0.5.h),
                        ),
                      Row(
                        mainAxisAlignment: MainAxisAlignment.center,
@@ -298,7 +298,7 @@ class _InputFieldsState extends State<InputFields> {
                      ),
                      //Divider(height: 5.0, color: Colors.black,),
                        Padding(
-                         padding: EdgeInsets.all(2.w),
+                         padding: EdgeInsets.all(1.h),
                        ),
                      Text(
                        '8. Alcohol use?',
@@ -309,7 +309,7 @@ class _InputFieldsState extends State<InputFields> {
                        ),
                      ),
                        Padding(
-                         padding: EdgeInsets.all(1.w),
+                         padding: EdgeInsets.all(0.5.h),
                        ),
                      Row(
                        mainAxisAlignment: MainAxisAlignment.center,
@@ -331,7 +331,7 @@ class _InputFieldsState extends State<InputFields> {
                        ],
                      ),
                        Padding(
-                         padding: EdgeInsets.all(2.w),
+                         padding: EdgeInsets.all(1.h),
                        ),
                      Text(
                        '9. Labile INR?',
@@ -342,7 +342,7 @@ class _InputFieldsState extends State<InputFields> {
                        ),
                      ),
                        Padding(
-                         padding: EdgeInsets.all(1.w),
+                         padding: EdgeInsets.all(0.5.h),
                        ),
                      Row(
                        mainAxisAlignment: MainAxisAlignment.center,
@@ -364,9 +364,7 @@ class _InputFieldsState extends State<InputFields> {
                        ],
                      ),
                        MaterialButton(
-                         onPressed: () {
-                           computeScore();
-                         },
+                         onPressed: validateAnswers,
                          child: Container(
                            width: 70.w,
                            height: 10.0.h,
@@ -428,9 +426,9 @@ class _InputFieldsState extends State<InputFields> {
   }
 
   void computeScore() {
-    validateAnswers();
     sumAnswers();
     comment();
+    showResultDialog();
   }
 
   void sumAnswers() {
@@ -478,39 +476,14 @@ class _InputFieldsState extends State<InputFields> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(4.w))),
-          contentPadding: EdgeInsets.all(0.0),
-          content: Container(
-              height: customHeight, width: customWidth,
-              child: Column(
-                  children: <Widget>[
-                    Container(
-                      width: customWidth,
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(4.0.w),
-                            topRight: Radius.circular(4.0.w)),
-                      ),
-                      child: Text("HASBLED Score", textAlign: TextAlign.center,
-                        //overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontWeight: FontWeight.bold,  fontSize: 23.dp, color: Colors.white),),
-                    ),
-                    Padding(padding: EdgeInsets.only(top: 4.h)),
-                    Text ("$totalScore", textAlign: TextAlign.center,
-                      style: TextStyle(//fontWeight: FontWeight.bold,
-                          fontSize: 40.dp),),
-                    Padding(padding: EdgeInsets.only(top: 3.h)),
-                    Text("Bleeding Risk:" , textAlign: TextAlign.left,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23.dp, color: Colors.black),),
-                    Padding(padding: EdgeInsets.only(top: 2.h)),
-                    Text(_bleedingRisk, textAlign: TextAlign.center, style: TextStyle(fontStyle: FontStyle.italic,
-                        fontSize: 18.dp, fontWeight: FontWeight.normal, color: _color),),
-                  ])),
+        return ResultDialog2(
+          customHeight: 38.h,
+          customWidth: 75.w,
+          title: "HASBLED Score",
+          total: '$totalScore',
+          subHeader: "Bleeding Risk:",
+          comment: _bleedingRisk,
+          commentColor: _color,
         );
       },
     );
@@ -528,7 +501,7 @@ class _InputFieldsState extends State<InputFields> {
         _responseINR == -1) {
       showErrorDialog();
     } else {
-      showResultDialog();
+      computeScore();
     }
   }
 }

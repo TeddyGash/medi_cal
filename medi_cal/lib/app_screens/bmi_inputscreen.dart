@@ -457,7 +457,7 @@ class _InputFieldsState extends State<InputFields> {
                       ],
                     ),
                     Padding(padding: EdgeInsets.only(top: 3.h)),
-                    Text("Comment" , textAlign: TextAlign.left,
+                    Text("Comment:" , textAlign: TextAlign.left,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23.dp, color: Colors.blue),),
                     Padding(padding: EdgeInsets.only(top: 2.h)),

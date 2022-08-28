@@ -271,101 +271,105 @@ class _InputFieldsGAState extends State<InputFieldsGA> {
                                     SizedBox(
                                       height: 20.0,
                                     ),
-                                    Text(
-                                      "Select EGA today",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          Expanded(
-                                            child: DirectSelect(
-                                                itemExtent: 55.0,
-                                                selectedIndex: selectedIndex1,
-                                                //backgroundColor: Colors.red,
-                                                child: MySelectionItem(
-                                                  isForList: false,
-                                                  title: weeks[selectedIndex1],
-                                                ),
-                                                onSelectedItemChanged: (index) {
-                                                  setState(() {
-                                                    selectedIndex1 = index!;
-                                                  });
-                                                },
-                                                items: _buildItems1()),
-                                          ),
-                                          Text(
-                                            'weeks',
-                                            textAlign: TextAlign.center,
+                                    Column(
+                                      children: [
+                                        Text(
+                                          "Select EGA today",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Expanded(
+                                                child: DirectSelect(
+                                                    itemExtent: 55.0,
+                                                    selectedIndex: selectedIndex1,
+                                                    //backgroundColor: Colors.red,
+                                                    child: MySelectionItem(
+                                                      isForList: false,
+                                                      title: weeks[selectedIndex1],
+                                                    ),
+                                                    onSelectedItemChanged: (index) {
+                                                      setState(() {
+                                                        selectedIndex1 = index!;
+                                                      });
+                                                    },
+                                                    items: _buildItems1()),
+                                              ),
+                                              Text(
+                                                'weeks',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    fontSize: 15.0,
+                                                    fontWeight: FontWeight.normal),
+                                              ),
+                                              Expanded(
+                                                child: DirectSelect(
+                                                    itemExtent: 55.0,
+                                                    selectedIndex: selectedIndex2,
+                                                    //backgroundColor: Colors.red,
+                                                    child: MySelectionItem(
+                                                      isForList: false,
+                                                      title: days[selectedIndex2],
+                                                    ),
+                                                    onSelectedItemChanged: (index) {
+                                                      setState(() {
+                                                        selectedIndex2 = index!;
+                                                      });
+                                                    },
+                                                    items: _buildItems2()),
+                                              ),
+                                              Text(
+                                                'days',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    fontSize: 15.0,
+                                                    fontWeight: FontWeight.normal),
+                                              ),
+                                            ]),
+                                        SizedBox(
+                                          height: 20.0,
+                                        ),
+                                        SizedBox(
+                                          height: 20.0,
+                                        ),
+                                        Divider(
+                                          height: 5.0,
+                                          color: Colors.black,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.all(2.0),
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: compute,
+                                          child: Text(
+                                            'Calculate',
                                             style: TextStyle(
-                                                fontSize: 15.0,
-                                                fontWeight: FontWeight.normal),
+                                                fontSize: 16.0,
+                                                fontWeight: FontWeight.normal,
+                                                color: Colors.white),
                                           ),
-                                          Expanded(
-                                            child: DirectSelect(
-                                                itemExtent: 55.0,
-                                                selectedIndex: selectedIndex2,
-                                                //backgroundColor: Colors.red,
-                                                child: MySelectionItem(
-                                                  isForList: false,
-                                                  title: days[selectedIndex2],
-                                                ),
-                                                onSelectedItemChanged: (index) {
-                                                  setState(() {
-                                                    selectedIndex2 = index!;
-                                                  });
-                                                },
-                                                items: _buildItems2()),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.all(4.0),
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: resetSelection,
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Colors.redAccent,
                                           ),
-                                          Text(
-                                            'days',
-                                            textAlign: TextAlign.center,
+                                          child: Text(
+                                            'Reset Selection',
                                             style: TextStyle(
-                                                fontSize: 15.0,
-                                                fontWeight: FontWeight.normal),
+                                                fontWeight: FontWeight.normal,
+                                                fontSize: 16.0,
+                                                color: Colors.white),
                                           ),
-                                        ]),
-                                    SizedBox(
-                                      height: 20.0,
-                                    ),
-                                    SizedBox(
-                                      height: 20.0,
-                                    ),
-                                    Divider(
-                                      height: 5.0,
-                                      color: Colors.black,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(2.0),
-                                    ),
-                                    ElevatedButton(
-                                      onPressed: compute,
-                                      child: Text(
-                                        'Calculate',
-                                        style: TextStyle(
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.normal,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(4.0),
-                                    ),
-                                    ElevatedButton(
-                                      onPressed: resetSelection,
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.redAccent,
-                                      ),
-                                      child: Text(
-                                        'Reset Selection',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.normal,
-                                            fontSize: 16.0,
-                                            color: Colors.white),
-                                      ),
+                                        ),
+                                      ],
                                     )
                                   ],
                                 ),

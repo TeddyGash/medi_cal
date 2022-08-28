@@ -261,52 +261,56 @@ class _InputFieldsEDDState extends State<InputFieldsEDD> {
                                     Padding(
                                       padding: EdgeInsets.all(2.0),
                                     ),
-                                    ElevatedButton(
-                                      onPressed: () => _selectEDD(context),
-                                      child: Text('Select EDD'),
-                                    ),
-                                    Text(
-                                        "${selectedEDD.toLocal()}"
-                                            .split(' ')[0],
-                                        textAlign: TextAlign.center),
-                                    SizedBox(
-                                      height: 20.0,
-                                    ),
-                                    SizedBox(
-                                      height: 20.0,
-                                    ),
-                                    Divider(
-                                      height: 5.0,
-                                      color: Colors.black,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(2.0),
-                                    ),
-                                    ElevatedButton(
-                                      onPressed: compute,
-                                      child: Text(
-                                        'Calculate',
-                                        style: TextStyle(
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.normal,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(4.0),
-                                    ),
-                                    ElevatedButton(
-                                      onPressed: resetSelection,
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.redAccent,
-                                      ),
-                                      child: Text(
-                                        'Reset Selection',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.normal,
-                                            fontSize: 16.0,
-                                            color: Colors.white),
-                                      ),
+                                    Column(
+                                      children: [
+                                        ElevatedButton(
+                                          onPressed: () => _selectEDD(context),
+                                          child: Text('Select EDD'),
+                                        ),
+                                        Text(
+                                            "${selectedEDD.toLocal()}"
+                                                .split(' ')[0],
+                                            textAlign: TextAlign.center),
+                                        SizedBox(
+                                          height: 20.0,
+                                        ),
+                                        SizedBox(
+                                          height: 20.0,
+                                        ),
+                                        Divider(
+                                          height: 5.0,
+                                          color: Colors.black,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.all(2.0),
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: compute,
+                                          child: Text(
+                                            'Calculate',
+                                            style: TextStyle(
+                                                fontSize: 16.0,
+                                                fontWeight: FontWeight.normal,
+                                                color: Colors.white),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.all(4.0),
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: resetSelection,
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Colors.redAccent,
+                                          ),
+                                          child: Text(
+                                            'Reset Selection',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.normal,
+                                                fontSize: 16.0,
+                                                color: Colors.white),
+                                          ),
+                                        ),
+                                      ],
                                     )
                                   ],
                                 ),

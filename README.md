@@ -2,10 +2,11 @@
 
 MediCal is a multitool Medical Calculator containing commonly used calculators in 
 General Medical practice. 
+Still under development.
 
-Programming Language: Dart.
-SDK: Flutter.
-Platforms: android, iOS.
+- Programming Language: Dart.
+- SDK: Flutter.
+- Platforms: android, iOS.
 
 Includes:
  - eGFR Calculator
